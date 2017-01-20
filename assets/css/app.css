@@ -1,0 +1,26 @@
+body {
+	margin-top: 50px;
+	padding: 10px;
+	background-color: #ECF0F1;
+}
+
+.iv-logo {
+	margin-top: -12px;
+}
+
+.iv-vcenter td {
+	vertical-align: middle !important;
+}
+
+.iv-container {
+	background-color: #FFFFFF;
+}
+
+/*fix for smart-table*/
+.st-sort-ascent:before {
+	content: '\25B2';
+}
+
+.st-sort-descent:before {
+	content: '\25BC';
+}

@@ -1,0 +1,49 @@
+<h2>Items</h2>
+
+<button type="button" class="btn btn-primary" ng-click="create()">
+	<span class="fa fa-plus"></span>&nbsp;&nbsp;New Item
+</button>
+<br>
+<br>
+<div class="table-responsive">
+	<table st-table="displayedItems" st-safe-src="items"
+		class="table table-striped ev-vcenter">
+		<thead>
+			<tr>
+				<th>Action</th>
+				<th st-sort="id" st-sort-default="true">ID</th>
+				<th st-sort="year">Year</th>
+				<th>Make</th>
+				<th>Model</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in displayedItems">
+				<td>
+					<button type="button" ng-click="update(item)"
+						class="btn btn-xs btn-default" title="edit">
+						<span class="fa fa-pencil"></span>&nbsp;
+					</button>
+					<button type="button" ng-click="confirm(item)"
+						class="btn btn-xs btn-default" title="delete">
+						<span class="fa fa-times"></span>&nbsp;
+					</button>
+				</td>
+				<td>{{ item.id}}</td>
+
+				<td>{{ item.year }}</td>
+
+				<td>{{ item.make }}</td>
+
+				<td>{{ item.model }}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" class="text-center">
+					<div st-pagination="" st-items-by-page="10"></div>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
