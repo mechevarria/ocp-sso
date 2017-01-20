@@ -7,6 +7,6 @@
     Controller.$inject = ['$scope'];
 
     function Controller($scope) {
-        $scope.welcome = '';
+        $scope.welcome = 'Welcome to the jboss-client-app!';
     }
 })();
