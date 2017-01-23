@@ -3,7 +3,7 @@ package org.redhat.api;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("rest")
-public class JbossApiApplication extends Application{
+@ApplicationPath("")
+public class JaxRsActivator extends Application{
 
 }
