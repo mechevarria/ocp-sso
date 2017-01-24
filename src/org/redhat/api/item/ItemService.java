@@ -20,7 +20,8 @@ public class ItemService {
 
 	public List<ItemModel> findAll() {
 
-		TypedQuery<ItemModel> query = em.createNamedQuery("findAll", ItemModel.class);
+		TypedQuery<ItemModel> query = em.createQuery("SELECT i FROM ItemModel i", ItemModel.class);
+		
 		List<ItemModel> list = query.getResultList();
 
 		return list;
