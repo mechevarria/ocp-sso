@@ -2,26 +2,21 @@ package org.redhat.api.item;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-import javax.enterprise.context.RequestScoped;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.UserTransaction;
 
-@RequestScoped
+@Stateless
 public class ItemService {
 
 	@PersistenceContext
 	private EntityManager em;
 
-	@Resource
-	private UserTransaction utx;
-
 	public List<ItemModel> findAll() {
 
 		TypedQuery<ItemModel> query = em.createQuery("SELECT i FROM ItemModel i", ItemModel.class);
-		
+
 		List<ItemModel> list = query.getResultList();
 
 		return list;
@@ -33,17 +28,9 @@ public class ItemService {
 	}
 
 	public ItemModel createItem(ItemModel item) {
-		try {
-			utx.begin();
 
-			em.persist(item);
-			em.flush();
-
-			utx.commit();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		em.persist(item);
+		em.flush();
 
 		return item;
 	}
@@ -52,20 +39,11 @@ public class ItemService {
 
 		ItemModel updated = em.find(ItemModel.class, item.getId());
 
-		try {
-			utx.begin();
-			
-			updated = em.merge(updated);
+		updated = em.merge(updated);
 
-			updated.setYear(item.getYear());
-			updated.setModel(item.getModel());
-			updated.setMake(item.getMake());
-
-			utx.commit();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		updated.setYear(item.getYear());
+		updated.setModel(item.getModel());
+		updated.setMake(item.getMake());
 
 		return item;
 	}
@@ -73,20 +51,10 @@ public class ItemService {
 	public boolean deleteItem(String id) {
 		ItemModel toDelete = em.find(ItemModel.class, Long.valueOf(id));
 
-		try {
-			utx.begin();
-			
-			toDelete = em.merge(toDelete);
-			em.remove(toDelete);
+		toDelete = em.merge(toDelete);
+		em.remove(toDelete);
 
-			utx.commit();
-
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			return false;
-		}
+		return true;
 
 	}
 
