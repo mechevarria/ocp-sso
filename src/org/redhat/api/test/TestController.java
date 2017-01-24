@@ -22,7 +22,7 @@ public class TestController {
 		Response.ResponseBuilder builder = null;
 		
 		HashMap<String,String> model = new HashMap<String, String>();
-		model.put("status", "test service is working!");
+		model.put("status", "Wow, the test service is working!");
 		
 		builder = Response.ok(model);
 				
