@@ -13,11 +13,12 @@
             $scope.open();
         };
 
-        $scope.update = function(id) {
+        $scope.update = function(item) {
             $scope.item = ItemSrvc.get({
-                id: id
+                id: item.id
             });
-            $scope.open(id);
+
+            $scope.open($scope.item);
         };
         
         $scope.delete = function(id) {
@@ -31,9 +32,7 @@
 
         $scope.save = function(item) {
             if (item.id) {
-                ItemSrvc.update({
-                        id: item.id
-                    }, $scope.item,
+                ItemSrvc.update(item,
                     function() {
                         activate();
                     });
@@ -92,8 +91,7 @@
 
         function activate() {
             $scope.clear();
-            //$scope.items = ItemSrvc.query();
-            $scope.items = [];
+            $scope.items = ItemSrvc.query();
             $scope.displayedItems = $scope.items;
         }
 

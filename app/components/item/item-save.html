@@ -14,8 +14,11 @@
 
 
 		<div class="form-group">
-			<label>year:</label> <input type="text" class="form-control"
-				name="title" ng-model="item.year" ng-required="false" />
+			<label>year:</label>
+
+			<select class="form-control" name="year" ng-model="item.year" ng-options="year for year in years">
+			</select>
+
 		</div>
 
 		<div class="form-group">

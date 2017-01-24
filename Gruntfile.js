@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         },
         connect: {
             proxies: [{
-                context: '/api',
+                context: '/jboss-api',
                 host: 'demo-vm',
                 port: 8080,
                 https: false,

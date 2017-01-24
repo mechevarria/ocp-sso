@@ -7,7 +7,7 @@
     Service.$inject = ['$resource'];
 
     function Service($resource) {
-        return $resource('item-app/items/:id', {}, {
+        return $resource('jboss-api/item/:id', {}, {
             'update': {
                 method: 'PUT'
             }
