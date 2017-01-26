@@ -2,7 +2,7 @@
 	"name": "jboss-client",
 	"version": "0.1.0",
 	"dependencies": {
-		"angular-bootstrap": "2.1.4",
+		"angular-bootstrap": "2.4.0",
 		"angular-resource": "1.5.8",
 		"angular-route": "1.5.8",
 		"angular": "1.5.8",
