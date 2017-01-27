@@ -22,57 +22,42 @@ public class ItemController {
 	private ItemService itemService;
 
 	@GET
-	public Response getAllItems() {
-		Response.ResponseBuilder builder = null;
+	public List<ItemModel> getAllItems() {
 		
 		List<ItemModel> items = itemService.findAll();
-
-		builder = Response.ok(items);
-		return builder.build();
+		return items;
 	}
 	
 	@GET
 	@Path("/{id}")
-	public Response getItem(@PathParam("id") String id) {
-		Response.ResponseBuilder builder = null;
+	public ItemModel getItem(@PathParam("id") String id) {
 		
 		ItemModel item = itemService.findById(id);
-
-		builder = Response.ok(item);
-		return builder.build();
+		return item;
 	}
 
 	@POST
-	public Response createItem(ItemModel item) {
-		Response.ResponseBuilder builder = null;
+	public ItemModel createItem(ItemModel item) {
 		
 		ItemModel savedItem = itemService.createItem(item);
-
-		builder = Response.ok(savedItem);
-		return builder.build();
+		return savedItem;
 	}
 	
 	@PUT
-	public Response updateItem(ItemModel item) {
-		Response.ResponseBuilder builder = null;
+	public ItemModel updateItem(ItemModel item) {
 		
 		ItemModel updatedItem = itemService.updateItem(item);
-
-		builder = Response.ok(updatedItem);
-		return builder.build();
+		return updatedItem;
 	}
 	
 	@DELETE
 	@Path("/{id}")
-	public Response deleteItem(@PathParam("id") String id) {
-		Response.ResponseBuilder builder = null;
+	public HashMap<String,Boolean> deleteItem(@PathParam("id") String id) {
 		
 		HashMap<String,Boolean> status = new HashMap<String,Boolean>();
-		
 		status.put("isDeleted", itemService.deleteItem(id));
 
-		builder = Response.ok(status);
-		return builder.build();
+		return status;
 	}
 
 }
