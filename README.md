@@ -5,8 +5,8 @@ Java EE basic REST application that can be deployed on [JBoss EAP7](https://deve
 ## To get started
 Import as a dynamic web project in [JBoss Developer Studio](https://www.redhat.com/en/technologies/jboss-middleware/developer-studio)
 
-Once deployed, you can see a test value at
-`jboss-api/test`
+Once deployed, you can see a status value at
+`jboss-api/status
 
 This project works to create a [Angular Resource](https://docs.angularjs.org/api/ngResource/service/$resource) REST api that works with [jboss client](https://github.com/mechevarria/jboss-client) and can do all CRUD operations on the `jboss-api/item` endpoint
 
