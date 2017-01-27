@@ -1,5 +1,6 @@
 package org.redhat.api.item;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -44,6 +45,7 @@ public class ItemService {
 		updated.setYear(item.getYear());
 		updated.setModel(item.getModel());
 		updated.setMake(item.getMake());
+		updated.setLastUpdateDate(new Date(System.currentTimeMillis()));
 
 		return item;
 	}
