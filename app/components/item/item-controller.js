@@ -9,7 +9,6 @@
     function Controller($scope, $uibModal, ItemSrvc) {
 
         $scope.create = function() {
-            $scope.clear();
             $scope.open();
         };
 
@@ -51,7 +50,9 @@
                 'year': '',
                 'make': '',
                 'id': '',
-                'model': ''
+                'model': '',
+                'createDate' : '',
+                'lastUpdateDate' : ''
             };
         };
 
