@@ -12,14 +12,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 @Path("item")
 @Produces(MediaType.APPLICATION_JSON)
 public class ItemController {
 	
 	@Inject
-	private ItemService itemService;
+	private ItemService itemService;	
 
 	@GET
 	public List<ItemModel> getAllItems() {
