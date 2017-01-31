@@ -23,3 +23,5 @@ By default the context is on a server `demo-vm` on port `8080`
 [UI Bootstrap](https://angular-ui.github.io/bootstrap/)
 
 [Smart Table](http://lorenzofox3.github.io/smart-table-website/)
+
+[AngularJS Toaster](https://github.com/jirikavi/AngularJS-Toaster)
