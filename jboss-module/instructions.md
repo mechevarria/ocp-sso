@@ -33,7 +33,7 @@ In the JDBC Driver step select the **postgresql** option in the Detected Driver 
 
 In the Connection Settings use
 
-**jdbc:postgresql://localhost:5432/jboss**
+jdbc:postgresql://localhost:5432/**jboss**
 
 username: **jboss**
 
