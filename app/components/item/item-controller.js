@@ -4,9 +4,9 @@
     angular.module('jboss-client')
         .controller('ItemCtrl', Controller);
 
-    Controller.$inject = ['$scope', '$uibModal', 'ItemSrvc'];
+    Controller.$inject = ['$scope', '$uibModal', 'ItemSrvc', 'toaster'];
 
-    function Controller($scope, $uibModal, ItemSrvc) {
+    function Controller($scope, $uibModal, ItemSrvc, toaster) {
 
         $scope.create = function() {
             $scope.open();
@@ -25,6 +25,7 @@
                     id: id
                 },
                 function() {
+                    toaster.pop('success','','Car deleted successfully');
                     activate();
                 });
         };
@@ -33,11 +34,13 @@
             if (item.id) {
                 ItemSrvc.update(item,
                     function() {
+                        toaster.pop('success','','Car updated successfully');
                         activate();
                     });
             } else {
                 ItemSrvc.save(item,
                     function() {
+                        toaster.pop('success','','Car saved successfully');
                         activate();
                     });
             }
