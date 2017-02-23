@@ -3,13 +3,15 @@
 AngularJS application frontend for a hosted [JBoss EAP7](https://developers.redhat.com/products/eap/download/) REST api.  Works with [jboss-api](https://github.com/mechevarria/jboss-api)
 
 ## Build and Run
-In the root directory
+In the project root directory
 
-`npm install`
+~~~bash
+npm install
 
-`bower install`
+bower install
 
-`grunt client`
+grunt client
+~~~
 
 ## Editing
 The proxy that allows the cross domain query is located in
