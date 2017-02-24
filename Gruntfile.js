@@ -25,9 +25,7 @@ module.exports = function(grunt) {
             proxies: [{
                 context: '/jboss-api',
                 host: 'demo-vm',
-                port: 8080,
-                https: false,
-                changeOrigin: false
+                port: 8080
             }],
             options: {
                 port: 9000,
@@ -38,9 +36,6 @@ module.exports = function(grunt) {
             livereload: {
                 options: {
                     open: true,
-                    base: [
-                        '.'
-                    ],
                     middleware: function() {
                         return [
                             proxySnippet,
@@ -69,3 +64,4 @@ module.exports = function(grunt) {
     ]);
 
 };
+
