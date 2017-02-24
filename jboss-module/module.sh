@@ -1,6 +1,6 @@
 #!/bin/bash
 
-jboss_cli=~/local/devstudio/runtimes/jboss-eap/bin/jboss-cli.sh
+jboss_cli=~/local/10-devstudio/runtimes/7-eap/bin/jboss-cli.sh
 
 if [[ "$1" = "rm" ]] ; then
   cmds="rm-commands.cli"
