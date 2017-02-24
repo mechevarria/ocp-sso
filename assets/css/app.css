@@ -12,6 +12,11 @@ body {
     background-color: #FFFFFF;
 }
 
+.app-logo {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
 /*fix for smart-table*/
 .st-sort-ascent:before {
     content: '\25B2';
