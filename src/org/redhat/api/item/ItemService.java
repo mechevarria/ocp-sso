@@ -37,17 +37,16 @@ public class ItemService {
 	}
 
 	public ItemModel updateItem(ItemModel item) {
+		
+		item.setLastUpdateDate(new Date(System.currentTimeMillis()));
 
+		// find the existing item in the db
 		ItemModel updated = em.find(ItemModel.class, item.getId());
 
-		updated = em.merge(updated);
+		// merge the existing model with the model passed in
+		updated = em.merge(item);
 
-		updated.setYear(item.getYear());
-		updated.setModel(item.getModel());
-		updated.setMake(item.getMake());
-		updated.setLastUpdateDate(new Date(System.currentTimeMillis()));
-
-		return item;
+		return updated;
 	}
 
 	public boolean deleteItem(String id) {
