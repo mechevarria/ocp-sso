@@ -11,3 +11,4 @@ bower_components
 build
 .classpath
 .settings
+/out/
