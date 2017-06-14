@@ -14,16 +14,19 @@ grunt client
 ~~~
 
 ## Editing
-The proxy that allows the cross domain query is located in
+The proxy that allows the querying the api is in
 'Gruntfile.js'
 
-By default the context is on a server `demo-vm` on port `8080`
+By default the context is on a server `localhost` on port `8080`
 
 ## References
-[AngularJS](https://angular.io/)
+Built using the following libraries
+
+
+[PatternFly](https://angular.io/)
+
+[Angular PatternFly](www.patternfly.org/angular-patternfly/)
 
 [UI Bootstrap](https://angular-ui.github.io/bootstrap/)
 
 [Smart Table](http://lorenzofox3.github.io/smart-table-website/)
-
-[AngularJS Toaster](https://github.com/jirikavi/AngularJS-Toaster)
