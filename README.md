@@ -30,3 +30,6 @@ Built using the following libraries
 [UI Bootstrap](https://angular-ui.github.io/bootstrap/)
 
 [Smart Table](http://lorenzofox3.github.io/smart-table-website/)
+
+![cli.png](screenshot.png)
+
