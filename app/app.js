@@ -1,12 +1,11 @@
 (function() {
     'use strict';
 
-    angular.module('jboss-client', [
+    angular.module('patternfly.app', [
         'ngResource',
-        'ngRoute',
-        'ngAnimate',
+        'patternfly',
+        'ui.router',
         'ui.bootstrap',
-        'smart-table',
-        'toaster'
+        'smart-table'
     ]);
 })();

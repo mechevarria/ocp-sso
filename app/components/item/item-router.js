@@ -1,16 +1,19 @@
 (function() {
     'use strict';
 
-    angular.module('jboss-client')
+    angular.module('patternfly.app')
         .config(Router);
 
-    Router.$inject = ['$routeProvider'];
-    
-    function Router($routeProvider) {
-        $routeProvider
-            .when('/items', {
-                templateUrl: 'app/components/item/items.html',
-                controller: 'ItemCtrl'
+    Router.$inject = ['$stateProvider'];
+
+    function Router($stateProvider) {
+        $stateProvider
+            .state({
+                name: 'item',
+                url:'/item',
+                controller: 'ItemCtrl',
+                templateUrl: 'app/components/item/item.html'
             });
+
     }
 })();

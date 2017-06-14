@@ -1,71 +1,84 @@
 <!doctype html>
-<html lang="en" ng-app="jboss-client">
+<html ng-app="patternfly.app">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jboss client</title>
+    <title>JBoss Client</title>
 
-    <link href="bower_components/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="bower_components/bootswatch-dist/css/bootstrap.css" rel="stylesheet">
-    <link href="bower_components/angularjs-toaster/toaster.css" rel="stylesheet">
+    <!-- build:css assets/css/vendor.css -->
+    <link rel="stylesheet" href="bower_components/patternfly/dist/css/patternfly.min.css">
+    <link rel="stylesheet" href="bower_components/patternfly/dist/css/patternfly-additions.min.css">
+    <link rel="stylesheet" href="bower_components/angular-patternfly/dist/styles/angular-patternfly.min.css">
+    <!-- endbuild -->
 
+    <!-- build:css assets/css/app.css -->
     <link href="assets/css/app.css" rel="stylesheet">
+    <!-- endbuild -->
 </head>
 <body>
 
-<!-- directive for toast notifications -->
-<toaster-container></toaster-container>
-
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span> <span
-                    class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand app-logo" href="#/">
-                <img src="assets/img/logo.png" height="100%"/>
-            </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-
-                <li><a href="#/items">Cars</a></li>
-
+<div class="layout-pf layout-pf-fixed" ng-controller="NavCtrl">
+    <pf-vertical-navigation items="navItems"
+                            brand-src="assets/img/logo.png"
+                            brand-alt="PatternFLY Example"
+                            update-active-items-on-click="true"
+                            show-badges="true">
+        <div>
+            <ul class="nav navbar-nav navbar-right navbar-iconic">
+                <li class="dropdown">
+                </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
+    </pf-vertical-navigation>
+
+    <div id="contentContainer" class="container-fluid container-cards-pf container-pf-nav-pf-vertical" ng-controller="ToastCtrl">
+
+        <!-- container for toast notifications -->
+        <pf-toast-notification-list notifications="notifications">
+        </pf-toast-notification-list>
+        <ui-view>
+            <!-- Content will be added here -->
+        </ui-view>
     </div>
-    <!-- /.container -->
-</nav>
-<!-- route views -->
-<div class="container jboss-client-container" ng-view></div>
+</div>
 
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/lodash/dist/lodash.js"></script>
-<script src="bower_components/angular/angular.js"></script>
+<!-- build:js assets/js/vendor.js -->
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/jquery.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/bootstrap.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/bootstrap-combobox.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/bootstrap-datepicker.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/moment.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/bootstrap-datepicker.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/bootstrap-select.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/bootstrap-treeview.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/c3.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/d3.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/patternfly.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular-sanitize.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular-animate.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular-bootstrap-prettify.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/lodash.min.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular-patternfly.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular-drag-and-drop-lists.js"></script>
+<script src="bower_components/angular-patternfly/dist/docs/grunt-scripts/angular-drag-and-drop-lists.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
-<script src="bower_components/angularjs-toaster/toaster.js"></script>
+<!-- endbuild -->
 
+<!-- build:js assets/js/app.js -->
 <script src="app/app.js"></script>
-<script src="app/components/home/home-controller.js"></script>
-<script src="app/components/home/home-router.js"></script>
-<script src="app/components/home/home-service.js"></script>
+<script src="app/components/nav/nav-controller.js"></script>
+<script src="app/components/toast/toast-controller.js"></script>
+<script src="app/components/status/status-router.js"></script>
+<script src="app/components/status/status-service.js"></script>
+<script src="app/components/status/status-controller.js"></script>
 <script src="app/components/item/item-router.js"></script>
 <script src="app/components/item/item-controller.js"></script>
-<script src="app/components/item/item-router.js"></script>
-<script src="app/components/item/item-delete-controller.js"></script>
-<script src="app/components/item/item-save-controller.js"></script>
 <script src="app/components/item/item-service.js"></script>
+<script src="app/components/item/item-save-controller.js"></script>
+<script src="app/components/item/item-delete-controller.js"></script>
+<!-- endbuild -->
 
 </body>
 </html>

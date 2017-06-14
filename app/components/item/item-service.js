@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('jboss-client')
+    angular.module('patternfly.app')
         .factory('ItemSrvc', Service);
 
     Service.$inject = ['$resource'];

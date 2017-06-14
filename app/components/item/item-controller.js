@@ -1,12 +1,28 @@
 (function() {
     'use strict';
 
-    angular.module('jboss-client')
+    angular.module('patternfly.app')
         .controller('ItemCtrl', Controller);
 
-    Controller.$inject = ['$scope', '$uibModal', 'ItemSrvc', 'toaster'];
+    Controller.$inject = ['$scope', '$uibModal', 'ItemSrvc'];
 
-    function Controller($scope, $uibModal, ItemSrvc, toaster) {
+    function Controller($scope, $uibModal, ItemSrvc) {
+
+        $scope.toolbarConfig = {
+            isTableView : true,
+            actionsConfig: {
+                primaryActions: [
+                    {
+                        name: 'Action 1',
+                        title: 'Do the first thing'
+                    },
+                    {
+                        name: 'Action 2',
+                        title: 'Do something else'
+                    }
+                ]
+            }
+        };
 
         $scope.create = function() {
             $scope.open();
@@ -19,13 +35,13 @@
 
             $scope.open($scope.item);
         };
-        
+
         $scope.delete = function(id) {
             ItemSrvc.delete({
                     id: id
                 },
                 function() {
-                    toaster.pop('success','','Car deleted successfully');
+                    $scope.$emit('success', 'Car deleted successfully');
                     activate();
                 });
         };
@@ -34,13 +50,13 @@
             if (item.id) {
                 ItemSrvc.update(item,
                     function() {
-                        toaster.pop('success','','Car updated successfully');
+                        $scope.$emit('success','Car updated successfully');
                         activate();
                     });
             } else {
                 ItemSrvc.save(item,
                     function() {
-                        toaster.pop('success','','Car saved successfully');
+                        $scope.$emit('success','Car saved successfully');
                         activate();
                     });
             }

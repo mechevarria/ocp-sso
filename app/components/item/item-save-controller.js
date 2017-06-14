@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('jboss-client')
+    angular.module('patternfly.app')
         .controller('ItemSaveCtrl', Controller);
 
     Controller.$inject = ['$scope', '$uibModalInstance', 'item'];

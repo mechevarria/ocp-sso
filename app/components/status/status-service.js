@@ -1,8 +1,8 @@
 (function () {
     'use strict';
 
-    angular.module('jboss-client')
-        .factory('HomeSrvc', Service);
+    angular.module('patternfly.app')
+        .factory('StatusSrvc', Service);
 
     Service.$inject = ['$http'];
 

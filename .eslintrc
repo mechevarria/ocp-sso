@@ -5,6 +5,7 @@
         "node": true
     },
     "globals": {
-        "angular": true
+        "angular": true,
+        "_": false
     }
 }
