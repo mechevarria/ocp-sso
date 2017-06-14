@@ -23,7 +23,7 @@ By default the context is on a server `localhost` on port `8080`
 Built using the following libraries
 
 
-[PatternFly](https://angular.io/)
+[PatternFly](http://www.patternfly.org/)
 
 [Angular PatternFly](www.patternfly.org/angular-patternfly/)
 
