@@ -16,24 +16,56 @@
 <body>
 
 <div class="layout-pf layout-pf-fixed" ng-controller="NavCtrl">
+
+    <!-- container for toast notifications -->
+    <pf-toast-notification-list notifications="notifications">
+    </pf-toast-notification-list>
+
     <pf-vertical-navigation items="navItems"
                             brand-src="assets/img/logo.png"
-                            brand-alt="PatternFLY Example"
                             update-active-items-on-click="true"
                             show-badges="true">
         <div>
             <ul class="nav navbar-nav navbar-right navbar-iconic">
                 <li class="dropdown">
                 </li>
+
+                <!-- notifications menu -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-item-iconic" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <span title="Notifications" class="fa pficon-flag"></span>
+                        <span class="badge" ng-if="notifyCount > 0" ng-bind="notifyCount"></span>
+                    </a>
+                    <div class="dropdown-menu infotip bottom-right" ng-if="notifyCount > 0">
+                        <div class="arrow"></div>
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="item in menuItems">
+                                <span class="i pficon" ng-class="getClass(item.type)"></span> {{item.msg}}
+                            </li>
+                        </ul>
+                        <div class="footer">
+                            <a href ng-click="clear()">Clear Messages</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- user menu -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-item-iconic" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="true">
+                        <span title="Username" class="fa pficon-user"></span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href>Logout</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </pf-vertical-navigation>
 
-    <div id="contentContainer" class="container-fluid container-cards-pf container-pf-nav-pf-vertical" ng-controller="ToastCtrl">
-
-        <!-- container for toast notifications -->
-        <pf-toast-notification-list notifications="notifications">
-        </pf-toast-notification-list>
+    <div id="contentContainer" class="container-fluid container-cards-pf container-pf-nav-pf-vertical">
         <ui-view>
             <!-- Content will be added here -->
         </ui-view>
@@ -69,7 +101,6 @@
 <!-- build:js assets/js/app.js -->
 <script src="app/app.js"></script>
 <script src="app/components/nav/nav-controller.js"></script>
-<script src="app/components/toast/toast-controller.js"></script>
 <script src="app/components/status/status-router.js"></script>
 <script src="app/components/status/status-service.js"></script>
 <script src="app/components/status/status-controller.js"></script>
