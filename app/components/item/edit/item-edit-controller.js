@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('patternfly.app')
-        .controller('ItemSaveCtrl', Controller);
+        .controller('ItemEditCtrl', Controller);
 
     Controller.$inject = ['$scope', '$uibModalInstance', 'item'];
 

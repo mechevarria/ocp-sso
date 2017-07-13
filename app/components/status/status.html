@@ -5,7 +5,8 @@
                 <h4 class="card-pf-title">Status</h4>
             </div>
             <div class="card-pf-body">
-                Is the jboss-api up? &nbsp;&nbsp;<button class="btn btn-lg btn-primary" ng-click="check()">Check</button>
+                <p>Is the jboss-api up?</p>
+                <button class="btn btn-lg btn-primary" ng-click="$ctrl.check()">Check</button>
             </div>
         </div>
     </div>
@@ -15,7 +16,7 @@
                 <h4 class="card-pf-title">Response</h4>
             </div>
             <div class="card-pf-body">
-                <pre>{{status | json}}</pre>
+                <pre>{{$ctrl.status | json}}</pre>
             </div>
         </div>
     </div>

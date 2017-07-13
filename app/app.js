@@ -5,8 +5,10 @@
         'ngResource',
         'ngAnimate',
         'patternfly',
+        'patternfly.table',
         'ui.router',
         'ui.bootstrap',
+        'ncy-angular-breadcrumb',
         'smart-table'
     ]);
 })();

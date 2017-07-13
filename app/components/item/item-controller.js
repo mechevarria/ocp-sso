@@ -8,22 +8,6 @@
 
     function Controller($scope, $uibModal, ItemSrvc) {
 
-        $scope.toolbarConfig = {
-            isTableView : true,
-            actionsConfig: {
-                primaryActions: [
-                    {
-                        name: 'Action 1',
-                        title: 'Do the first thing'
-                    },
-                    {
-                        name: 'Action 2',
-                        title: 'Do something else'
-                    }
-                ]
-            }
-        };
-
         $scope.create = function() {
             $scope.open();
         };
@@ -77,7 +61,7 @@
 
         $scope.confirm = function(item) {
             var itemDelete = $uibModal.open({
-                templateUrl: 'app/components/item/item-delete.html',
+                templateUrl: 'app/components/item/delete/item-delete.html',
                 controller: 'ItemDeleteCtrl',
                 resolve: {
                     item: function() {
@@ -93,8 +77,8 @@
 
         $scope.open = function(item) {
             var itemSave = $uibModal.open({
-                templateUrl: 'app/components/item/item-save.html',
-                controller: 'ItemSaveCtrl',
+                templateUrl: 'app/components/item/edit/item-edit.html',
+                controller: 'ItemEditCtrl',
                 resolve: {
                     item: function() {
                         return item;

@@ -4,21 +4,22 @@
     angular.module('patternfly.app')
         .controller('StatusCtrl', Controller);
 
-    Controller.$inject = ['$scope', 'StatusSrvc'];
+    Controller.$inject = ['$rootScope', 'StatusSrvc'];
 
-    function Controller($scope, StatusSrvc) {
+    function Controller($rootScope, StatusSrvc) {
+        var $ctrl = this;
 
-        $scope.status = {};
+        $ctrl.status = {};
 
-        $scope.check = function() {
+        $ctrl.check = function() {
 
             StatusSrvc.status().then(function(res) {
-                $scope.status = res;
-                $scope.$emit('success', 'Successfully checked status');
+                $ctrl.status = res;
+                $rootScope.$emit('success', 'Successfully checked status');
 
             }, function(err) {
-                $scope.status = err;
-                $scope.$emit('error', 'Failed to check status');
+                $ctrl.status = err;
+                $rootScope.$emit('error', 'Failed to check status');
             });
         };
     }

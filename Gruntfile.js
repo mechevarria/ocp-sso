@@ -86,7 +86,10 @@ module.exports = function(grunt) {
                 }, {
                     expand: true,
                     flatten: true,
-                    src: 'bower_components/font-awesome/fonts/*',
+                    src: [
+                        'node_modules/patternfly/node_modules/font-awesome/fonts/*',
+                        'node_modules/patternfly/dist/fonts/*'
+                    ],
                     dest: 'dist/assets/fonts/'
                 }]
             }

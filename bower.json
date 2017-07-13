@@ -1,9 +1,0 @@
-{
-  "name": "jboss-client",
-  "version": "0.1.0",
-  "dependencies": {
-    "angular-patternfly": "4.0.0",
-    "angular-resource": "1.5.11",
-    "angular-smart-table": "2.1.8"
-  }
-}

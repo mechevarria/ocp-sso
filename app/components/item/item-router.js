@@ -11,8 +11,11 @@
             .state({
                 name: 'item',
                 url:'/item',
-                controller: 'ItemCtrl',
-                templateUrl: 'app/components/item/item.html'
+                component: 'appItem',
+                ncyBreadcrumb: {
+                    label: 'Cars',
+                    parent: 'home'
+                }
             });
 
     }
