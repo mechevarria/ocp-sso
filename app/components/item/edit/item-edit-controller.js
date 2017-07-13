@@ -4,29 +4,28 @@
     angular.module('patternfly.app')
         .controller('ItemEditCtrl', Controller);
 
-    Controller.$inject = ['$scope', '$uibModalInstance', 'item'];
+    function Controller() {
+        var $ctrl = this;
 
-    function Controller($scope, $uibModalInstance, item) {
-        $scope.item = item;
+        $ctrl.item = $ctrl.resolve.item;
 
-        $scope.ok = function () {
-            $uibModalInstance.close($scope.item);
+        $ctrl.ok = function () {
+            $ctrl.close({$value: $ctrl.item});
         };
 
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
+        $ctrl.cancel = function () {
+            $ctrl.dismiss({$value: 'cancel'});
         };
 
-        function activate() {
+        $ctrl.$onInit = function() {
             var year = new Date().getFullYear();
             var range = [];
             range.push(year.toString());
             for (var i = 1; i < 30; i++) {
-                range.push( (year - i).toString() );
+                range.push((year - i).toString());
             }
-            $scope.years = range;
+            $ctrl.years = range;
         }
 
-        activate();
     }
 })();

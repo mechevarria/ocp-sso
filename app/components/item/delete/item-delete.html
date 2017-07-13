@@ -1,14 +1,15 @@
-<form name="form" role="form" ng-submit="ok()">
-	<div class="modal-header">
-		<button type="button" class="close" ng-click="cancel()">&times;</button>
-		<h4 class="modal-title">Delete Item</h4>
-	</div>
-	<div class="modal-body">
-		<p>Are you sure you want to delete {{item.make}} - {{item.model}}?</p>
-	</div>
-	<div class="modal-footer">
-		<button type="submit" class="btn btn-primary">
-			Delete
-		</button>
-	</div>
+<form name="form" role="form" ng-submit="$ctrl.ok()">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$ctrl.cancel()">&times;</button>
+        <h4 class="modal-title">Delete Item</h4>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to delete</p>
+        <p>{{$ctrl.item.make}} - {{$ctrl.item.model}}?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">
+            Delete
+        </button>
+    </div>
 </form>

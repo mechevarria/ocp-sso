@@ -4,17 +4,17 @@
     angular.module('patternfly.app')
         .controller('ItemDeleteCtrl', Controller);
 
-    Controller.$inject = ['$scope', '$uibModalInstance', 'item'];
+    function Controller() {
+        var $ctrl = this;
 
-    function Controller($scope, $uibModalInstance, item) {
-        $scope.item = item;
+        $ctrl.item = $ctrl.resolve.item;
 
-        $scope.ok = function() {
-            $uibModalInstance.close($scope.item);
+        $ctrl.ok = function() {
+            $ctrl.close({$value: $ctrl.item});
         };
 
-        $scope.cancel = function() {
-            $uibModalInstance.dismiss('cancel');
+        $ctrl.cancel = function() {
+            $ctrl.dismiss({$value: 'cancel'});
         };
     }
 })();

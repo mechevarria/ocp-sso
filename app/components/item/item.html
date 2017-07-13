@@ -5,8 +5,8 @@
                 <h4 class="card-pf-title">Cars</h4>
             </div>
             <div class="card-pf-body">
-                <table st-table="displayedItems"
-                       st-safe-src="items"
+                <table st-table="$ctrl.displayedItems"
+                       st-safe-src="$ctrl.items"
                        class="table-view-container table table-striped table-bordered table-hover dataTable">
                     <thead>
                     <tr>
@@ -14,12 +14,12 @@
                             <input st-search="" class="form-control" placeholder="global search..." type="text"/>
                         </th>
                         <th colspan="4" class="app-toolbar">
-                            <button type="button" class="btn btn-primary" ng-click="create()">New Item</button>
+                            <button type="button" class="btn btn-primary" ng-click="$ctrl.create()">New Item</button>
                         </th>
                     </tr>
                     <tr>
                         <th colspan="7" class="app-toolbar">
-                            <strong>{{ displayedItems.length}} results</strong>
+                            <strong>{{ $ctrl.displayedItems.length}} results</strong>
                         </th>
                     </tr>
                     <tr>
@@ -33,7 +33,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="item in displayedItems">
+                    <tr ng-repeat="item in $ctrl.displayedItems">
                         <td>{{ item.id}}</td>
 
                         <td>{{ item.year }}</td>
@@ -47,17 +47,17 @@
                         <td>{{ item.lastUpdateDate }}</td>
 
                         <td class="table-view-pf-actions list-group-item-header">
-                            <div class="dropdown-kebab-pf" uib-dropdown is-open="status.isopen">
+                            <div class="dropdown-kebab-pf" uib-dropdown>
                                 <button type="button" class="btn btn-default dropdown-toggle" uib-dropdown-toggle>
                                     <span class="fa fa-ellipsis-v"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu
                                     aria-labelledby="simple-dropdown">
                                     <li>
-                                        <a href ng-click="update(item)"> Edit</a>
+                                        <a href ng-click="$ctrl.update(item)"> Edit</a>
                                     </li>
                                     <li>
-                                        <a href ng-click="confirm(item)">Delete</a>
+                                        <a href ng-click="$ctrl.confirm(item)">Delete</a>
                                     </li>
                                 </ul>
                             </div>

@@ -4,52 +4,53 @@
     angular.module('patternfly.app')
         .controller('ItemCtrl', Controller);
 
-    Controller.$inject = ['$scope', '$uibModal', 'ItemSrvc'];
+    Controller.$inject = ['$rootScope', '$uibModal', 'ItemSrvc'];
 
-    function Controller($scope, $uibModal, ItemSrvc) {
+    function Controller($rootScope, $uibModal, ItemSrvc) {
+        var $ctrl = this;
 
-        $scope.create = function() {
-            $scope.open();
+        $ctrl.create = function() {
+            $ctrl.open();
         };
 
-        $scope.update = function(item) {
-            $scope.item = ItemSrvc.get({
+        $ctrl.update = function(item) {
+            $ctrl.item = ItemSrvc.get({
                 id: item.id
             });
 
-            $scope.open($scope.item);
+            $ctrl.open($ctrl.item);
         };
 
-        $scope.delete = function(id) {
+        $ctrl.delete = function(id) {
             ItemSrvc.delete({
                     id: id
                 },
                 function() {
-                    $scope.$emit('success', 'Car deleted successfully');
-                    activate();
+                    $rootScope.$emit('success', 'Car deleted successfully');
+                    reload();
                 });
         };
 
-        $scope.save = function(item) {
+        $ctrl.save = function(item) {
             if (item.id) {
                 ItemSrvc.update(item,
                     function() {
-                        $scope.$emit('success','Car updated successfully');
-                        activate();
+                        $rootScope.$emit('success','Car updated successfully');
+                        reload();
                     });
             } else {
                 ItemSrvc.save(item,
                     function() {
-                        $scope.$emit('success','Car saved successfully');
-                        activate();
+                        $rootScope.$emit('success','Car saved successfully');
+                        reload();
                     });
             }
         };
 
-        $scope.clear = function() {
-            $scope.items = [];
-            $scope.displayedItems = [];
-            $scope.item = {
+        $ctrl.clear = function() {
+            $ctrl.items = [];
+            $ctrl.displayedItems = [];
+            $ctrl.item = {
                 'year': '',
                 'make': '',
                 'id': '',
@@ -59,10 +60,9 @@
             };
         };
 
-        $scope.confirm = function(item) {
+        $ctrl.confirm = function(item) {
             var itemDelete = $uibModal.open({
-                templateUrl: 'app/components/item/delete/item-delete.html',
-                controller: 'ItemDeleteCtrl',
+                component: 'appItemDelete',
                 resolve: {
                     item: function() {
                         return item;
@@ -71,14 +71,13 @@
             });
 
             itemDelete.result.then(function(entity) {
-                $scope.delete(entity.id);
+                $ctrl.delete(entity.id);
             });
         };
 
-        $scope.open = function(item) {
+        $ctrl.open = function(item) {
             var itemSave = $uibModal.open({
-                templateUrl: 'app/components/item/edit/item-edit.html',
-                controller: 'ItemEditCtrl',
+                component: 'appItemEdit',
                 resolve: {
                     item: function() {
                         return item;
@@ -87,18 +86,16 @@
             });
 
             itemSave.result.then(function(entity) {
-                $scope.save(entity);
+                $ctrl.save(entity);
             });
         };
 
-        ////////////
-
-        function activate() {
-            $scope.clear();
-            $scope.items = ItemSrvc.query();
-            $scope.displayedItems = $scope.items;
+        function reload() {
+            $ctrl.clear();
+            $ctrl.items = ItemSrvc.query();
+            $ctrl.displayedItems = $ctrl.items;
         }
 
-        activate();
+        $ctrl.$onInit = reload();
     }
 })();
