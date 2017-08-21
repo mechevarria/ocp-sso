@@ -12,10 +12,6 @@ var uglify = require('gulp-uglify');
 var cleanCss = require('gulp-clean-css');
 var rev = require('gulp-rev');
 
-// run on port 8181 for local development to prevent java app server backend port conflicts
-var exposePort;
-var runtime;
-
 var paths = {
     js: ['gulpfile.js', 'app/**/*.js'],
     html: ['app/**/*.html', 'index.html'],
@@ -25,12 +21,20 @@ var paths = {
     fonts: ['node_modules/patternfly/dist/fonts/*']
 };
 
+// run on port 8181 for local development to prevent java app server backend port conflicts
+var exposePort;
+var runtime;
+var backend;
+
 if (process.env.NPM_RUN) {
     exposePort = 8080;
     runtime = 'OpenShift';
+    backend = 'http://eap-service:8080'
+
 } else {
     exposePort = 8181;
     runtime = 'local';
+    backend = 'http://localhost:8080'
 }
 
 winston.info('Running on %s, setting port to %s \n', runtime, exposePort);
@@ -53,7 +57,7 @@ gulp.task('server:dev', function () {
         port: exposePort,
         middleware: function () {
             var apiProxy = proxy('/jboss-api', {
-                target: 'http://localhost:8080'
+                target: backend
             });
 
             return [apiProxy];
@@ -67,7 +71,7 @@ gulp.task('server:prod', function () {
         port: exposePort,
         middleware: function () {
             var apiProxy = proxy('/odata4', {
-                target: 'http://localhost:8080'
+                target: backend
             });
 
             return [apiProxy];
