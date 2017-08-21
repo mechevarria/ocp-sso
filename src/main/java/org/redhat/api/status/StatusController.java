@@ -16,7 +16,7 @@ public class StatusController {
 	public HashMap<String,String> isUp() {
 		
 		HashMap<String,String> model = new HashMap<String, String>();
-		model.put("status", "The jboss-api is up!");
+		model.put("status", "The jboss-api is now up!");
 		
 		return model;
 		

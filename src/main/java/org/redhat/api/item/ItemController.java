@@ -22,8 +22,9 @@ public class ItemController {
 
 	@GET
 	public List<ItemModel> getAllItems() {
-		
+				
 		List<ItemModel> items = itemService.findAll();
+		
 		return items;
 	}
 	
