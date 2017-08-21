@@ -70,7 +70,7 @@ gulp.task('server:prod', function () {
         root: ['dist'],
         port: exposePort,
         middleware: function () {
-            var apiProxy = proxy('/odata4', {
+            var apiProxy = proxy('/jboss-api', {
                 target: backend
             });
 
