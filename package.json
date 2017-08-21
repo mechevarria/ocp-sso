@@ -1,38 +1,49 @@
 {
   "name": "jboss-client",
-  "version": "0.1.0",
-  "description": "JBoss client project",
+  "version": "0.2.0",
+  "description": "JBoss client application that runs on node and uses angularjs",
+  "author": "Mike Echevarria <mike.echevarria@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mechevarria/jboss-client.git"
+  },
   "dependencies": {
-    "@uirouter/angularjs": "1.0.5",
+    "@uirouter/angularjs": "1.0.6",
+    "angular": "1.5.11",
+    "angular-base64": "2.0.5",
     "angular-breadcrumb": "0.5.0",
-    "angular-patternfly": "4.1.1",
+    "angular-patternfly": "4.4.0",
     "angular-resource": "1.5.11",
-    "angular-smart-table": "2.1.8"
+    "lodash": "4.17.4"
   },
   "devDependencies": {
-    "eslint": "4.2.0",
+    "del": "3.0.0",
+    "eslint": "4.4.1",
     "eslint-config-standard": "10.2.1",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-node": "5.1.1",
     "eslint-plugin-promise": "3.5.0",
     "eslint-plugin-standard": "3.0.1",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-node": "5.1.0",
-    "grunt": "0.4.5",
-    "grunt-autoprefixer": "3.0.4",
-    "grunt-connect-proxy": "0.2.0",
-    "grunt-contrib-clean": "1.1.0",
-    "grunt-contrib-concat": "1.0.1",
-    "grunt-contrib-connect": "1.0.2",
-    "grunt-contrib-copy": "1.0.0",
-    "grunt-contrib-cssmin": "2.2.0",
-    "grunt-contrib-uglify": "3.0.1",
-    "grunt-contrib-watch": "1.0.0",
-    "grunt-eslint": "20.0.0",
-    "grunt-usemin": "3.1.1",
-    "load-grunt-tasks": "3.5.2",
-    "serve-static": "1.12.3",
-    "time-grunt": "1.4.0"
+    "gulp": "3.9.1",
+    "gulp-clean-css": "3.7.0",
+    "gulp-connect": "5.0.0",
+    "gulp-eslint": "4.0.0",
+    "gulp-rev": "8.0.0",
+    "gulp-uglify": "3.0.0",
+    "gulp-usemin": "0.3.28",
+    "http-proxy-middleware": "0.17.4",
+    "run-sequence": "2.1.0",
+    "winston": "2.3.1"
   },
   "engines": {
-    "node": ">=0.8.15"
+    "node": "*",
+    "npm": "*"
+  },
+  "scripts": {
+    "postinstall": "npm dedupe",
+    "start": "node_modules/gulp/bin/gulp.js prod",
+    "dev": "node_modules/gulp/bin/gulp.js dev",
+    "build": "node_modules/gulp/bin/gulp.js build"
   }
 }

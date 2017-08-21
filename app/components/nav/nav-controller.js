@@ -4,9 +4,9 @@
     angular.module('patternfly.app')
         .controller('NavCtrl', Controller);
 
-    Controller.$inject = ['$rootScope', 'Notifications'];
+    Controller.$inject = ['$rootScope', 'NotifySrvc'];
 
-    function Controller($rootScope, Notifications) {
+    function Controller($rootScope, NotifySrvc) {
         var $ctrl = this;
 
         $ctrl.navItems = [{
@@ -20,9 +20,12 @@
         }];
 
         // Notifications
+        $ctrl.notifications = NotifySrvc.data;
+        $ctrl.menuItems = [];
+
         $ctrl.clear = function () {
-            $ctrl.notifyCount = 0;
-            $ctrl.menuItems = [];
+            NotifySrvc.clear();
+            refresh();
         };
 
         $ctrl.getClass = function (type) {
@@ -38,33 +41,14 @@
             }
         };
 
-        $ctrl.clear();
-
-        $rootScope.$on('success', function (event, data) {
-            notify('success', data);
+        $rootScope.$on('notificiation.new', function () {
+            refresh();
         });
 
-        $rootScope.$on('error', function (event, data) {
-            notify('danger', data);
-        });
-
-        $rootScope.$on('info', function (event, data) {
-            notify('info', data);
-        });
-
-        $rootScope.$on('warning', function (event, data) {
-            notify('warning', data);
-        });
-
-        function notify(type, msg) {
-            $ctrl.notifyCount++;
-            $ctrl.menuItems.push({
-                type: type,
-                msg: msg
-            });
-            Notifications.message(type, '', msg);
+        function refresh() {
+            $ctrl.menuItems = NotifySrvc.notifications;
+            $ctrl.notifyCount = $ctrl.menuItems.length;
         }
 
-        $ctrl.notifications = Notifications.data;
     }
 })();

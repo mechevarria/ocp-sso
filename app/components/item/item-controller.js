@@ -1,19 +1,36 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('patternfly.app')
         .controller('ItemCtrl', Controller);
 
-    Controller.$inject = ['$rootScope', '$uibModal', 'ItemSrvc'];
+    Controller.$inject = ['$uibModal', 'NotifySrvc', 'ItemSrvc'];
 
-    function Controller($rootScope, $uibModal, ItemSrvc) {
+    function Controller($uibModal, NotifySrvc, ItemSrvc) {
         var $ctrl = this;
 
-        $ctrl.create = function() {
-            $ctrl.open();
+        $ctrl.pageConfig = {
+            pageNumber: 1,
+            pageSize: 10,
+            pageSizeIncrements: [5, 10, 20]
         };
 
-        $ctrl.update = function(item) {
+        $ctrl.columns = [
+            {header: 'ID', itemField: 'id'},
+            {header: 'Year', itemField: 'year'},
+            {header: 'Make', itemField: 'make'},
+            {header: 'Model', itemField: 'model'},
+            {header: 'Created', itemField: 'createDate'},
+            {header: 'Updated', itemField: 'lastUpdateDate'}
+        ];
+
+        $ctrl.config = {
+            selectionMatchProp: 'id',
+            itemsAvailable: true,
+            showCheckboxes: false
+        };
+
+        $ctrl.update = function (item) {
             $ctrl.item = ItemSrvc.get({
                 id: item.id
             });
@@ -21,79 +38,77 @@
             $ctrl.open($ctrl.item);
         };
 
-        $ctrl.delete = function(id) {
-            ItemSrvc.delete({
-                    id: id
-                },
-                function() {
-                    $rootScope.$emit('success', 'Car deleted successfully');
+        $ctrl.delete = function (id) {
+            ItemSrvc.delete({id: id},
+                function () {
+                    NotifySrvc.success('Car deleted successfully');
                     reload();
+                }, function (err) {
+                    NotifySrvc.error(err.status + ', ' + err.statusText);
                 });
         };
 
-        $ctrl.save = function(item) {
+        $ctrl.save = function (item) {
             if (item.id) {
                 ItemSrvc.update(item,
-                    function() {
-                        $rootScope.$emit('success','Car updated successfully');
+                    function () {
+                        NotifySrvc.success('Car updated successfully');
                         reload();
+                    }, function (err) {
+                        NotifySrvc.error(err.status + ', ' + err.statusText);
                     });
             } else {
                 ItemSrvc.save(item,
-                    function() {
-                        $rootScope.$emit('success','Car saved successfully');
+                    function () {
+                        NotifySrvc.success('Car saved successfully');
                         reload();
+                    }, function (err) {
+                        NotifySrvc.error(err.status + ', ' + err.statusText);
                     });
             }
         };
 
-        $ctrl.clear = function() {
+        $ctrl.clear = function () {
             $ctrl.items = [];
-            $ctrl.displayedItems = [];
-            $ctrl.item = {
-                'year': '',
-                'make': '',
-                'id': '',
-                'model': '',
-                'createDate' : '',
-                'lastUpdateDate' : ''
-            };
         };
 
-        $ctrl.confirm = function(item) {
+        $ctrl.confirm = function (item) {
             var itemDelete = $uibModal.open({
                 component: 'appItemDelete',
                 resolve: {
-                    item: function() {
+                    item: function () {
                         return item;
                     }
                 }
             });
 
-            itemDelete.result.then(function(entity) {
+            itemDelete.result.then(function (entity) {
                 $ctrl.delete(entity.id);
             });
         };
 
-        $ctrl.open = function(item) {
+        $ctrl.open = function (item) {
             var itemSave = $uibModal.open({
                 component: 'appItemEdit',
                 resolve: {
-                    item: function() {
+                    item: function () {
                         return item;
                     }
                 }
             });
 
-            itemSave.result.then(function(entity) {
+            itemSave.result.then(function (entity) {
                 $ctrl.save(entity);
             });
         };
 
         function reload() {
             $ctrl.clear();
-            $ctrl.items = ItemSrvc.query();
-            $ctrl.displayedItems = $ctrl.items;
+            ItemSrvc.query(function (resp) {
+                $ctrl.items = resp
+            }, function (err) {
+                NotifySrvc.error(err.status + ', ' + err.statusText);
+            });
         }
 
         $ctrl.$onInit = reload();
