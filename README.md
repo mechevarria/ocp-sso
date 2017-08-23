@@ -2,22 +2,22 @@
 
 AngularJS application frontend for a hosted [JBoss EAP7](https://developers.redhat.com/products/eap/download/) REST api.  Works with [jboss-api](https://github.com/mechevarria/jboss-api)
 
+Based on [Patternfly Seed](https://github.com/mechevarria/patternfly-seed)
+
 ## Build and Run
 In the project root directory
 
 ~~~bash
 npm install
 
-bower install
-
-grunt client
+npm run dev
 ~~~
 
 ## Editing
 The proxy that allows the querying the api is in
-'Gruntfile.js'
+'gulpfile.js'
 
-By default the context is on a server `localhost` on port `8080`
+By default the context is on a server `localhost` on port `8181`
 
 ## References
 Built using the following libraries
@@ -29,7 +29,6 @@ Built using the following libraries
 
 [UI Bootstrap](https://angular-ui.github.io/bootstrap/)
 
-[Smart Table](http://lorenzofox3.github.io/smart-table-website/)
 
 ![cli.png](screenshot.png)
 
