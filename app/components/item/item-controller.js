@@ -30,13 +30,23 @@
             showCheckboxes: false
         };
 
-        $ctrl.update = function (item) {
+        $ctrl.menuActions = [{
+                name: 'Edit',
+                title: 'Edit an item',
+                actionFn: update
+            }, {
+                name: 'Delete',
+                title: 'Delete an item',
+                actionFn: confirm
+            }];
+
+        function update(action, item) {
             $ctrl.item = ItemSrvc.get({
                 id: item.id
             });
 
             $ctrl.open($ctrl.item);
-        };
+        }
 
         $ctrl.delete = function (id) {
             ItemSrvc.delete({id: id},
@@ -72,7 +82,7 @@
             $ctrl.items = [];
         };
 
-        $ctrl.confirm = function (item) {
+        function confirm(action, item) {
             var itemDelete = $uibModal.open({
                 component: 'appItemDelete',
                 resolve: {
@@ -85,7 +95,7 @@
             itemDelete.result.then(function (entity) {
                 $ctrl.delete(entity.id);
             });
-        };
+        }
 
         $ctrl.open = function (item) {
             var itemSave = $uibModal.open({
