@@ -4,15 +4,18 @@
     angular.module('patternfly.app')
         .controller('HomeCtrl', Controller);
 
-    function Controller() {
+    Controller.$inject = ['AuthSrvc'];
+
+    function Controller(AuthSrvc) {
         var $ctrl = this;
 
-        $ctrl.name = 'Home';
+        var name = AuthSrvc.profile.firstName + ' ' + AuthSrvc.profile.lastName;
 
         $ctrl.config = {
             icon: 'fa fa-arrow-circle-left',
-            title: 'JBoss Client',
+            title: 'Welcome ' + name + ', to the JBoss Client',
             info: 'Click one of the links on the left to get started.'
         };
+
     }
 })();
