@@ -4,7 +4,7 @@ AngularJS application frontend for a hosted [JBoss EAP7](https://developers.redh
 
 Based on [Patternfly Seed](https://github.com/mechevarria/patternfly-seed)
 
-The SSO branch authenticates against a [Red Hat Single Sign On](https://access.redhat.com/products/red-hat-single-sign-on) local instance
+The [SSO branch](https://github.com/mechevarria/jboss-client/tree/sso) authenticates against a [Red Hat Single Sign On](https://access.redhat.com/products/red-hat-single-sign-on) local instance
 
 ## Build and Run
 In the project root directory
@@ -33,7 +33,22 @@ npm run build
 
     * By default the api is on a server `localhost` on port `8080`
 
+### SSO Editing
+
+Only in the [SSO Branch](https://github.com/mechevarria/jboss-client/tree/sso)
+
+* The single sign on server is by default `localhost` on port `8180`.  This is the port number if running a default SSO server `standalone.sh` 
+with the option `--Djboss.socket.binding.port-offset=100`
+
+* The default realm in the `keycloak.json` is **eap-node-realm**
+
+* The file that authenticates against the Red Hat SSO instance, loads the user profile and then loads the Angular application is [bootstrap.js](https://github.com/mechevarria/jboss-client/blob/sso/app/bootstrap.js)
+* The auth token, example: `Bearer eyJhbGci...` that is injected into the header of calls against protected Red Hat SSO instances is set in [api-header-service.js](https://github.com/mechevarria/jboss-client/blob/sso/app/components/api/api-header-service.js)
+
 ## Running on OpenShift
+
+The [SSO branch](https://github.com/mechevarria/jboss-client/tree/sso) is not yet configured for Openshift
+
 Requires an accessible [OpenShift Container Platform](https://www.openshift.com/container-platform/index.html) install
 
 For local development you can use [MiniShift](https://docs.openshift.org/latest/minishift/getting-started/installing.html)
@@ -50,6 +65,8 @@ The default build will run a `npm install` command and then `npm run start`.  To
     
 ## References
 Built using the following libraries
+
+[Keycloak Javascript Adaptor](https://keycloak.gitbooks.io/documentation/content/securing_apps/topics/oidc/javascript-adapter.html)
 
 [PatternFly](http://www.patternfly.org/)
 
