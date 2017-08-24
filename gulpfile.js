@@ -61,7 +61,8 @@ gulp.task('server:dev', function () {
             });
 
             var authProxy = proxy('/auth', {
-               target: 'http://localhost:8180'
+                target: 'http://localhost:8180',
+                changeOrigin: true
             });
 
             return [apiProxy, authProxy];
