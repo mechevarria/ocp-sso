@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <login-config>
         <auth-method>KEYCLOAK</auth-method>
-        <realm-name>eap-node-realm</realm-name>
     </login-config>
     <security-constraint>
         <web-resource-collection>
