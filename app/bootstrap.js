@@ -23,6 +23,7 @@
                 logoutUrl: keycloak.authServerUrl + '/realms/' + keycloak.realm + '/protocol/openid-connect/logout?redirect_uri=' + window.location.href
             };
         });
+        // Finally load the angular application
         angular.bootstrap(document, ['patternfly.app']);
     }
 

@@ -7,12 +7,10 @@
     Service.$inject = ['$http'];
 
     function Service($http) {
-        var methods = {
+        return {
             status: status
         };
-        return methods;
 
-        //////////////////////
         function status() {
             return $http.get('jboss-api/status');
         }
