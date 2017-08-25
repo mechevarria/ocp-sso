@@ -4,15 +4,23 @@
     angular.module('patternfly.app')
         .controller('HomeCtrl', Controller);
 
-    function Controller() {
+    Controller.$inject = ['AuthSrvc', 'NotifySrvc'];
+
+    function Controller(AuthSrvc, NotifySrvc) {
         var $ctrl = this;
 
-        $ctrl.name = 'Home';
+        var name = '';
+        if(AuthSrvc.loggedIn) {
+            name = AuthSrvc.profile.firstName + ' ' + AuthSrvc.profile.lastName + ', ';
+        } else {
+            NotifySrvc.warning('You are not logged in');
+        }
 
         $ctrl.config = {
             icon: 'fa fa-arrow-circle-left',
-            title: 'JBoss Client',
+            title: 'Welcome ' + name + 'to the JBoss Client',
             info: 'Click one of the links on the left to get started.'
         };
+
     }
 })();

@@ -4,10 +4,16 @@
     angular.module('patternfly.app')
         .controller('NavCtrl', Controller);
 
-    Controller.$inject = ['$rootScope', 'NotifySrvc'];
+    Controller.$inject = ['$rootScope', 'NotifySrvc', 'AuthSrvc'];
 
-    function Controller($rootScope, NotifySrvc) {
+    function Controller($rootScope, NotifySrvc, AuthSrvc) {
         var $ctrl = this;
+
+        $ctrl.logoutUrl = AuthSrvc.logoutUrl;
+
+        $ctrl.doLogout = function () {
+            AuthSrvc.loggedIn = false;
+        };
 
         $ctrl.navItems = [{
             title: "Status",

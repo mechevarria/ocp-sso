@@ -5,6 +5,9 @@
     },
     "globals": {
         "angular": true,
-        "_": false
+        "_": false,
+        "Keycloak": false,
+        "document": false,
+        "window": false
     }
 }

@@ -1,0 +1,7 @@
+{
+  "realm": "eap-node-realm",
+  "auth-server-url": "/auth",
+  "ssl-required": "external",
+  "resource": "node",
+  "public-client": true
+}
