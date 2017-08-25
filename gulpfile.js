@@ -60,7 +60,12 @@ gulp.task('server:dev', function () {
                 target: backend
             });
 
-            return [apiProxy];
+            var authProxy = proxy('/auth', {
+                target: 'http://localhost:8180',
+                changeOrigin: true
+            });
+
+            return [apiProxy, authProxy];
         }
     });
 });
