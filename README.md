@@ -2,7 +2,7 @@
 
 Java EE basic REST application that can be deployed on [JBoss EAP7](https://developers.redhat.com/products/eap/download/).  The [pom.xml](https://github.com/mechevarria/jboss-api/blob/master/pom.xml) was copied and edited from the [jboss-eap-quickstarts](https://github.com/jboss-developer/jboss-eap-quickstarts)
 
-The [SSO branch](https://github.com/mechevarria/jboss-api/tree/sso) integrates with [Red Hat Single Sign On](https://access.redhat.com/products/red-hat-single-sign-on)
+The [web.xml](https://github.com/mechevarria/jboss-api/blob/master/src/main/webapp/WEB-INF/web.xml) has a config that can be uncommented to integrate with [Red Hat Single Sign On](https://access.redhat.com/products/red-hat-single-sign-on)
 
 ## To get started
 Import as a maven project in [JBoss Developer Studio](https://www.redhat.com/en/technologies/jboss-middleware/developer-studio)
@@ -19,9 +19,10 @@ By default the application is backed by an in-memory **h2** database.  The `asse
 The assumption is that [PostgreSQL](https://www.postgresql.org/) is already installed and running.  This configuration allows admins to health check the database connection from the admin console
 
 ## Single Sign On
-The additional configuration files are in the [SSO](https://github.com/mechevarria/jboss-api/tree/sso) branch.  Any authenticated client with a bearer token is accepted. 
 * The server configuration is in [keycloak.json](https://github.com/mechevarria/jboss-api/blob/sso/src/main/webapp/WEB-INF/keycloak.json)
 * The additional elements are added in [web.xml](https://github.com/mechevarria/jboss-api/blob/sso/src/main/webapp/WEB-INF/web.xml)
+
+By default the keycloak config is commented out
 
 The EAP instance requires that the [Java Adapter](https://keycloak.gitbooks.io/documentation/securing_apps/topics/oidc/java/jboss-adapter.html) be installed
 
