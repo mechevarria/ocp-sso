@@ -6,24 +6,42 @@
     angular.element(document).ready(function () {
         keycloak.init({onLoad: 'login-required'})
             .success(loadProfile)
-            .error(reload);
+            .error(notLoggedIn);
     });
 
     function loadProfile() {
         keycloak.loadUserProfile()
-            .success(saveAuthLoadAngular)
+            .success(loggedIn)
             .error(reload);
     }
 
-    function saveAuthLoadAngular(profile) {
+    function loggedIn(profile) {
+        var auth = {
+            loggedIn: true,
+            keycloak: keycloak,
+            profile: profile,
+            logoutUrl: keycloak.authServerUrl + '/realms/' + keycloak.realm + '/protocol/openid-connect/logout?redirect_uri=' + window.location.href
+        };
+
+        loadAngular(auth);
+    }
+
+    function notLoggedIn() {
+        var auth = {
+            loggedIn: false,
+            keycloak: keycloak,
+            profile: {},
+            logoutUrl: window.location.href
+        };
+
+        loadAngular(auth);
+
+    }
+
+    function loadAngular(auth) {
         angular.module('patternfly.app').factory('AuthSrvc', function () {
-            return {
-                keycloak: keycloak,
-                profile: profile,
-                logoutUrl: keycloak.authServerUrl + '/realms/' + keycloak.realm + '/protocol/openid-connect/logout?redirect_uri=' + window.location.href
-            };
+            return auth;
         });
-        // Finally load the angular application
         angular.bootstrap(document, ['patternfly.app']);
     }
 

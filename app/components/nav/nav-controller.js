@@ -11,6 +11,10 @@
 
         $ctrl.logoutUrl = AuthSrvc.logoutUrl;
 
+        $ctrl.doLogout = function () {
+            AuthSrvc.loggedIn = false;
+        };
+
         $ctrl.navItems = [{
             title: "Status",
             iconClass: "fa fa-thumbs-up",

@@ -12,16 +12,19 @@
 
         methods.request = function (config) {
             var deferred = $q.defer();
-            if (AuthSrvc.keycloak.token) {
+
+            if (AuthSrvc.loggedIn) {
                 AuthSrvc.keycloak.updateToken(5).success(function () {
                     config.headers = config.headers || {};
                     config.headers.Authorization = 'Bearer ' + AuthSrvc.keycloak.token;
-
                     deferred.resolve(config);
                 }).error(function () {
                     $location(AuthSrvc.logoutUrl);
                 });
+            } else {
+                deferred.resolve(config);
             }
+
             return deferred.promise;
         };
 
