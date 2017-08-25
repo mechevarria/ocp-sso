@@ -4,7 +4,7 @@ AngularJS application frontend for a hosted [JBoss EAP7](https://developers.redh
 
 Based on [Patternfly Seed](https://github.com/mechevarria/patternfly-seed)
 
-The [SSO branch](https://github.com/mechevarria/jboss-client/tree/sso) authenticates against a [Red Hat Single Sign On](https://access.redhat.com/products/red-hat-single-sign-on) local instance
+Rename [keycloak.json.bak](https://github.com/mechevarria/jboss-client/blob/master/keycloak.json.bak) to **keycloak.json** to enable integration with a [Red Hat Single Sign On](https://access.redhat.com/products/red-hat-single-sign-on) local instance
 
 ## Build and Run
 In the project root directory
@@ -35,8 +35,6 @@ npm run build
 
 ### SSO Editing
 
-Only in the [SSO Branch](https://github.com/mechevarria/jboss-client/tree/sso)
-
 * The single sign on server is by default `localhost` on port `8180`.  This is the port number if running a default SSO server `standalone.sh` 
 with the option `--Djboss.socket.binding.port-offset=100`
 
@@ -47,11 +45,11 @@ with the option `--Djboss.socket.binding.port-offset=100`
 
 ## Running on OpenShift
 
-The [SSO branch](https://github.com/mechevarria/jboss-client/tree/sso) is not yet configured for Openshift
-
 Requires an accessible [OpenShift Container Platform](https://www.openshift.com/container-platform/index.html) install
 
 For local development you can use [MiniShift](https://docs.openshift.org/latest/minishift/getting-started/installing.html)
+
+SSO intgretaion on Openshift has **not been tested**
 
 ### Create the New Application
 
