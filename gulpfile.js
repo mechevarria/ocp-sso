@@ -17,7 +17,7 @@ var paths = {
     html: ['app/**/*.html', 'index.html'],
     css: ['assets/css/*.css'],
     img: ['assets/img/*'],
-    data: ['app/**/*.json'],
+    data: ['app/**/*.json', 'keycloak.json'],
     fonts: ['node_modules/patternfly/dist/fonts/*']
 };
 
@@ -36,6 +36,15 @@ if (process.env.NPM_RUN) {
     runtime = 'local';
     backend = 'http://localhost:8080'
 }
+
+var apiProxy = proxy('/jboss-api', {
+    target: backend
+});
+
+var authProxy = proxy('/auth', {
+    target: 'http://192.168.122.1:8180',
+    changeOrigin: true
+});
 
 winston.info('Running on %s, setting port to %s \n', runtime, exposePort);
 
@@ -56,15 +65,6 @@ gulp.task('server:dev', function () {
         livereload: true,
         port: exposePort,
         middleware: function () {
-            var apiProxy = proxy('/jboss-api', {
-                target: backend
-            });
-
-            var authProxy = proxy('/auth', {
-                target: 'http://192.168.122.1:8180',
-                changeOrigin: true
-            });
-
             return [apiProxy, authProxy];
         }
     });
@@ -75,11 +75,7 @@ gulp.task('server:prod', function () {
         root: ['dist'],
         port: exposePort,
         middleware: function () {
-            var apiProxy = proxy('/jboss-api', {
-                target: backend
-            });
-
-            return [apiProxy];
+            return [apiProxy, authProxy];
         }
     });
 });
