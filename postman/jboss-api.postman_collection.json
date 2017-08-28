@@ -8,6 +8,66 @@
 	},
 	"item": [
 		{
+			"name": "get tokens",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"access token\"] = jsonData.access_token.length > 0",
+							"tests[\"refresh token\"] = jsonData.refresh_token.length > 0;",
+							"postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+							"postman.setEnvironmentVariable(\"refresh\", jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{auth-host}}/auth/realms/eap-node-realm/protocol/openid-connect/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "node",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "mechevar",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Redhat1!",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "jboss-api/item",
 			"event": [
 				{
@@ -23,18 +83,23 @@
 				}
 			],
 			"request": {
-				"url": "{{host}}/jboss-api/item",
+				"url": "{{host}}/jboss-api/item/",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"year\":\"1992\",\n\t\"make\":\"mercedes\",\n\t\"model\":\"e200\"\n}"
+					"raw": "{\n  \"year\":\"1992\",\n  \"make\":\"mercedes\",\n  \"model\":\"e200\"\n}"
 				},
 				"description": ""
 			},
@@ -49,7 +114,7 @@
 						"type": "text/javascript",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"list items\"] = jsonData.length > 1;"
+							"tests[\"list items\"] = jsonData.length > 0;"
 						]
 					}
 				}
@@ -61,6 +126,11 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -94,6 +164,11 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
 					}
 				],
 				"body": {
@@ -125,6 +200,11 @@
 					{
 						"key": "Content-Type",
 						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
 						"description": ""
 					}
 				],
@@ -158,11 +238,61 @@
 						"key": "Content-Type",
 						"value": "application/json",
 						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"token\", \"\");",
+							"postman.setEnvironmentVariable(\"refresh\", \"\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{auth-host}}/auth/realms/eap-node-realm/protocol/openid-connect/logout",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "node",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh}}",
+							"description": "",
+							"type": "text"
+						}
+					]
 				},
 				"description": ""
 			},
