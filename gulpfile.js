@@ -42,8 +42,7 @@ var apiProxy = proxy('/jboss-api', {
 });
 
 var authProxy = proxy('/auth', {
-    target: 'http://192.168.122.1:8180',
-    changeOrigin: true
+    target: 'http://192.168.122.1:8180'
 });
 
 winston.info('Running on %s, setting port to %s \n', runtime, exposePort);
