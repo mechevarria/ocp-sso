@@ -41,10 +41,6 @@ var apiProxy = proxy('/jboss-api', {
     target: backend
 });
 
-var authProxy = proxy('/auth', {
-    target: 'http://192.168.122.1:8180'
-});
-
 winston.info('Running on %s, setting port to %s \n', runtime, exposePort);
 
 gulp.task('clean', function () {
@@ -64,7 +60,7 @@ gulp.task('server:dev', function () {
         livereload: true,
         port: exposePort,
         middleware: function () {
-            return [apiProxy, authProxy];
+            return [apiProxy];
         }
     });
 });
@@ -74,7 +70,7 @@ gulp.task('server:prod', function () {
         root: ['dist'],
         port: exposePort,
         middleware: function () {
-            return [apiProxy, authProxy];
+            return [apiProxy];
         }
     });
 });

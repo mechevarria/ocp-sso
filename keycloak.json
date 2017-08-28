@@ -1,6 +1,6 @@
 {
   "realm": "eap-node-realm",
-  "auth-server-url": "/auth",
+  "auth-server-url": "http://192.168.122.1:8180/auth",
   "ssl-required": "external",
   "resource": "node",
   "public-client": true
