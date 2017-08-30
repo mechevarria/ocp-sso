@@ -5,14 +5,17 @@
     <div class="card-pf-body">
         <div class="row">
             <div class="col-md-12">
-                <form class="form-inline">
-                    <div class="form-group container-fluid">
-                        <button type="button" class="btn btn-primary" ng-click="$ctrl.open()">Add</button>
+                <div class="container-fluid">
+                    <div class="row toolbar-pf table-view-pf-toolbar">
+                        <div class="col-sm-12">
+                            <form class="toolbar-pf-actions">
+                                <div class="form-group toolbar-actions">
+                                    <button type="button" class="btn btn-primary primary-action" ng-click="$ctrl.open()">Add</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
-                <br>
-            </div>
-            <div class="col-md-12">
+                </div>
                 <pf-table-view items="$ctrl.items"
                                columns="$ctrl.columns"
                                config="$ctrl.config"
