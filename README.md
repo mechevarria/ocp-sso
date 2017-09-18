@@ -18,6 +18,14 @@ By default the application is backed by an in-memory **h2** database.  The `asse
 
 The assumption is that [PostgreSQL](https://www.postgresql.org/) is already installed and running.  This configuration allows admins to health check the database connection from the admin console
 
+## Openshift
+
+Run with the **Red Hat JBoss EAP 7.0** xPaas image
+
+Name the service **eap-server**
+
+This will allow seamless integration with [JBoss Client](https://github.com/mechevarria/jboss-client)
+
 ## Single Sign On
 * The server configuration is in [keycloak.json](https://github.com/mechevarria/jboss-api/blob/sso/src/main/webapp/WEB-INF/keycloak.json)
 * The additional elements are added in [web.xml](https://github.com/mechevarria/jboss-api/blob/sso/src/main/webapp/WEB-INF/web.xml)
