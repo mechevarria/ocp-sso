@@ -16,7 +16,7 @@ You can also import the integration tests as a collection to [Postman](https://w
 
 By default the application is backed by an in-memory **h2** database.  The `assets` directory has scripts to help with an external Postgresql datasource.
 
-The assumption is that [PostgreSQL](https://www.postgresql.org/) is already installed and running.  This configuration allows admins to health check the database connection from the admin console
+**Optional config: **You will need [PostgreSQL](https://www.postgresql.org/) already installed and running.  This configuration allows admins to health check the database connection from the EAP admin console
 
 ## Openshift
 
@@ -35,6 +35,7 @@ By default the keycloak config is commented out
 The EAP instance requires that the [Java Adapter](https://keycloak.gitbooks.io/documentation/securing_apps/topics/oidc/java/jboss-adapter.html) be installed
 
 ## Install the jdbc driver
+If you choose to not use the embedded h2 datasource, the following will help setup and source like Postgresql
 
 ### Script
 ```bash
