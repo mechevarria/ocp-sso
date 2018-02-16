@@ -1,12 +1,18 @@
 {
   "name": "patternfly-ng-seed",
+  "description": "patternfly-ng seed project based on angular-cli scaffolding",
+  "author": "Mike Echevarria <mechevar@redhat.com>",
   "version": "1.0.0",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mechevarria/patternfly-ng-seed.git"
+  },
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "lint": "ng lint"
+    "ng": "node_modules/@angular/cli/bin/ng",
+    "start": "node_modules/@angular/cli/bin/ng serve",
+    "build": "node_modules/@angular/cli/bin/ng build --prod",
+    "lint": "node_modules/@angular/cli/bin/ng lint"
   },
   "private": true,
   "dependencies": {
@@ -19,9 +25,11 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "angular-in-memory-web-api": "^0.5.3",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "patternfly-ng": "3.1.1"
   },
   "devDependencies": {
     "@angular/cli": "1.6.8",
