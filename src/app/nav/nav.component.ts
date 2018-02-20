@@ -1,31 +1,37 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnInit, ViewEncapsulation
-} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
 import {NavigationItemConfig} from 'patternfly-ng';
 import {Notification} from 'patternfly-ng';
 import {NotificationEvent} from 'patternfly-ng';
-import {NotificationType} from 'patternfly-ng';
-import {NotificationService} from 'patternfly-ng';
+import {NotifyService} from '../notify.service';
+import {NotifyHistory} from '../notify-history';
 
 @Component({
-  encapsulation: ViewEncapsulation.None,
   selector: 'app-nav',
-  styleUrls: ['./nav.component.css'],
   templateUrl: './nav.component.html'
 })
 export class NavComponent implements OnInit {
 
-  notifications: Notification[];
-  actionText: string;
   navigationItems: NavigationItemConfig[];
+  notifications: Notification[];
+  notifyHistory: NotifyHistory[];
 
-  constructor(private notificationService: NotificationService) {
+  constructor(private notifyService: NotifyService) {
+  }
+
+  close($event: NotificationEvent): void {
+    this.notifyService.close($event);
+  }
+
+  clear(): void {
+    this.notifyService.clear();
   }
 
   ngOnInit(): void {
+    this.notifications = this.notifyService.get();
+
+    this.notifyService.getHistory()
+      .subscribe(history => this.notifyHistory = history);
+
     this.navigationItems = [
       {
         title: 'Card View',
@@ -38,43 +44,5 @@ export class NavComponent implements OnInit {
         url: '/table'
       }
     ];
-
-    this.notifications = this.notificationService.getNotifications();
-
-    this.notificationService.message(NotificationType.SUCCESS,
-      'this is a message that is happening right now',
-      '',
-      false,
-      null,
-      null);
-    this.notificationService.message(NotificationType.SUCCESS,
-      'this is a message that is happening right now',
-      '',
-      false,
-      null,
-      null);
-    this.notificationService.message(NotificationType.SUCCESS,
-      'this is a message that is happening right now',
-      '',
-      false,
-      null,
-      null);
-    this.notificationService.message(NotificationType.SUCCESS,
-      'this is a message that is happening right now',
-      '',
-      false,
-      null,
-      null);
-    this.notificationService.message(NotificationType.SUCCESS,
-      'this is a message that is happening right now',
-      '',
-      false,
-      null,
-      null);
-  }
-
-  handleClose($event: NotificationEvent): void {
-    this.actionText = 'Close' + '\n' + this.actionText;
-    this.notificationService.remove($event.notification);
   }
 }
