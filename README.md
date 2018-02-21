@@ -41,3 +41,5 @@ More help on the Patternfly/NG [components](http://www.patternfly.org/patternfly
 Dropdown components were created using [ng-bootstrap](https://ng-bootstrap.github.io/#/home)
 
 Breadcrumb component used was [ngx-breadcrumbs](https://github.com/McNull/ngx-breadcrumbs)
+
+Other projects included with Angular are [RxJS](https://www.learnrxjs.io/) and [TypeScript](https://www.typescriptlang.org/docs/home.html)
