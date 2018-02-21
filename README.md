@@ -4,6 +4,10 @@ Starter seed project for [Angular](https://angular.io/) and [Patternfly](https:/
 
  ![screenshot.png](screenshot.png)
 
+## Install
+
+Run `npm install` to dowload the project dependencies
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
