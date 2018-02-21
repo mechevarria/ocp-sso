@@ -10,7 +10,7 @@
   },
   "scripts": {
     "ng": "node_modules/@angular/cli/bin/ng",
-    "start": "node_modules/@angular/cli/bin/ng serve",
+    "start": "node_modules/@angular/cli/bin/ng serve --port 8080 --host 0.0.0.0 --disable-host-check",
     "build": "node_modules/@angular/cli/bin/ng build --prod",
     "lint": "node_modules/@angular/cli/bin/ng lint"
   },
