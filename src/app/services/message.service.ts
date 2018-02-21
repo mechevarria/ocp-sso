@@ -3,7 +3,7 @@ import {Notification} from 'patternfly-ng';
 import {NotificationType} from 'patternfly-ng';
 import {NotificationService} from 'patternfly-ng';
 import {NotificationEvent} from 'patternfly-ng';
-import {MessageHistory} from './message-history';
+import {MessageHistory} from '../message-history';
 
 
 @Injectable()
@@ -31,6 +31,18 @@ export class MessageService {
 
   success(msg: string): void {
     this.notify(NotificationType.SUCCESS, msg);
+  }
+
+  error(msg: string): void {
+    this.notify(NotificationType.DANGER, msg);
+  }
+
+  info(msg: string): void {
+    this.notify(NotificationType.INFO, msg);
+  }
+
+  warning(msg: string): void {
+    this.notify(NotificationType.WARNING, msg);
   }
 
   private notify(type: string, msg: string): void {

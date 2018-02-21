@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MessageService} from '../message.service';
+import {MessageService} from '../services/message.service';
 
 @Component({
   selector: 'app-card',
@@ -7,13 +7,13 @@ import {MessageService} from '../message.service';
 })
 export class CardComponent implements OnInit {
 
-  name = 'Card';
+  name = 'Card View';
 
   constructor(private messageService: MessageService) {
   }
 
   ngOnInit() {
-    this.messageService.success('Successfully changed route to Card');
+    this.messageService.success(`Successfully changed route to ${this.name}`);
   }
 
 }

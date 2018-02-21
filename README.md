@@ -1,6 +1,8 @@
 # PatternflyNgSeed
 
-Starter seed project for [Angular](https://angular.io/) and [Patternfly](https://www.patternfly.org/).  This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8. [Patternfly/NG](http://www.patternfly.org/patternfly-ng) is already integrated.    
+Starter seed project for [Angular](https://angular.io/) and [Patternfly](https://www.patternfly.org/).  This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8. [Patternfly/NG](http://www.patternfly.org/patternfly-ng) is already integrated.
+
+ ![screenshot.png](screenshot.png)
 
 ## Development server
 

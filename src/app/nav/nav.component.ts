@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {NavigationItemConfig, Notification} from 'patternfly-ng';
-import {MessageService} from '../message.service';
+import {MessageService} from '../services/message.service';
 import {MessageHistory} from '../message-history';
 
 @Component({
@@ -26,12 +26,12 @@ export class NavComponent implements OnInit {
       {
         title: 'Card View',
         iconStyleClass: 'fa fa-file',
-        url: '/card'
+        url: '/home/card'
       },
       {
         title: 'Table View',
         iconStyleClass: 'fa fa-table',
-        url: '/table'
+        url: '/home/table'
       }
     ];
   }

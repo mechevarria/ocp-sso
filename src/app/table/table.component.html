@@ -1,3 +1,12 @@
-<p>
-  table works!
-</p>
+<div class="card-pf card-pf-accented">
+  <div class="card-pf-heading">
+    <h4 class="card-pf-title">{{viewName}}</h4>
+  </div>
+  <div class="card-pf-body">
+    <pfng-table
+      [columns]="columns"
+      [config]="tableConfig"
+      [rows]="rows">
+    </pfng-table>
+  </div>
+</div>

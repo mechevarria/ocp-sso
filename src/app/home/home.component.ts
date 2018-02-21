@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { EmptyStateConfig} from 'patternfly-ng';
+import {Component, OnInit} from '@angular/core';
+import {EmptyStateConfig} from 'patternfly-ng';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ export class HomeComponent implements OnInit {
 
   emptyStateConfig: EmptyStateConfig;
 
-  constructor() { }
+  constructor(public route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.emptyStateConfig = {

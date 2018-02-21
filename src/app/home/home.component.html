@@ -1,1 +1,4 @@
-<pfng-empty-state [config]="emptyStateConfig"></pfng-empty-state>
+<div *ngIf="route.children.length ===0">
+  <pfng-empty-state [config]="emptyStateConfig"></pfng-empty-state>
+</div>
+<router-outlet></router-outlet>

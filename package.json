@@ -30,7 +30,8 @@
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19",
     "patternfly-ng": "3.1.1",
-    "@ng-bootstrap/ng-bootstrap": "1.0.0"
+    "@ng-bootstrap/ng-bootstrap": "1.0.0",
+    "ngx-breadcrumbs": "0.0.3"
   },
   "devDependencies": {
     "@angular/cli": "1.6.8",
