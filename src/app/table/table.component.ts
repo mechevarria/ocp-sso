@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NotifyService} from '../notify.service';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-table',
@@ -7,10 +7,10 @@ import {NotifyService} from '../notify.service';
 })
 export class TableComponent implements OnInit {
 
-  constructor(private notifyService: NotifyService) {}
+  constructor(private messageService: MessageService) {}
 
   ngOnInit() {
-    this.notifyService.success('Successfully changed route to Table');
+    this.messageService.success('Successfully changed route to Table');
   }
 
 }

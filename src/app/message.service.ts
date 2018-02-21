@@ -3,15 +3,13 @@ import {Notification} from 'patternfly-ng';
 import {NotificationType} from 'patternfly-ng';
 import {NotificationService} from 'patternfly-ng';
 import {NotificationEvent} from 'patternfly-ng';
-import {NotifyHistory} from './notify-history';
-import {Observable} from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import {MessageHistory} from './message-history';
 
 
 @Injectable()
-export class NotifyService {
+export class MessageService {
 
-  private notifyHistory: NotifyHistory[] = [];
+  private messageHistory: MessageHistory[] = [];
 
   // css classes for the notification dropdown menu
   private classMap: Map<string, string> = new Map()
@@ -27,8 +25,8 @@ export class NotifyService {
     return this.notificationService.getNotifications();
   }
 
-  getHistory(): Observable<NotifyHistory[]> {
-    return of(this.notifyHistory);
+  getHistory(): MessageHistory[] {
+    return this.messageHistory;
   }
 
   success(msg: string): void {
@@ -36,7 +34,7 @@ export class NotifyService {
   }
 
   private notify(type: string, msg: string): void {
-    this.notifyHistory.push({
+    this.messageHistory.push({
       class: this.classMap[type],
       msg: msg
     });
@@ -50,7 +48,7 @@ export class NotifyService {
   }
 
   clear(): void {
-    this.notifyHistory.length = 0;
+    this.messageHistory.length = 0;
   }
 
   close($event: NotificationEvent): void {

@@ -3,9 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './in-memory-data.service';
-import {NavigationModule} from 'patternfly-ng';
-import {NotificationModule} from 'patternfly-ng';
-import {EmptyStateModule} from 'patternfly-ng';
+import {EmptyStateModule, NavigationModule, NotificationModule} from 'patternfly-ng';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgModule} from '@angular/core';
 
@@ -16,7 +14,7 @@ import {CardComponent} from './card/card.component';
 import {TableComponent} from './table/table.component';
 import {NavComponent} from './nav/nav.component';
 import {AppRoutingModule} from './app-routing.module';
-import {NotifyService} from './notify.service';
+import {MessageService} from './message.service';
 
 
 @NgModule({
@@ -41,7 +39,7 @@ import {NotifyService} from './notify.service';
     NgbModule.forRoot()
   ],
   providers: [
-    NotifyService
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

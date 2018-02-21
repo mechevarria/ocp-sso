@@ -1,9 +1,10 @@
 <div class="layout-pf layout-pf-fixed">
   <pfng-toast-notification-list
     [notifications]="notifications"
-    (onCloseSelect)="close($event)"
+    (onCloseSelect)="messageService.close($event);"
     [showClose]="true">
   </pfng-toast-notification-list>
+
   <pfng-vertical-navigation
     [brandSrc]="'assets/img/logo.png'"
     [items]="navigationItems"
@@ -17,17 +18,17 @@
         <li class="dropdown" ngbDropdown>
           <a class="dropdown-toggle nav-item-iconic" ngbDropdownToggle>
             <span title="Notifications" class="fa pficon-flag"></span>
-            <span class="badge" *ngIf="notifyHistory.length > 0">{{notifyHistory.length}}</span>
+            <span class="badge" *ngIf="messageHistory.length > 0">{{messageHistory.length}}</span>
           </a>
           <div class="dropdown-menu infotip bottom-right app-menu-right" ngbDropdownMenu>
             <div class="arrow"></div>
             <ul class="list-group">
-              <li class="list-group-item" *ngFor="let item of notifyHistory">
+              <li class="list-group-item" *ngFor="let item of messageHistory">
                 <span class="i pficon pficon-ok {{item.class}}"></span> {{item.msg}}
               </li>
             </ul>
             <div class="footer">
-              <a class="app-button" (click)="clear()">Clear Messages</a>
+              <a class="app-button" (click)="messageService.clear();">Clear Messages</a>
             </div>
           </div>
         </li>

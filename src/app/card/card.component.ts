@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NotifyService} from '../notify.service';
+import {MessageService} from '../message.service';
 
 @Component({
   selector: 'app-card',
@@ -9,11 +9,11 @@ export class CardComponent implements OnInit {
 
   name = 'Card';
 
-  constructor(private notifyService: NotifyService) {
+  constructor(private messageService: MessageService) {
   }
 
   ngOnInit() {
-    this.notifyService.success('Successfully changed route to Card');
+    this.messageService.success('Successfully changed route to Card');
   }
 
 }

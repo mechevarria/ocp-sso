@@ -1,4 +1,4 @@
-export class NotifyHistory {
+export class MessageHistory {
   class: string;
   msg: string;
 }

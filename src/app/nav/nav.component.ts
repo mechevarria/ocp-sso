@@ -1,36 +1,26 @@
-import {Component, OnInit} from '@angular/core';
-import {NavigationItemConfig} from 'patternfly-ng';
-import {Notification} from 'patternfly-ng';
-import {NotificationEvent} from 'patternfly-ng';
-import {NotifyService} from '../notify.service';
-import {NotifyHistory} from '../notify-history';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {NavigationItemConfig, Notification} from 'patternfly-ng';
+import {MessageService} from '../message.service';
+import {MessageHistory} from '../message-history';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.component.html'
+  templateUrl: './nav.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavComponent implements OnInit {
 
   navigationItems: NavigationItemConfig[];
   notifications: Notification[];
-  notifyHistory: NotifyHistory[];
+  messageHistory: MessageHistory[];
 
-  constructor(private notifyService: NotifyService) {
-  }
-
-  close($event: NotificationEvent): void {
-    this.notifyService.close($event);
-  }
-
-  clear(): void {
-    this.notifyService.clear();
+  constructor(public messageService: MessageService) {
   }
 
   ngOnInit(): void {
-    this.notifications = this.notifyService.get();
+    this.notifications = this.messageService.get();
 
-    this.notifyService.getHistory()
-      .subscribe(history => this.notifyHistory = history);
+    this.messageHistory = this.messageService.getHistory();
 
     this.navigationItems = [
       {
