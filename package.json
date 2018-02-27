@@ -9,12 +9,12 @@
     "url": "https://github.com/mechevarria/jboss-client.git"
   },
   "dependencies": {
-    "@uirouter/angularjs": "1.0.6",
+    "@uirouter/angularjs": "1.0.15",
     "angular": "1.5.11",
     "angular-breadcrumb": "0.5.0",
-    "angular-patternfly": "4.7.1",
+    "angular-patternfly": "4.14.9",
     "angular-resource": "1.5.11",
-    "lodash": "4.17.4",
+    "lodash": "4.17.5",
     "ng-prettyjson": "0.2.0"
   },
   "devDependencies": {
