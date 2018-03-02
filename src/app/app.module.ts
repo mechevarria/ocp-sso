@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {InMemoryDataService} from './services/in-memory-data.service';
-import {EmptyStateModule, NavigationModule, NotificationModule, TableModule} from 'patternfly-ng';
+import {EmptyStateModule, NavigationModule, NotificationModule, TableModule, CardModule} from 'patternfly-ng';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {McBreadcrumbsModule} from 'ngx-breadcrumbs';
 import {NgModule} from '@angular/core';
@@ -41,6 +41,7 @@ import {AppRoutes} from './app-routes';
     NotificationModule,
     EmptyStateModule,
     TableModule,
+    CardModule,
     NgbModule.forRoot()
   ],
   providers: [
