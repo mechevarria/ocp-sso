@@ -1,24 +1,17 @@
 <div class="row row-cards-pf">
 
   <div class="col-md-6">
-    <div class="card-pf card-pf-accented">
-      <div class="card-pf-heading">
-        <h4 class="card-pf-title">{{name}} 1</h4>
-      </div>
-      <div class="card-pf-body">
-        left card
-      </div>
-    </div>
+    <pfng-card [config]="basicConfig">
+      Basic Details
+    </pfng-card>
   </div>
   <div class="col-md-6">
-    <div class="card-pf card-pf-accented">
-      <div class="card-pf-heading">
-        <h4 class="card-pf-title">{{name}} 2</h4>
-      </div>
-      <div class="card-pf-body">
-        right card
-      </div>
-    </div>
+    <pfng-card [config]="filterConfig"
+               (onFilterSelect)="handleFilter($event)">
+      <p>
+        Selected filter is {{selectedFilter}}
+      </p>
+    </pfng-card>
   </div>
 
 </div>
