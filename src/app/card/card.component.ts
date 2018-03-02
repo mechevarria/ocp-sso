@@ -8,8 +8,25 @@ import {MessageService} from '../services/message.service';
 })
 export class CardComponent implements OnInit {
 
-  basicConfig: CardConfig;
-  filterConfig: CardConfig;
+  basicConfig: CardConfig = {
+    title: 'Basic Card',
+    noPadding: false
+  };
+
+  filterConfig: CardConfig = {
+    title: 'Filter Card',
+    noPadding: false,
+    filters: [{
+      title: 'Last 30',
+      value: '30'
+    }, {
+      title: 'Last 15',
+      value: '15'
+    }, {
+      title: 'Last 10',
+      value: '10'
+    }],
+  };
   selectedFilter = 'none';
 
   constructor(private messageService: MessageService) {
@@ -17,24 +34,6 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.success('Successfully changed route to Card View');
-
-    this.basicConfig = {
-      title: 'Basic Card'
-    } as CardConfig;
-
-    this.filterConfig = {
-      title: 'Filter Card',
-      filters: [{
-        title: 'Last 30',
-        value: '30'
-      }, {
-        title: 'Last 15',
-        value: '15'
-      }, {
-        title: 'Last 10',
-        value: '10'
-      }],
-    } as CardConfig;
   }
 
   handleFilter($event: CardFilter): void {

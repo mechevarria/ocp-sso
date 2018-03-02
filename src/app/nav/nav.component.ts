@@ -9,10 +9,20 @@ import {MessageHistory} from '../message-history';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavComponent implements OnInit {
-
-  navigationItems: NavigationItemConfig[];
   notifications: Notification[];
   messageHistory: MessageHistory[];
+  navigationItems: NavigationItemConfig[] = [
+    {
+      title: 'Card View',
+      iconStyleClass: 'fa fa-file',
+      url: '/home/card'
+    },
+    {
+      title: 'Table View',
+      iconStyleClass: 'fa fa-table',
+      url: '/home/table'
+    }
+  ];
 
   constructor(public messageService: MessageService) {
   }
@@ -21,18 +31,5 @@ export class NavComponent implements OnInit {
     this.notifications = this.messageService.get();
 
     this.messageHistory = this.messageService.getHistory();
-
-    this.navigationItems = [
-      {
-        title: 'Card View',
-        iconStyleClass: 'fa fa-file',
-        url: '/home/card'
-      },
-      {
-        title: 'Table View',
-        iconStyleClass: 'fa fa-table',
-        url: '/home/table'
-      }
-    ] as NavigationItemConfig[];
   }
 }

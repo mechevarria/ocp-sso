@@ -14,24 +14,20 @@ export class TableComponent implements OnInit {
   }
 
   viewName = 'Table View';
-  columns: any[];
+  columns: any[] = [
+    {name: 'ID', prop: 'id', sortable: true},
+    {name: 'Name', prop: 'name', sortable: true},
+    {name: 'Address', prop: 'address', sortable: true},
+    {name: 'City', prop: 'city', sortable: true},
+    {name: 'State', prop: 'state', sortable: true}
+  ];
+  tableConfig: TableConfig = {
+    showCheckbox: false
+  };
+
   rows: People[];
-  tableConfig: TableConfig;
 
   ngOnInit() {
-
-    this.columns = [
-      {name: 'ID', prop: 'id', sortable: true},
-      {name: 'Name', prop: 'name', sortable: true},
-      {name: 'Address', prop: 'address', sortable: true},
-      {name: 'City', prop: 'city', sortable: true},
-      {name: 'State', prop: 'state', sortable: true}
-    ];
-
-    this.tableConfig = {
-      showCheckbox: false
-    } as TableConfig;
-
     this.peopleService.getPeople()
       .subscribe(people => {
         this.rows = people;

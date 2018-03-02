@@ -8,17 +8,16 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  emptyStateConfig: EmptyStateConfig;
+  emptyStateConfig: EmptyStateConfig = {
+    iconStyleClass: 'fa fa-arrow-circle-left',
+    title: 'PatternFly-Ng Seed',
+    info: 'Click one of the links on the left to get started.'
+  };
 
   constructor(public route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.emptyStateConfig = {
-      iconStyleClass: 'fa fa-arrow-circle-left',
-      title: 'PatternFly-Ng Seed',
-      info: 'Click one of the links on the left to get started.'
-    };
   }
 
 }
