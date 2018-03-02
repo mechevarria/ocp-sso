@@ -30,7 +30,7 @@ export class TableComponent implements OnInit {
 
     this.tableConfig = {
       showCheckbox: false
-    };
+    } as TableConfig;
 
     this.peopleService.getPeople()
       .subscribe(people => {

@@ -33,6 +33,6 @@ export class NavComponent implements OnInit {
         iconStyleClass: 'fa fa-table',
         url: '/home/table'
       }
-    ];
+    ] as NavigationItemConfig[];
   }
 }
