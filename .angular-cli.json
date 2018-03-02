@@ -23,7 +23,9 @@
         "../node_modules/patternfly-ng/dist/css/patternfly-ng.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/patternfly/dist/js/patternfly-settings.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
