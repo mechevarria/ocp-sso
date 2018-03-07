@@ -57,6 +57,7 @@ gulp.task('eslint', function () {
 gulp.task('server:dev', function () {
     connect.server({
         root: ['.'],
+        host: '0.0.0.0',
         livereload: true,
         port: exposePort,
         middleware: function () {
@@ -68,6 +69,7 @@ gulp.task('server:dev', function () {
 gulp.task('server:prod', function () {
     connect.server({
         root: ['dist'],
+        host: '0.0.0.0',
         port: exposePort,
         middleware: function () {
             return [apiProxy];
