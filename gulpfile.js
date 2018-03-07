@@ -29,7 +29,7 @@ var backend;
 if (process.env.NPM_RUN) {
     exposePort = 8080;
     runtime = 'OpenShift';
-    backend = 'http://eap-service:8080'
+    backend = 'http://eap-app:8080'
 
 } else {
     exposePort = 8181;
