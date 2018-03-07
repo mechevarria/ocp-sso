@@ -42,8 +42,8 @@
   },
   "scripts": {
     "postinstall": "npm dedupe",
-    "start": "node_modules/gulp/bin/gulp.js prod",
-    "dev": "node_modules/gulp/bin/gulp.js dev",
+    "start": "node_modules/gulp/bin/gulp.js dev",
+    "prod": "node_modules/gulp/bin/gulp.js prod",
     "build": "node_modules/gulp/bin/gulp.js build"
   }
 }
