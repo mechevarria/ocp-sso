@@ -139,8 +139,8 @@
                     <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
                     <security>
-                        <user-name>${DB_USER}</user-name>
-                        <password>${DB_PASS}</password>
+                        <user-name>${env.DB_USER}</user-name>
+                        <password>${env.DB_PASS}</password>
                     </security>
                 </datasource>
                 <!-- ##DATASOURCES## -->
