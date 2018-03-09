@@ -2,15 +2,15 @@ body {
     background-color: #f5f5f5;
     padding-top: 60px;
 }
-/*fix for smart-table*/
-.st-sort-ascent:before {
-    content: '\25B2';
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
 }
 
-.st-sort-descent:before {
-    content: '\25BC';
-}
-.app-toolbar {
-    padding-top:10px !important;
-    padding-bottom:10px !important;
+.footer p {
+    margin-top: 8px;
 }

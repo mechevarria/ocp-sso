@@ -3,7 +3,7 @@
 </pf-toast-notification-list>
 
 <pf-vertical-navigation items="$ctrl.navItems"
-                        brand-src="assets/img/logo.png"
+                        brand-alt="JBOSS CLIENT"
                         update-active-items-on-click="true"
                         show-badges="true">
     <div>
@@ -24,7 +24,7 @@
                             <span class="i pficon" ng-class="$ctrl.getClass(item.type)"></span> {{item.msg}}
                         </li>
                     </ul>
-                    <div class="footer">
+                    <div class="list-group-item">
                         <a href ng-click="$ctrl.clear()">Clear Messages</a>
                     </div>
                 </div>
