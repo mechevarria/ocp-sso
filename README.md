@@ -58,7 +58,7 @@ Select `Add to Project -> Catalog -> JavaScript -> Node.js`.  Make sure the vers
 * Git Repository URL **https://github.com/mechevarria/jboss-client**
 * Click create
 
-The default build will run a `npm install` command and then `npm run start`.  To run in development mode change the environment variable **NPM_RUN** to **dev**
+The default build will run a `npm install` command and then `npm run start`.  To run in production mode change the environment variable **NPM_RUN** to **prod**
 
     
 ## References
