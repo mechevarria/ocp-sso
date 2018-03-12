@@ -11,6 +11,6 @@ elif [[ "$1" = "add" ]]; then
   ${jboss_cli} -c file="cli/add-module-driver.cli"
 
 else
-  echo "usage: jboss.sh [add|rm]"
+  echo "usage: module.sh [add|rm]"
   exit
 fi

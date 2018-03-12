@@ -14,17 +14,27 @@ This project works to create a [Angular Resource](https://docs.angularjs.org/api
 
 You can also import the integration tests as a collection to [Postman](https://www.getpostman.com/)
 
-By default the application is backed by an in-memory **h2** database.  The `assets` directory has scripts to help with an external Postgresql datasource.
+The `assets` directory has scripts to help with an external Postgresql datasource.
 
-**Optional config: **You will need [PostgreSQL](https://www.postgresql.org/) already installed and running.  This configuration allows admins to health check the database connection from the EAP admin console
+ou will need [PostgreSQL](https://www.postgresql.org/) already installed and running.  This configuration allows admins to health check the database connection from the EAP admin console
 
 ## Openshift
 
-Run with the **Red Hat JBoss EAP 7.0** xPaas image
+Run with the **Red Hat JBoss EAP 7.1** xPaas image
 
 Name the service **eap-server**
 
 This will allow seamless integration with [JBoss Client](https://github.com/mechevarria/jboss-client)
+
+The backend database connection to Postgresql requires two additional environment variables
+
+**DB_USER** and **DB_PASS**
+
+You can optionally import the **credentials.json** file into Openshift to mask the user/password and then select the credentials as a secret for the runtime values. To import after logging into your project:
+
+`oc create -f credentials.json`
+
+A **Postgresql** instance on Openshift needs to be deployed with the default name **postgresql**, databasename **jboss** and username and password that matches the **DB_USER** and **DB_PASS** environment variables.
 
 ## Single Sign On
 * The server configuration is in [keycloak.json](https://github.com/mechevarria/jboss-api/blob/sso/src/main/webapp/WEB-INF/keycloak.json)
@@ -35,24 +45,14 @@ By default the keycloak config is commented out
 The EAP instance requires that the [Java Adapter](https://keycloak.gitbooks.io/documentation/securing_apps/topics/oidc/java/jboss-adapter.html) be installed
 
 ## Install the jdbc driver
-If you choose to not use the embedded h2 datasource, the following will help setup and source like Postgresql
+The following will help setup and source like Postgresql
 
 ### Script
+The script will install the postgres driver and configure it as a driver for EAP.  Adjust the path to the jboss cli tool.
+
 ```bash
 jboss-module/module.sh add
 ``````
-### Manual
-~~~bash
-~/local/devstudio/runtimes/jboss-eap/bin/jboss-cli.sh
-
-connect
-~~~
-Adjust the path to the PostgreSQL jar as necessary
-~~~bash
-module add --name=org.postgresql --resources=/home/redhat/git/jboss-api/jboss-module/postgresql-9.4.1212.jar --dependencies=javax.api,javax.transaction.api
-
-/subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql")
-~~~
 
 ## Configure the jdbc connection using the newly installed driver
 In the jboss admin console
@@ -61,7 +61,7 @@ In the jboss admin console
 
 goto **Configuration -> Subsystems -> Datasources -> Non-XA**
 
-Click Add -> PostgreSQL Datasource
+Click **Add -> PostgreSQL Datasource**
 
 Accept the default datasource attributes **PostgresDS** and **java:/PostgresDS**
 
@@ -78,28 +78,13 @@ password **jboss**
 After finishing the wizard, select **PostgresDS** > **Test Connection** to verify
 
 
-
 ## Removing the Datasource and Driver
 
 ### Script
+This is will remove the datasource, driver and module
 
-`jboss-module/module.sh rm`
+```bash
+jboss-module/module.sh rm
+``````
 
-### Manual
-~~~bash
-~/local/devstudio/runtimes/jboss-eap/bin/jboss-cli.sh
 
-connect
-
-data-source disable --name=PostgresDS
-
-data-source remove --name=PostgresDS
-
-/:reload
-
-/subsystem=datasources/data-source=postgresql:remove
-
-/subsystem=datasources/jdbc-driver=postgresql:remove
-
-module remove --name=org.postgresql
-~~~
