@@ -1,60 +1,56 @@
-<div class="layout-pf layout-pf-fixed">
-  <pfng-toast-notification-list
-    [notifications]="notifications"
-    (onCloseSelect)="messageService.close($event);"
-    [showClose]="true">
-  </pfng-toast-notification-list>
+<pfng-toast-notification-list
+  [notifications]="notifications"
+  (onCloseSelect)="messageService.close($event);"
+  [showClose]="true">
+</pfng-toast-notification-list>
 
-  <pfng-vertical-navigation
-    [brandAlt]="'PATTERNFLY-NG SEED'"
-    [items]="navigationItems"
-    [showBadges]="true">
-    <div>
-      <ul class="nav navbar-nav navbar-right navbar-iconic">
-        <li class="dropdown">
-        </li>
+<pfng-vertical-navigation
+  [brandAlt]="'PATTERNFLY-NG SEED'"
+  [contentContainer]="contentContainer"
+  [items]="navigationItems"
+  [showBadges]="true">
+  <div>
+    <ul class="nav navbar-nav navbar-right navbar-iconic">
+      <li class="dropdown">
+      </li>
 
-        <!-- notifications menu -->
-        <li class="dropdown" ngbDropdown>
-          <a class="dropdown-toggle nav-item-iconic" ngbDropdownToggle>
-            <span title="Notifications" class="fa pficon-flag"></span>
-            <span class="badge" *ngIf="messageHistory.length > 0">{{messageHistory.length}}</span>
-          </a>
-          <div class="dropdown-menu infotip bottom-right app-menu-right" ngbDropdownMenu>
-            <div class="arrow"></div>
-            <ul class="list-group">
-              <li class="list-group-item" *ngFor="let item of messageHistory">
-                <span class="i pficon pficon-ok {{item.class}}"></span> {{item.msg}}
-              </li>
-            </ul>
-            <div class="list-group-item">
-              <a class="app-button" (click)="messageService.clear();">Clear Messages</a>
-            </div>
+      <!-- notifications menu -->
+      <li class="dropdown" ngbDropdown>
+        <a class="dropdown-toggle nav-item-iconic" ngbDropdownToggle>
+          <span title="Notifications" class="fa pficon-flag"></span>
+          <span class="badge" *ngIf="messageHistory.length > 0">{{messageHistory.length}}</span>
+        </a>
+        <div class="dropdown-menu infotip bottom-right app-menu-right" ngbDropdownMenu>
+          <div class="arrow"></div>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of messageHistory">
+              <span class="i pficon pficon-ok {{item.class}}"></span> {{item.msg}}
+            </li>
+          </ul>
+          <div class="list-group-item">
+            <a class="app-button" (click)="messageService.clear();">Clear Messages</a>
           </div>
-        </li>
+        </div>
+      </li>
 
-        <!-- user menu -->
-        <li class="dropdown" ngbDropdown>
-          <a class="dropdown-toggle nav-item-iconic" ngbDropdownToggle>
-            <span title="Username" class="fa pficon-user"></span>
-            <span class="caret"></span>
-          </a>
-          <div class="dropdown-menu infotip bottom-right app-menu-right" ngbDropdownMenu>
-            <div class="arrow"></div>
-            <ul class="list-group">
-              <li class="list-group-item app-button"><a>Logout</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </pfng-vertical-navigation>
-  <div class="container-fluid container-cards-pf container-pf-nav-pf-vertical nav-pf-vertical-with-badges">
-    <div class="row">
-      <div class="col-sm-12">
-        <mc-breadcrumbs></mc-breadcrumbs>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+      <!-- user menu -->
+      <li class="dropdown" ngbDropdown>
+        <a class="dropdown-toggle nav-item-iconic" ngbDropdownToggle>
+          <span title="Username" class="fa pficon-user"></span>
+          <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu infotip bottom-right app-menu-right" ngbDropdownMenu>
+          <div class="arrow"></div>
+          <ul class="list-group">
+            <li class="list-group-item app-button"><a>Logout</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
   </div>
+</pfng-vertical-navigation>
+<div #contentContainer
+     class="container-fluid container-cards-pf container-pf-nav-pf-vertical nav-pf-vertical-with-badges">
+  <mc-breadcrumbs></mc-breadcrumbs>
+  <router-outlet></router-outlet>
 </div>
