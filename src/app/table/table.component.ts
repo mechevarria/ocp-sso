@@ -31,7 +31,10 @@ export class TableComponent implements OnInit {
     this.peopleService.getPeople()
       .subscribe(people => {
         this.rows = people;
-        this.messageService.success('Successfully loaded people from service');
+
+		if (this.rows.length > 0) {
+          this.messageService.success('Successfully loaded people from service');
+		}
       });
   }
 
