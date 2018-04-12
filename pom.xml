@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-api</artifactId>
-    <version>0.1</version>
+    <version>0.3</version>
     <packaging>war</packaging>
     <name>jboss-api</name>
     <description>Sample application based built from the EAP 6.4 quickstart pom</description>
@@ -79,7 +79,7 @@
 
         <!-- Define the version of the JBoss BOMs we want to import to specify
             tested stacks. -->
-        <version.jboss.bom.eap>7.0.7.GA</version.jboss.bom.eap>
+        <version.jboss.bom.eap>7.1.1.GA</version.jboss.bom.eap>
 
         <!-- other plug-in versions -->
         <!--<version.surefire.plugin>2.10</version.surefire.plugin>-->
