@@ -26,15 +26,13 @@ Name the service **eap-server**
 
 This will allow seamless integration with [JBoss Client](https://github.com/mechevarria/jboss-client)
 
-The backend database connection to Postgresql requires two additional environment variables
+The backend database connection to Postgresql requires environment variables
 
-**DB_USER** and **DB_PASS**
-
-You can optionally import the **credentials.json** file into Openshift to mask the user/password and then select the credentials as a secret for the runtime values. To import after logging into your project:
+You can import the **credentials.json** file into Openshift to mask the user/password and then select the credentials as a secret for the runtime values. To import after logging into your project:
 
 `oc create -f credentials.json`
 
-A **Postgresql** instance on Openshift needs to be deployed with the default name **postgresql**, databasename **jboss** and username and password that matches the **DB_USER** and **DB_PASS** environment variables.
+A **Postgresql** instance on Openshift needs to be deployed with the default name **postgresql**, databasename **jboss** and username and password that matches the **credentials.json** environment variables.
 
 ## Single Sign On
 * The server configuration is in [keycloak.json](https://github.com/mechevarria/jboss-api/blob/sso/src/main/webapp/WEB-INF/keycloak.json)
