@@ -22,7 +22,7 @@ ou will need [PostgreSQL](https://www.postgresql.org/) already installed and run
 
 Run with the **Red Hat JBoss EAP 7.1** xPaas image
 
-Name the service **eap-server**
+Name the service **eap-app**
 
 This will allow seamless integration with [JBoss Client](https://github.com/mechevarria/jboss-client)
 
