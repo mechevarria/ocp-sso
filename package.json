@@ -1,6 +1,5 @@
 {
   "name": "jboss-client",
-<<<<<<< HEAD
   "description": "patternfly-ng seed project based on angular-cli scaffolding",
   "author": "Mike Echevarria <mechevar@redhat.com>",
   "version": "1.0.0",
@@ -41,52 +40,5 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
-=======
-  "version": "0.3.0",
-  "description": "JBoss client application that runs on node and uses angularjs",
-  "author": "Mike Echevarria <mechevar@redhat.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mechevarria/jboss-client.git"
-  },
-  "dependencies": {
-    "@uirouter/angularjs": "1.0.15",
-    "angular": "1.5.11",
-    "angular-breadcrumb": "0.5.0",
-    "angular-patternfly": "4.15.0",
-    "angular-resource": "1.5.11",
-    "lodash": "4.17.5",
-    "ng-prettyjson": "0.2.0"
-  },
-  "devDependencies": {
-    "del": "3.0.0",
-    "eslint": "4.4.1",
-    "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-node": "5.1.1",
-    "eslint-plugin-promise": "3.5.0",
-    "eslint-plugin-standard": "3.0.1",
-    "gulp": "3.9.1",
-    "gulp-clean-css": "3.7.0",
-    "gulp-connect": "5.0.0",
-    "gulp-eslint": "4.0.0",
-    "gulp-rev": "8.0.0",
-    "gulp-uglify": "3.0.0",
-    "gulp-usemin": "0.3.28",
-    "http-proxy-middleware": "0.17.4",
-    "run-sequence": "2.1.0",
-    "winston": "2.3.1"
-  },
-  "engines": {
-    "node": "*",
-    "npm": "*"
-  },
-  "scripts": {
-    "postinstall": "npm dedupe",
-    "start": "node_modules/gulp/bin/gulp.js dev",
-    "prod": "node_modules/gulp/bin/gulp.js prod",
-    "build": "node_modules/gulp/bin/gulp.js build"
->>>>>>> 5389fb2e4d02007ab8f817b487d01a719e315ae4
   }
 }
