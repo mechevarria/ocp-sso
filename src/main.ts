@@ -9,16 +9,25 @@ if (environment.production) {
   enableProdMode();
 }
 
-KeycloakService.init()
-  .then(() => {
-    load();
-  })
-  .catch(() => {
-    console.warn('Failed to init keycloak');
-    load();
-  });
 
-function load() {
-  platformBrowserDynamic().bootstrapModule(AppModule)
+KeycloakService.init()
+  .then(loadProfile)
+  .catch(handleError);
+
+
+function loadProfile() {
+  KeycloakService.loadProfile()
+    .then(loadAngular)
+    .catch(handleError);
+}
+
+function loadAngular() {
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
     .catch(err => console.log(err));
+}
+
+function handleError(error) {
+  console.warn('keycloak did not load, starting angular');
+  loadAngular();
 }

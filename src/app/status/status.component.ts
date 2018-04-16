@@ -17,7 +17,11 @@ export class StatusComponent implements OnInit {
     this.statusService.getStatus()
       .subscribe(res => {
         this.status = res;
-        this.messageService.success('Successfully checked status');
+
+        if (this.status != null) {
+          this.messageService.success('Successfully checked status');
+        }
+
       });
   }
 

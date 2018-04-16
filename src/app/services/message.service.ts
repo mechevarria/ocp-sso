@@ -41,7 +41,7 @@ export class MessageService {
     this.notify(NotificationType.INFO, msg);
   }
 
-  warning(msg: string): void {
+  warn(msg: string): void {
     this.notify(NotificationType.WARNING, msg);
   }
 
