@@ -1,0 +1,25 @@
+<div class="card-pf card-pf-accented">
+  <div class="card-pf-heading">
+    <h4 class="card-pf-title">{{viewName}}</h4>
+  </div>
+  <div class="card-pf-body">
+
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" (click)="load()">
+        <i class="fa fa-refresh"></i>&nbsp;Load
+      </button>
+      <!--<button type="button" class="btn btn-default" (click)="add()">-->
+        <!--<i class="fa fa-plus"></i>&nbsp;Add-->
+      <!--</button>-->
+    </div>
+
+    <pfng-table
+      [columns]="columns"
+      [config]="tableConfig"
+      [rows]="rows"
+      (onPageNumberChange)="handlePage($event)"
+      (onPageSizeChange)="handlePage($event)">
+    </pfng-table>
+
+  </div>
+</div>

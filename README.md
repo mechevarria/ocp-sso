@@ -1,4 +1,4 @@
-# PatternflyNgSeed
+# JBoss Client
 
 Starter seed project for [Angular](https://angular.io/) and [Patternfly](https://www.patternfly.org/).  This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3. [Patternfly/NG](http://www.patternfly.org/patternfly-ng) is already integrated.  The project is also configured to run on [Openshift](https://www.openshift.com/) with no configuration changes necessary.
 

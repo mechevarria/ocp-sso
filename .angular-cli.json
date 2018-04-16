@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "patternfly-ng-seed"
+    "name": "jboss-client"
   },
   "apps": [
     {
@@ -9,7 +9,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "keycloak.json"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -24,7 +25,8 @@
         "styles.css"
       ],
       "scripts": [
-        "../node_modules/patternfly/dist/js/patternfly-settings.js"
+        "../node_modules/patternfly/dist/js/patternfly-settings.js",
+        "assets/js/keycloak.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

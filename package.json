@@ -1,5 +1,5 @@
 {
-  "name": "patternfly-ng-seed",
+  "name": "jboss-client",
   "description": "patternfly-ng seed project based on angular-cli scaffolding",
   "author": "Mike Echevarria <mechevar@redhat.com>",
   "version": "1.0.0",
@@ -10,7 +10,8 @@
   },
   "scripts": {
     "ng": "node_modules/@angular/cli/bin/ng",
-    "start": "node_modules/@angular/cli/bin/ng serve --port 8080 --host 0.0.0.0 --disable-host-check",
+    "start": "node_modules/@angular/cli/bin/ng serve --port 8080 --proxy-config proxy.ocp.json --host 0.0.0.0 --disable-host-check",
+    "local": "node_modules/@angular/cli/bin/ng serve --proxy-config proxy.local.json --host 0.0.0.0 --disable-host-check",
     "build": "node_modules/@angular/cli/bin/ng build --prod",
     "lint": "node_modules/@angular/cli/bin/ng lint"
   },
@@ -28,20 +29,14 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "1.0.4",
-    "angular-in-memory-web-api": "^0.5.4",
     "codelyzer": "^4.2.1",
     "core-js": "^2.4.1",
     "ngx-breadcrumbs": "0.0.3",
     "patternfly-ng": "3.1.3",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
-  },
-  "devDependencies": {
+    "zone.js": "^0.8.19",
     "@angular/cli": "~1.7.3",
-    "@angular/compiler-cli": "^5.2.0",
-    "@angular/language-service": "^5.2.0",
     "@types/node": "~6.0.60",
-    "codelyzer": "^4.0.1",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
