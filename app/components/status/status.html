@@ -1,0 +1,26 @@
+<div class="row row-cards-pf">
+    <div class="col-md-6">
+        <div class="card-pf card-pf-accented">
+            <div class="card-pf-heading">
+                <h4 class="card-pf-title">Status</h4>
+            </div>
+            <div class="card-pf-body">
+                <p>Is the jboss-api up?</p>
+                <button class="btn btn-lg btn-primary" ng-click="$ctrl.check()">
+                    <span class="fa fa-refresh" aria-hidden="true"></span>&nbsp;Check
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card-pf card-pf-accented">
+            <div class="card-pf-heading">
+                <h4 class="card-pf-title">Response</h4>
+            </div>
+            <div class="card-pf-body">
+                <pre pretty-json="$ctrl.status" ></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
