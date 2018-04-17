@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {StatusService} from '../services/status.service';
-import {MessageService} from '../services/message.service';
+import {StatusService} from './status.service';
+import {MessageService} from '../common/message.service';
 
 @Component({
   selector: 'app-status',
@@ -16,9 +16,16 @@ export class StatusComponent implements OnInit {
   getStatus(): void {
     this.statusService.getStatus()
       .subscribe(res => {
-        this.status = res;
 
-        if (this.status != null) {
+        const keys = res.headers.keys();
+        const headers = keys.map(key => `${key}: ${res.headers.get(key)}`);
+
+        this.status = {
+          headers: headers,
+          body: res.body
+        };
+
+        if (this.status.body != null) {
           this.messageService.success('Successfully checked status');
         }
 

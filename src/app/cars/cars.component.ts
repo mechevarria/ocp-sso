@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {MessageService} from '../services/message.service';
+import {MessageService} from '../common/message.service';
 import {PaginationConfig, PaginationEvent, TableConfig} from 'patternfly-ng';
-import {CarsService} from '../services/cars.service';
-import {Car} from '../car';
+import {CarsService} from './cars.service';
+import {Car} from './car';
 
 @Component({
   selector: 'app-cars',

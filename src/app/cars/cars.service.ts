@@ -1,14 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
-import {MessageService} from './message.service';
+import {MessageService} from '../common/message.service';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
-import {Car} from '../car';
+import {Car} from './car';
 
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
 
 @Injectable()
 export class CarsService {

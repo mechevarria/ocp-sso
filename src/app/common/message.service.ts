@@ -3,7 +3,7 @@ import {Notification} from 'patternfly-ng';
 import {NotificationType} from 'patternfly-ng';
 import {NotificationService} from 'patternfly-ng';
 import {NotificationEvent} from 'patternfly-ng';
-import {MessageHistory} from '../message-history';
+import {MessageHistory} from './message-history';
 
 
 @Injectable()

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NavigationItemConfig, Notification} from 'patternfly-ng';
-import {MessageService} from '../services/message.service';
-import {MessageHistory} from '../message-history';
-import {KeycloakService} from '../services/keycloak.service';
+import {MessageService} from '../common/message.service';
+import {MessageHistory} from '../common/message-history';
+import {KeycloakService} from '../common/keycloak.service';
 
 @Component({
   selector: 'app-nav',
@@ -22,6 +22,11 @@ export class NavComponent implements OnInit {
       title: 'Cars',
       iconStyleClass: 'fa fa-car',
       url: '/home/cars'
+    },
+    {
+      title: 'Profile',
+      iconStyleClass: 'fa fa-user',
+      url: '/home/profile'
     }
   ];
 

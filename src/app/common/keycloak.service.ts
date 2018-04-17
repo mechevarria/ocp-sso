@@ -1,4 +1,11 @@
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {fromPromise} from 'rxjs/observable/fromPromise';
+
+/*
+*  Modified from https://github.com/keycloak/keycloak/tree/master/examples/demo-template
+*/
+
 
 declare var Keycloak: any;
 
@@ -6,7 +13,11 @@ declare var Keycloak: any;
 export class KeycloakService {
   static auth: any = {};
 
-  static init(): Promise<any> {
+  static init(): Observable<any> {
+    return fromPromise(KeycloakService.initPromise());
+  }
+
+  static initPromise(): Promise<any> {
     const keycloakAuth: any = new Keycloak('keycloak.json');
     KeycloakService.auth.loggedIn = false;
     KeycloakService.auth.logoutUrl = '';
@@ -25,7 +36,11 @@ export class KeycloakService {
     });
   }
 
-  static loadProfile(): Promise<any> {
+  static loadProfile(): Observable<any> {
+    return fromPromise(KeycloakService.profilePromise());
+  }
+
+  private static profilePromise(): Promise<any> {
     return new Promise((resolve, reject) => {
       KeycloakService.auth.authz.loadUserProfile()
         .success(res => {
@@ -51,7 +66,11 @@ export class KeycloakService {
     window.location.href = KeycloakService.auth.logoutUrl;
   }
 
-  getToken(): Promise<string> {
+  getToken(): Observable<string> {
+    return fromPromise(this.tokenPromise());
+  }
+
+  private tokenPromise(): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       if (KeycloakService.auth.authz.token) {
         KeycloakService.auth.authz.updateToken(5)

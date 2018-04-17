@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
-import {EmptyStateModule, NavigationModule, NotificationModule, TableModule, CardModule} from 'patternfly-ng';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {CardModule, EmptyStateModule, NavigationModule, NotificationModule, TableModule} from 'patternfly-ng';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {McBreadcrumbsModule} from 'ngx-breadcrumbs';
 import {NgModule} from '@angular/core';
@@ -10,14 +10,16 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home/home.component';
 import {NavComponent} from './nav/nav.component';
-import {MessageService} from './services/message.service';
+import {MessageService} from './common/message.service';
 import {RouterModule} from '@angular/router';
 import {AppRoutes} from './app-routes';
-import { StatusComponent } from './status/status.component';
-import { CarsComponent } from './cars/cars.component';
-import {StatusService} from './services/status.service';
-import {CarsService} from './services/cars.service';
-import {KeycloakService} from './services/keycloak.service';
+import {StatusComponent} from './status/status.component';
+import {CarsComponent} from './cars/cars.component';
+import {StatusService} from './status/status.service';
+import {CarsService} from './cars/cars.service';
+import {KeycloakService} from './common/keycloak.service';
+import {ProfileComponent} from './profile/profile.component';
+import {KeycloakInterceptor} from './common/keycloak.interceptor';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {KeycloakService} from './services/keycloak.service';
     HomeComponent,
     NavComponent,
     StatusComponent,
-    CarsComponent
+    CarsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,12 @@ import {KeycloakService} from './services/keycloak.service';
     KeycloakService,
     MessageService,
     StatusService,
-    CarsService
+    CarsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: KeycloakInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

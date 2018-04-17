@@ -3,7 +3,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 import {AppModule} from './app/app.module';
 import {environment} from './environments/environment';
-import {KeycloakService} from './app/services/keycloak.service';
+import {KeycloakService} from './app/common/keycloak.service';
 
 if (environment.production) {
   enableProdMode();
@@ -11,15 +11,9 @@ if (environment.production) {
 
 
 KeycloakService.init()
-  .then(loadProfile)
-  .catch(handleError);
+  .flatMap(KeycloakService.loadProfile)
+  .subscribe(loadAngular, handleError);
 
-
-function loadProfile() {
-  KeycloakService.loadProfile()
-    .then(loadAngular)
-    .catch(handleError);
-}
 
 function loadAngular() {
   platformBrowserDynamic()
@@ -27,7 +21,7 @@ function loadAngular() {
     .catch(err => console.log(err));
 }
 
-function handleError(error) {
-  console.warn('keycloak did not load, starting angular');
+function handleError() {
+  console.warn(`keycloak failed, starting angular`);
   loadAngular();
 }

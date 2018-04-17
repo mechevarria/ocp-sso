@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {EmptyStateConfig} from 'patternfly-ng';
 import {ActivatedRoute} from '@angular/router';
-import {KeycloakService} from '../services/keycloak.service';
-import {MessageService} from '../services/message.service';
+import {KeycloakService} from '../common/keycloak.service';
+import {MessageService} from '../common/message.service';
 
 @Component({
   selector: 'app-home',

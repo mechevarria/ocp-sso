@@ -1,13 +1,10 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {MessageService} from './message.service';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+import {MessageService} from '../common/message.service';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 import {catchError} from 'rxjs/operators';
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+import {Config} from 'codelyzer';
 
 @Injectable()
 export class StatusService {
@@ -16,12 +13,12 @@ export class StatusService {
   constructor(private messageService: MessageService, private http: HttpClient) {
   }
 
-  getStatus(): Observable<any[]> {
-    return this.http.get<any[]>(this.statusUrl)
+  getStatus(): Observable<HttpResponse<Config>> {
+    return this.http.get<Config>(this.statusUrl, {observe: 'response'})
       .pipe(
         catchError(error => {
           this.messageService.error(`getStatus() ${error.message}`);
-          return of(null);
+          return of(error);
         })
       );
   }
