@@ -1,6 +1,6 @@
 # JBoss Client
 
-Starter seed project for [Angular](https://angular.io/) and [Patternfly](https://www.patternfly.org/).  This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3. [Patternfly/NG](http://www.patternfly.org/patternfly-ng) is already integrated.  The project is also configured to run on [Openshift](https://www.openshift.com/) with no configuration changes necessary.
+Starter seed project for [Angular](https://angular.io/) and [Patternfly](https://www.patternfly.org/).  This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3. [Patternfly/NG](http://www.patternfly.org/patternfly-ng) is already integrated.  The project is also configured to run on [Openshift](https://www.openshift.com/) with no configuration changes necessary. That integrates with the [jboss-api](https://github.com/mechevarria/jboss-api) backend project.
 
  ![screenshot.png](screenshot.png)
 
@@ -10,7 +10,7 @@ Run `npm install` to dowload the project dependencies
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run local` for a local dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.  The backend by default is proxied through the proxy json files in the root directory.
 
 ## Code scaffolding
 
@@ -19,6 +19,10 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## RH-SSO/Keycloak integration
+
+Turned off by default, rename **src/keycloak.json.bak** to **src/keycloak.json**.  You will also need to configure the json file for your RH-SSO instance.
 
 ## Running on OpenShift
 Requires an accessible [OpenShift Container Platform](https://www.openshift.com/container-platform/index.html) install
