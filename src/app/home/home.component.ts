@@ -3,7 +3,6 @@ import {EmptyStateConfig} from 'patternfly-ng';
 import {ActivatedRoute} from '@angular/router';
 import {KeycloakService} from '../services/keycloak.service';
 import {MessageService} from '../services/message.service';
-import {timeout} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +24,8 @@ export class HomeComponent implements OnInit {
 
     if (auth.loggedIn) {
       this.name = `${auth.profile.firstName} ${auth.profile.lastName}, `;
+    } else {
+      this.messageService.warn('You are not logged in');
     }
 
     this.emptyStateConfig = {
