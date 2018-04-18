@@ -19,7 +19,37 @@ export class CarsService {
       .pipe(
         catchError(error => {
           this.messageService.error(`getCars() ${error.message}`);
-          return of([]);
+          return of(null);
+        })
+      );
+  }
+
+  saveCar(newCar: Car): Observable<Car> {
+    return this.http.post<Car>(this.carsUrl, newCar)
+      .pipe(
+        catchError(error => {
+          this.messageService.error(`saveCar() ${error.message}`);
+          return of(null);
+        })
+      );
+  }
+
+  updateCar(newCar: Car): Observable<Car> {
+    return this.http.put<Car>(this.carsUrl, newCar)
+      .pipe(
+        catchError(error => {
+          this.messageService.error(`updateCar() ${error.message}`);
+          return of(null);
+        })
+      );
+  }
+
+  deleteCar(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.carsUrl}/${id}`)
+      .pipe(
+        catchError(error => {
+          this.messageService.error(`deleteCar() ${error.message}`);
+          return of(null);
         })
       );
   }

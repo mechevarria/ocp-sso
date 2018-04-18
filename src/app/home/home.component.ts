@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     if (auth.loggedIn) {
       this.name = `${auth.profile.firstName} ${auth.profile.lastName}, `;
     } else {
-      this.messageService.warn('You are not logged in');
+      this.messageService.warning('You are not logged in');
     }
 
     this.emptyStateConfig = {

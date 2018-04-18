@@ -2,7 +2,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CardModule, EmptyStateModule, NavigationModule, NotificationModule, TableModule} from 'patternfly-ng';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {McBreadcrumbsModule} from 'ngx-breadcrumbs';
 import {NgModule} from '@angular/core';
 
@@ -20,6 +19,7 @@ import {CarsService} from './cars/cars.service';
 import {KeycloakService} from './common/keycloak.service';
 import {ProfileComponent} from './profile/profile.component';
 import {KeycloakInterceptor} from './common/keycloak.interceptor';
+import {BsDropdownModule, ModalModule} from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -42,7 +42,8 @@ import {KeycloakInterceptor} from './common/keycloak.interceptor';
     EmptyStateModule,
     TableModule,
     CardModule,
-    NgbModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
     KeycloakService,

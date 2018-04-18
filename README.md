@@ -22,7 +22,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## RH-SSO/Keycloak integration
 
-Turned off by default, rename **src/keycloak.json.bak** to **src/keycloak.json**.  You will also need to configure the json file for your RH-SSO instance.
+Turned off by default, rename **src/keycloak.json.bak** to **src/keycloak.json**.  You will also need to configure the json file for your RH-SSO instance.il.redh
 
 ## Running on OpenShift
 Requires an accessible [OpenShift Container Platform](https://www.openshift.com/container-platform/index.html) install

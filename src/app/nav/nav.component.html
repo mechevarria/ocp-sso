@@ -15,16 +15,16 @@
       </li>
 
       <!-- notifications menu -->
-      <li class="dropdown" ngbDropdown>
-        <a class="dropdown-toggle nav-item-iconic" ngbDropdownToggle>
+      <li class="dropdown" dropdown>
+        <a class="dropdown-toggle nav-item-iconic" dropdownToggle>
           <span title="Notifications" class="fa pficon-flag"></span>
           <span class="badge" *ngIf="messageHistory.length > 0">{{messageHistory.length}}</span>
         </a>
-        <div class="dropdown-menu infotip bottom-right app-menu-right" ngbDropdownMenu>
+        <div class="dropdown-menu infotip bottom-right app-menu-right" *dropdownMenu>
           <div class="arrow"></div>
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let item of messageHistory">
-              <span class="i pficon pficon-ok {{item.class}}"></span> {{item.msg}}
+              <span class="i pficon {{item.class}}"></span> {{item.msg}}
             </li>
           </ul>
           <div class="list-group-item">
@@ -34,12 +34,12 @@
       </li>
 
       <!-- user menu -->
-      <li class="dropdown" ngbDropdown>
-        <a class="dropdown-toggle nav-item-iconic" ngbDropdownToggle>
+      <li class="dropdown" dropdown>
+        <a class="dropdown-toggle nav-item-iconic" dropdownToggle>
           <span title="Username" class="fa pficon-user"></span>
           <span class="caret"></span>
         </a>
-        <div class="dropdown-menu infotip bottom-right app-menu-right" ngbDropdownMenu>
+        <div class="dropdown-menu infotip bottom-right app-menu-right" *dropdownMenu>
           <div class="arrow"></div>
           <ul class="list-group">
             <li class="list-group-item app-button"><a href="{{logoutUrl}}">Logout</a></li>

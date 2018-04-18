@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Notification} from 'patternfly-ng';
+import {InlineNotificationComponent, Notification} from 'patternfly-ng';
 import {NotificationType} from 'patternfly-ng';
 import {NotificationService} from 'patternfly-ng';
 import {NotificationEvent} from 'patternfly-ng';
@@ -15,7 +15,7 @@ export class MessageService {
   private classMap: Map<string, string> = new Map()
     .set(NotificationType.SUCCESS, 'pficon-ok')
     .set(NotificationType.INFO, 'pficon-info')
-    .set(NotificationType.WARNING, 'pficon-warning-triangle-ok')
+    .set(NotificationType.WARNING, 'pficon-warning-triangle-o')
     .set(NotificationType.DANGER, 'pficon-error-circle-o');
 
   constructor(private notificationService: NotificationService) {
@@ -41,7 +41,7 @@ export class MessageService {
     this.notify(NotificationType.INFO, msg);
   }
 
-  warn(msg: string): void {
+  warning(msg: string): void {
     this.notify(NotificationType.WARNING, msg);
   }
 
@@ -49,7 +49,7 @@ export class MessageService {
     // make the delay to dropdown the same as the notification fade
     setTimeout(function (history, map) {
       history.push({
-        class: map[type],
+        class: map.get(type),
         msg: msg
       });
     }, 8000, this.messageHistory, this.classMap);
