@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, TemplateRef, ViewChild} from '@angular/core';
 import {MessageService} from '../common/message.service';
 import {PaginationConfig, PaginationEvent, TableComponent, TableConfig} from 'patternfly-ng';
 import {CarsService} from './cars.service';
@@ -9,7 +9,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap';
   selector: 'app-cars',
   templateUrl: './cars.component.html'
 })
-export class CarsComponent implements OnInit {
+export class CarsComponent implements AfterViewInit {
   constructor(private messageService: MessageService, private carsService: CarsService, private modalService: BsModalService) {
   }
 
@@ -20,7 +20,7 @@ export class CarsComponent implements OnInit {
   editTemplate: TemplateRef<any>;
 
   modalRef: BsModalRef;
-  rows: Car[];
+  rows: Car[] = [new Car()];
   allRows: Car[] = [new Car()];
   selectedCar: Car = new Car();
   years: string[];
@@ -45,20 +45,6 @@ export class CarsComponent implements OnInit {
     showCheckbox: true,
     paginationConfig: this.paginationConfig
   };
-
-  ngOnInit() {
-    this.updateRows();
-    this.load(true);
-
-    const year = new Date().getFullYear();
-    const range = [];
-    range.push(year.toString());
-
-    for (let i = 1; i < 30; i++) {
-      range.push((year - i).toString());
-    }
-    this.years = range;
-  }
 
   handlePage($event: PaginationEvent): void {
     this.updateRows();
@@ -87,6 +73,9 @@ export class CarsComponent implements OnInit {
           }
           this.paginationConfig.totalItems = this.allRows.length;
           this.updateRows();
+        } else {
+          this.allRows = [];
+          this.rows = [];
         }
       });
   }
@@ -149,7 +138,24 @@ export class CarsComponent implements OnInit {
     this.selectedCar = new Car();
     this.carTable.selectedRows = [];
     this.carTable.allRowsSelected = false;
-    this.modalRef.hide();
+
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+
+  }
+
+  ngAfterViewInit() {
+    this.load(true);
+
+    const year: number = new Date().getFullYear();
+    const range = [];
+    range.push(year.toString());
+
+    for (let i = 1; i < 30; i++) {
+      range.push((year - i).toString());
+    }
+    this.years = range;
   }
 
 }
