@@ -38,7 +38,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="form-group">
+        <div class="form-group" *ngIf="selectedCar.id != null">
           <label class="col-sm-3 control-label">ID</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" name="id" [(ngModel)]="selectedCar.id" readonly>
