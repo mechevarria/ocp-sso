@@ -20,8 +20,8 @@ export class CarsComponent implements AfterViewInit {
   editTemplate: TemplateRef<any>;
 
   modalRef: BsModalRef;
-  rows: Car[] = [new Car()];
-  allRows: Car[] = [new Car()];
+  rows: Car[] = [];
+  allRows: Car[] = [];
   selectedCar: Car = new Car();
   years: string[];
 
