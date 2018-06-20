@@ -132,28 +132,20 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
-                <xa-datasource jndi-name="java:/PostgresDS" pool-name="db_postgresql-PG" enabled="true" use-java-context="true">
-                    <xa-datasource-property name="DatabaseName">
-                        jboss
-                    </xa-datasource-property>
-                    <xa-datasource-property name="PortNumber">
-                        5432
-                    </xa-datasource-property>
-                    <xa-datasource-property name="ServerName">
-                        192.168.42.101
-                    </xa-datasource-property>
+                <datasource jta="true" jndi-name="java:/PostgresDS" pool-name="PostgresDS" enabled="true" use-ccm="false">
+                    <connection-url>${env.PG_CONNECTION_URL}</connection-url>
+                    <driver-class>org.postgresql.Driver</driver-class>
                     <driver>postgresql</driver>
                     <security>
-                        <user-name>jboss</user-name>
-                        <password>jboss</password>
+                        <user-name>${env.PG_USERNAME}</user-name>
+                        <password>${env.PG_PASSWORD}</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
-                        <validate-on-match>true</validate-on-match>
-                        <background-validation>false</background-validation>
+                        <background-validation>true</background-validation>
                         <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter"/>
                     </validation>
-                </xa-datasource>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
