@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
-import {InlineNotificationComponent, Notification} from 'patternfly-ng';
-import {NotificationType} from 'patternfly-ng';
-import {NotificationService} from 'patternfly-ng';
-import {NotificationEvent} from 'patternfly-ng';
+import {Notification, NotificationEvent, NotificationService, NotificationType} from 'patternfly-ng';
 import {MessageHistory} from './message-history';
 
 

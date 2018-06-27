@@ -1,7 +1,14 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {CardModule, EmptyStateModule, NavigationModule, NotificationModule, TableModule} from 'patternfly-ng';
+import {
+  CardModule,
+  EmptyStateModule,
+  NavigationModule,
+  NotificationService,
+  TableModule,
+  ToastNotificationListModule
+} from 'patternfly-ng';
 import {McBreadcrumbsModule} from 'ngx-breadcrumbs';
 import {NgModule} from '@angular/core';
 
@@ -38,7 +45,7 @@ import {BsDropdownModule, ModalModule} from 'ngx-bootstrap';
     RouterModule.forRoot(AppRoutes),
     McBreadcrumbsModule.forRoot(),
     NavigationModule,
-    NotificationModule,
+    ToastNotificationListModule,
     EmptyStateModule,
     TableModule,
     CardModule,
@@ -46,6 +53,7 @@ import {BsDropdownModule, ModalModule} from 'ngx-bootstrap';
     ModalModule.forRoot()
   ],
   providers: [
+    NotificationService,
     KeycloakService,
     MessageService,
     StatusService,

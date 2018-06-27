@@ -9,7 +9,6 @@ if (environment.production) {
   enableProdMode();
 }
 
-
 KeycloakService.init()
   .flatMap(KeycloakService.loadProfile)
   .subscribe(loadAngular, handleError);
