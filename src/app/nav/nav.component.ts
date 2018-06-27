@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationItemConfig, Notification} from 'patternfly-ng';
+import {Notification} from 'patternfly-ng';
 import {MessageService} from '../common/message.service';
 import {MessageHistory} from '../common/message-history';
 import {KeycloakService} from '../common/keycloak.service';
@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
   logoutUrl: '';
   notifications: Notification[];
   messageHistory: MessageHistory[];
-  navigationItems: NavigationItemConfig[] = [
+  navigationItems: any[] = [
     {
       title: 'Status',
       iconStyleClass: 'fa fa-thumbs-up',

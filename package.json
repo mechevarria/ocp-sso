@@ -16,7 +16,7 @@
     "buildDev": "$npm_package_ng build --watch",
     "lint": "$npm_package_ng lint",
     "start": "node server.js proxy.ocp.json",
-    "startDev": "node server.js proxy.local.json"
+    "startDev": "node server.js proxy.local.json 4200"
   },
   "dependencies": {
     "@angular/animations": "~5.2.11",
@@ -42,7 +42,7 @@
     "ngx-breadcrumbs": "0.0.3",
     "npm-sort": "0.0.4",
     "patternfly": "^3.51.2",
-    "patternfly-ng": "^3.11.2",
+    "patternfly-ng": "~3.11.2",
     "rxjs": "~5.5.10",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
