@@ -26,11 +26,21 @@ let backendProxy = proxy(proxyOptions);
 app.use(proxyContext, backendProxy);
 
 app.use(function (req, res) {
-  res.status(404).sendFile(__dirname + '/dist/index.html');
-});
 
-app.use(function(req, res) {
-  res.sendFile(__dirname + '/dist/index.html');
+  // respond with index to process links
+  if (req.accepts('html')) {
+    res.sendFile(__dirname + '/dist/index.html');
+    return;
+  }
+
+  // otherwise resource was not found
+  res.status(404);
+  if (req.accepts('json')) {
+    res.send({ error: 'Not found' });
+    return;
+  }
+
+  res.type('txt').send('Not found');
 });
 
 http.createServer(app).listen(app.get('port'), function () {
