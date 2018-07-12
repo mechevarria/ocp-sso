@@ -10,9 +10,10 @@ if (environment.production) {
   enableProdMode();
 }
 
+// initialize keycloak AND load the user profile in a chain of calls
 KeycloakService.init()
     .pipe(
-        mergeMap(_ => KeycloakService.loadProfile())
+        mergeMap(KeycloakService.loadProfile)
     )
     .subscribe(loadAngular, handleError);
 
