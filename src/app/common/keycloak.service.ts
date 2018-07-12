@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {fromPromise} from 'rxjs/observable/fromPromise';
+import {Observable} from 'rxjs';
+import {fromPromise} from 'rxjs/internal/observable/fromPromise';
 
 /*
 *  Modified from https://github.com/keycloak/keycloak/tree/master/examples/demo-template

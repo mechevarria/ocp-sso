@@ -123,7 +123,7 @@
                     }).error(function () {
                         initPromise.setError();
                     });
-                }
+                };
 
                 var options = {};
                 switch (initOptions.onLoad) {
@@ -155,7 +155,7 @@
                     setupCheckLoginIframe();
                     window.history.replaceState({}, null, callback.newUrl);
                     processCallback(callback, initPromise);
-                    return;
+
                 } else if (initOptions) {
                     if (initOptions.refreshToken) {
                         setToken(initOptions.token, initOptions.refreshToken, initOptions.idToken);
@@ -199,11 +199,11 @@
             });
 
             return promise.promise;
-        }
+        };
 
         kc.login = function (options) {
             return adapter.login(options);
-        }
+        };
 
         kc.createLoginUrl = function(options) {
             var state = createUUID();
@@ -215,7 +215,7 @@
                 state: state,
                 nonce: nonce,
                 redirectUri: encodeURIComponent(redirectUri),
-            }
+            };
 
             if (options && options.prompt) {
                 callbackState.prompt = options.prompt;
@@ -261,11 +261,11 @@
             }
 
             return url;
-        }
+        };
 
         kc.logout = function(options) {
             return adapter.logout(options);
-        }
+        };
 
         kc.createLogoutUrl = function(options) {
             var url = getRealmUrl()
@@ -273,11 +273,11 @@
                 + '?redirect_uri=' + encodeURIComponent(adapter.redirectUri(options, false));
 
             return url;
-        }
+        };
 
         kc.register = function (options) {
             return adapter.register(options);
-        }
+        };
 
         kc.createRegisterUrl = function(options) {
             if (!options) {
@@ -285,7 +285,7 @@
             }
             options.action = 'register';
             return kc.createLoginUrl(options);
-        }
+        };
 
         kc.createAccountUrl = function(options) {
             var url = getRealmUrl()
@@ -294,16 +294,16 @@
                 + '&referrer_uri=' + encodeURIComponent(adapter.redirectUri(options));
 
             return url;
-        }
+        };
 
         kc.accountManagement = function() {
             return adapter.accountManagement();
-        }
+        };
 
         kc.hasRealmRole = function (role) {
             var access = kc.realmAccess;
             return !!access && access.roles.indexOf(role) >= 0;
-        }
+        };
 
         kc.hasResourceRole = function(role, resource) {
             if (!kc.resourceAccess) {
@@ -312,7 +312,7 @@
 
             var access = kc.resourceAccess[resource || kc.clientId];
             return !!access && access.roles.indexOf(role) >= 0;
-        }
+        };
 
         kc.loadUserProfile = function() {
             var url = getRealmUrl() + '/account';
@@ -332,12 +332,12 @@
                         promise.setError();
                     }
                 }
-            }
+            };
 
             req.send();
 
             return promise.promise;
-        }
+        };
 
         kc.loadUserInfo = function() {
             var url = getRealmUrl() + '/protocol/openid-connect/userinfo';
@@ -357,12 +357,12 @@
                         promise.setError();
                     }
                 }
-            }
+            };
 
             req.send();
 
             return promise.promise;
-        }
+        };
 
         kc.isTokenExpired = function(minValidity) {
             if (!kc.tokenParsed || (!kc.refreshToken && kc.flow != 'implicit' )) {
@@ -379,7 +379,7 @@
                 expiresIn -= minValidity;
             }
             return expiresIn < 0;
-        }
+        };
 
         kc.updateToken = function(minValidity) {
             var promise = createPromise();
@@ -452,7 +452,7 @@
                         req.send(params);
                     }
                 }
-            }
+            };
 
             if (loginIframe.enable) {
                 var iframePromise = checkLoginIframe();
@@ -466,7 +466,7 @@
             }
 
             return promise.promise;
-        }
+        };
 
         kc.clearToken = function() {
             if (kc.token) {
@@ -476,7 +476,7 @@
                     kc.login();
                 }
             }
-        }
+        };
 
         function getRealmUrl() {
             if (kc.authServerUrl.charAt(kc.authServerUrl.length - 1) == '/') {
@@ -794,7 +794,7 @@
                         return p.promise;
                     }
                 }
-            }
+            };
             return p;
         }
 
@@ -824,7 +824,7 @@
                 promise.setSuccess();
 
                 setTimeout(check, loginIframe.interval * 1000);
-            }
+            };
 
             var src = getRealmUrl() + '/protocol/openid-connect/login-status-iframe.html';
             iframe.setAttribute('src', src );
@@ -1180,7 +1180,7 @@
                 }
 
                 return { baseUri: baseUri, queryString: queryString, fragmentString: fragmentString };
-            }
+            };
 
             var parseParams = function(paramString) {
                 var result = {};
@@ -1192,7 +1192,7 @@
                     result[paramName] = paramValue;
                 }
                 return result;
-            }
+            };
 
             var handleQueryParam = function(paramName, paramValue, oauth) {
                 var supportedOAuthParams = [ 'code', 'state', 'error', 'error_description' ];
@@ -1204,7 +1204,7 @@
                     }
                 }
                 return false;
-            }
+            };
 
 
             parser.parseUri = function() {
@@ -1243,7 +1243,7 @@
             }
         }
 
-    }
+    };
 
     if ( typeof module === "object" && module && typeof module.exports === "object" ) {
         module.exports = Keycloak;

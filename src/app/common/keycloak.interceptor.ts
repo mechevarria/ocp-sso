@@ -1,7 +1,8 @@
 import {KeycloakService} from './keycloak.service';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
+import {mergeMap} from 'rxjs/internal/operators';
 
 @Injectable()
 export class KeycloakInterceptor implements HttpInterceptor {
@@ -15,17 +16,17 @@ export class KeycloakInterceptor implements HttpInterceptor {
 
     if (auth.loggedIn) {
       return this.keycloakService.getToken()
-        .mergeMap(res => {
+          .pipe(
+              mergeMap(res => {
+                  request = request.clone({
+                      setHeaders: {
+                          Authorization: `Bearer ${res}`
+                      }
+                  });
 
-          request = request.clone({
-            setHeaders: {
-              Authorization: `Bearer ${res}`
-            }
-          });
-
-          return next.handle(request);
-        });
-
+                  return next.handle(request);
+              })
+          );
     } else {
       return next.handle(request);
     }

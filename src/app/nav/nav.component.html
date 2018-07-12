@@ -7,8 +7,7 @@
 <pfng-vertical-navigation
   [brandAlt]="'JBOSS CLIENT'"
   [contentContainer]="contentContainer"
-  [items]="navigationItems"
-  [showBadges]="true">
+  [items]="navigationItems">
   <div>
     <ul class="nav navbar-nav navbar-right navbar-iconic">
       <li class="dropdown">
@@ -20,7 +19,7 @@
           <span title="Notifications" class="fa pficon-flag"></span>
           <span class="badge" *ngIf="messageHistory.length > 0">{{messageHistory.length}}</span>
         </a>
-        <div class="dropdown-menu infotip bottom-right app-menu-right" *dropdownMenu>
+        <div class="dropdown-menu infotip bottom-right" *dropdownMenu>
           <div class="arrow"></div>
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let item of messageHistory">
@@ -36,10 +35,10 @@
       <!-- user menu -->
       <li class="dropdown" dropdown>
         <a class="dropdown-toggle nav-item-iconic" dropdownToggle>
-          <span title="Username" class="fa pficon-user"></span>
+          <span title="Username" class="fa fa-user"></span>
           <span class="caret"></span>
         </a>
-        <div class="dropdown-menu infotip bottom-right app-menu-right" *dropdownMenu>
+        <div class="dropdown-menu infotip bottom-right" *dropdownMenu>
           <div class="arrow"></div>
           <ul class="list-group">
             <li class="list-group-item app-button"><a href="{{logoutUrl}}">Logout</a></li>
@@ -51,6 +50,6 @@
 </pfng-vertical-navigation>
 <div #contentContainer
      class="container-fluid container-cards-pf container-pf-nav-pf-vertical nav-pf-vertical-with-badges">
-  <mc-breadcrumbs></mc-breadcrumbs>
+  <lib-breadcrumbs></lib-breadcrumbs>
   <router-outlet></router-outlet>
 </div>

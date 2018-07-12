@@ -1,7 +1,0 @@
-{
-  "realm": "eap-js-realm",
-  "auth-server-url": "http://192.168.42.1:8180/auth",
-  "ssl-required": "external",
-  "resource": "js",
-  "public-client": true
-}

@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {MessageService} from '../common/message.service';
-import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Config} from 'codelyzer';
 
