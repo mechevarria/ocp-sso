@@ -5,7 +5,9 @@ import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Config} from 'codelyzer';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class StatusService {
   private statusUrl = '/jboss-api/status';
 

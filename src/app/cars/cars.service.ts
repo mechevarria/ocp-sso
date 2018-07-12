@@ -6,7 +6,9 @@ import {Observable, of} from 'rxjs';
 import {Car} from './car';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CarsService {
   private carsUrl = 'jboss-api/item';
 

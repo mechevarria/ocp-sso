@@ -9,7 +9,9 @@ import {fromPromise} from 'rxjs/internal/observable/fromPromise';
 
 declare var Keycloak: any;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class KeycloakService {
   static auth: any = {};
 
@@ -66,20 +68,20 @@ export class KeycloakService {
     window.location.href = KeycloakService.auth.logoutUrl;
   }
 
-  getToken(): Observable<string> {
-    return fromPromise(this.tokenPromise());
-  }
-
-  private tokenPromise(): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      if (KeycloakService.auth.authz.token) {
-        KeycloakService.auth.authz.updateToken(5)
-          .success(() => {
-            resolve(<string>KeycloakService.auth.authz.token);
-          })
-          .error(() => {
-            reject('Failed to refresh token');
-          });
+  getToken(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (KeycloakService.auth.loggedIn) {
+        if (KeycloakService.auth.authz.token) {
+          KeycloakService.auth.authz.updateToken(5)
+            .success(() => {
+              resolve(KeycloakService.auth.authz.token);
+            })
+            .error(() => {
+              reject('Failed to refresh token');
+            });
+        }
+      } else {
+        resolve({});
       }
     });
   }

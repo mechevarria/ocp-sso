@@ -17,13 +17,7 @@ export class StatusComponent implements OnInit {
     this.statusService.getStatus()
       .subscribe(res => {
 
-        const keys = res.headers.keys();
-        const headers = keys.map(key => `${key}: ${res.headers.get(key)}`);
-
-        this.status = {
-          headers: headers,
-          body: res.body
-        };
+        this.status = res;
 
         if (this.status.body != null) {
           this.messageService.success('Successfully checked status');
