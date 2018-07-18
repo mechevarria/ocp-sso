@@ -3,5 +3,6 @@
   "auth-server-url": "http://192.168.42.1:8180/auth",
   "ssl-required": "external",
   "resource": "js",
-  "public-client": true
+  "public-client": true,
+  "confidential-port": 0
 }
