@@ -3,5 +3,6 @@
   "bearer-only": true,
   "auth-server-url": "${env.AUTH_SERVER_URL}",
   "ssl-required": "external",
-  "resource": "eap"
+  "resource": "eap",
+  "confidential-port": 0
 }
