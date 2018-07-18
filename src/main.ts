@@ -10,13 +10,17 @@ if (environment.production) {
   enableProdMode();
 }
 
-// initialize keycloak AND load the user profile in a chain of calls
-KeycloakService.init()
+console.log(`keycloak is enabled: ${environment.keycloak}`);
+
+if (environment.keycloak) {
+  KeycloakService.init()
     .pipe(
-        mergeMap(KeycloakService.loadProfile)
+      mergeMap(KeycloakService.loadProfile)
     )
     .subscribe(loadAngular, handleError);
-
+} else {
+  loadAngular();
+}
 
 function loadAngular() {
     platformBrowserDynamic()
@@ -25,6 +29,6 @@ function loadAngular() {
 }
 
 function handleError() {
-  console.warn(`keycloak failed, starting angular`);
+  console.warn(`Failed to init keycloak, starting angular`);
   loadAngular();
 }

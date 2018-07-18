@@ -9,7 +9,8 @@ import {KeycloakService} from '../common/keycloak.service';
   templateUrl: './nav.component.html'
 })
 export class NavComponent implements OnInit {
-  logoutUrl: '';
+  logoutUrl = '';
+  username = '';
   notifications: Notification[];
   messageHistory: MessageHistory[];
   navigationItems: any[] = [
@@ -38,6 +39,11 @@ export class NavComponent implements OnInit {
 
     this.messageHistory = this.messageService.getHistory();
 
-    this.logoutUrl = this.keycloakService.getAuth().logoutUrl;
+    const auth = this.keycloakService.getAuth();
+
+    if (auth.loggedIn) {
+      this.logoutUrl = auth.logoutUrl;
+      this.username = `${auth.profile.firstName} ${auth.profile.lastName}`;
+    }
   }
 }

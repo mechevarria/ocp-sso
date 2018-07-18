@@ -20,7 +20,7 @@ export class KeycloakService {
   }
 
   static initPromise(): Promise<any> {
-    const keycloakAuth: any = new Keycloak('keycloak.json');
+    const keycloakAuth: any = new Keycloak('assets/keycloak.json');
     KeycloakService.auth.loggedIn = false;
     KeycloakService.auth.logoutUrl = '';
 
