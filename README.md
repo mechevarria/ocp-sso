@@ -43,7 +43,7 @@ By default the keycloak config is commented out
 The EAP instance requires that the [Java Adapter](https://keycloak.gitbooks.io/documentation/securing_apps/topics/oidc/java/jboss-adapter.html) be installed
 
 ## Install the jdbc driver
-The following will help setup and source like Postgresql
+The following will help setup a source like Postgresql. This helper is for a non-openshift deployment
 
 ### Script
 The script will install the postgres driver and configure it as a driver for EAP.  Adjust the path to the jboss cli tool.
