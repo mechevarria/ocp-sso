@@ -1,7 +1,7 @@
 {
   "realm": "eap-js-realm",
   "bearer-only": true,
-  "auth-server-url": "${env.AUTH_SERVER_URL}",
+  "auth-server-url": "https://secure-sso-rhsso.192.168.42.130.nip.io/auth",
   "ssl-required": "external",
   "resource": "eap",
   "confidential-port": 0
