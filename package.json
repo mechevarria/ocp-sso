@@ -13,7 +13,7 @@
     "ng": "$npm_package_ng",
     "local": "$npm_package_ng serve --host 0.0.0.0 --proxy-config proxy.local.json",
     "localKeycloak": "$npm_package_ng serve --host 0.0.0.0 --proxy-config proxy.local.json -c keycloak",
-    "build": "$npm_package_ng build -c production",
+    "build": "$npm_package_ng build -c keycloakProduction",
     "buildKeycloak": "$npm_package_ng build -c keycloakProduction",
     "buildDev": "$npm_package_ng build --watch",
     "buildDevKeycloak": "$npm_package_ng build --watch -c keycloak",
