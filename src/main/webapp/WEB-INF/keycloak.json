@@ -3,5 +3,6 @@
   "bearer-only": true,
   "auth-server-url": "https://secure-sso-rhsso.192.168.42.130.nip.io/auth",
   "ssl-required": "external",
-  "resource": "eap"
+  "resource": "eap",
+  "realm-public-key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnJyO8hvSCVK0BhoNnyTuOSBSMg7Ka9TVGm4VqXbyw3v4hMWH9Ew/su6ORKXGb3jgC06ZE47R/ot8zYoByhpgtEd4B7tEFbTodb3+2EvF2uIe7SFyOPmnaMPXxdaSw+U+RbLNaVwfQ6JrZcrnA1hb8//xIFU464cUDezOo4kxPNyLABQNZKW+MOj5jVyTlpwDEBtNPwqDePGF10o3zq1hnL1vl4gFIuDI35KVqRAp4RSK1i2b7szbimZI9XXGuqIqZZ7jk+154SmrDSgi9HNPg6x13qyWoArKr4d4Nb96Hu8zM9g/VZOhob6QX4F/p+ZXZgLhsSi3S3C6C/G/Fkb6XQIDAQAB"
 }
