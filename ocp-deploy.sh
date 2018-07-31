@@ -10,7 +10,7 @@ else
   oc project nodejs-eap
 fi
 
- oc new-app https://github.com/mechevarria/jboss-client#keycloak \
- --name=nodejs-app
+oc new-app https://github.com/mechevarria/jboss-client#keycloak \
+--name=nodejs-app
  
 oc expose svc/nodejs-app
