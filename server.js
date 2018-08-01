@@ -5,6 +5,7 @@ let compression = require('compression');
 let express = require('express');
 let logger = require('morgan');
 let https = require('https');
+let http = require('http');
 let fs = require('fs');
 let path = require('path');
 let proxy = require('http-proxy-middleware');
@@ -33,7 +34,7 @@ let proxyOptions = config[proxyContext];
 let backendProxy = proxy(proxyOptions);
 app.use(proxyContext, backendProxy);
 
-app.use(function (req, res) {
+app.use((req, res) => {
 
   // respond with index to process links
   if (req.accepts('html')) {
@@ -56,7 +57,16 @@ const certConfig = {
   cert: fs.readFileSync(('server.cert'))
 };
 
-https.createServer(app)
-  .listen(app.get('port'), () => {
-    console.log('Express secure server listening on port ' + app.get('port'));
-  });
+// for local ssl
+if(app.get('port') !== 8080) {
+  https.createServer(certConfig, app)
+    .listen(app.get('port'), () => {
+      console.log('Express secure server listening on port ' + app.get('port'));
+    });
+} else {
+  // on openshift let route control ssl
+  http.createServer(app)
+    .listen(app.get('port'), () => {
+      console.log('Express server listening on port ' + app.get('port'));
+    });
+}
