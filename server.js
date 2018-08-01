@@ -56,7 +56,7 @@ const certConfig = {
   cert: fs.readFileSync(('server.cert'))
 };
 
-https.createServer(certConfig, app)
+https.createServer(app)
   .listen(app.get('port'), () => {
     console.log('Express secure server listening on port ' + app.get('port'));
   });
