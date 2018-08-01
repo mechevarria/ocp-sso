@@ -1,0 +1,14 @@
+.DS_Store
+*.swp
+*~
+node_modules
+lib
+.idea
+target
+*.iml
+.project
+bower_components
+build
+.classpath
+.settings
+/out/

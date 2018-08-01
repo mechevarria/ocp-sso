@@ -1,0 +1,7 @@
+{
+  "realm": "eap-js-realm",
+  "bearer-only": true,
+  "auth-server-url": "sso",
+  "ssl-required": "external",
+  "resource": "eap"
+}

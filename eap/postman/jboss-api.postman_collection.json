@@ -1,0 +1,302 @@
+{
+	"variables": [],
+	"info": {
+		"name": "jboss-api",
+		"_postman_id": "aa605285-00db-dbb9-2002-5b5b7b0336a1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get tokens",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"access token\"] = jsonData.access_token.length > 0",
+							"tests[\"refresh token\"] = jsonData.refresh_token.length > 0;",
+							"postman.setEnvironmentVariable(\"token\", jsonData.access_token);",
+							"postman.setEnvironmentVariable(\"refresh\", jsonData.refresh_token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{auth-host}}/auth/realms/eap-node-realm/protocol/openid-connect/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "node",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "mechevar",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Redhat1!",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "jboss-api/item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"post item\"] = jsonData.make === 'mercedes';",
+							"postman.setEnvironmentVariable(\"id\", jsonData.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{host}}/jboss-api/item/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"year\":\"1992\",\n  \"make\":\"mercedes\",\n  \"model\":\"e200\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "jboss-api/item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"list items\"] = jsonData.length > 0;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{host}}/jboss-api/item/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": {{id}},\n\t\"year\":\"2013\",\n\t\"make\":\"bmw\",\n\t\"model\":\"328i\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "jboss-api/item",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"put item\"] = jsonData.make === 'bmw';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{host}}/jboss-api/item",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": {{id}},\n\t\"year\":\"2013\",\n\t\"make\":\"bmw\",\n\t\"model\":\"328i\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "jboss-api/item/:id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"get item\"] = jsonData.make === 'bmw';"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{host}}/jboss-api/item/{{id}}",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": {{id}},\n\t\"year\":\"2013\",\n\t\"make\":\"bmw\",\n\t\"model\":\"328i\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "jboss-api/item/:id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"isDeleted is true\"] = jsonData.isDeleted === true;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{host}}/jboss-api/item/{{id}}",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.setEnvironmentVariable(\"token\", \"\");",
+							"postman.setEnvironmentVariable(\"refresh\", \"\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{auth-host}}/auth/realms/eap-node-realm/protocol/openid-connect/logout",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "node",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh}}",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

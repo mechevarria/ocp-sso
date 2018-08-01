@@ -1,0 +1,4 @@
+connect
+/subsystem=datasources/jdbc-driver=postgresql:remove
+module remove --name=org.postgresql
+\q
