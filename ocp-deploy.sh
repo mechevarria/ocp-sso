@@ -34,7 +34,7 @@ oc create secret eap7-app-secret keystore.jks jgroups.jceks
 oc new-app \
 --name=eap-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/jboss-api \
--p SOURCE_REPOSITORY_REF=keycloak \
+-p SOURCE_REPOSITORY_REF=master \
 -p CONTEXT_DIR=/ \
 eap71-https-s2i
 
