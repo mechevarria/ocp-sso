@@ -28,7 +28,7 @@ sleep 11
 
 oc create -f credentials.yaml
 
-oc create secret eap7-app-secret keystore.jks jgroups.jceks
+oc secrets new secret eap7-app-secret keystore.jks jgroups.jceks
 
 oc new-app \
 --name=eap-app \
