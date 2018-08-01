@@ -1,6 +1,7 @@
 {
   "/jboss-api/*": {
-    "target": "http://localhost:8080",
-    "logLevel": "debug"
+    "target": "https://localhost:8443",
+    "logLevel": "debug",
+    "secure": false
   }
 }
