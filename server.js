@@ -1,6 +1,5 @@
 'use strict';
 
-let bodyParser = require('body-parser');
 let compression = require('compression');
 let express = require('express');
 let logger = require('morgan');
@@ -20,12 +19,6 @@ app.set('port', process.argv[3] || 8080);
 app.use(compression());
 
 app.use(logger('combined'));
-
-app.use(bodyParser.json());
-
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
