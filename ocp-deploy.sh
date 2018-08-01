@@ -10,7 +10,5 @@ fi
 
 oc new-app https://github.com/mechevarria/jboss-client#keycloak \
 --name=nodejs-app
- 
-oc expose svc/nodejs-app \
---cert=server.cert \
---key=server.key
+
+oc create route edge --service=nodejs-app --cert=server.cert --key=server.key
