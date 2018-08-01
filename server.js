@@ -14,7 +14,7 @@ const config = require(`./${process.argv[2]}`);
 
 let app = express();
 
-app.set('port', process.argv[3] || 8443);
+app.set('port', process.argv[3] || 8080);
 
 app.use(compression());
 
