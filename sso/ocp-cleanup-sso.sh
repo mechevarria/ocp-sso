@@ -1,3 +1,4 @@
 #!/bin/bash
 
-oc delete project sso-nodejs-eap
+oc project ntier
+oc delete all --selector app=sso72-postgresql-persistent

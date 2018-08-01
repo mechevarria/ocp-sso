@@ -1,4 +1,4 @@
 #!/bin/bash
 
-oc project nodejs-eap
+oc project ntier
 oc delete all --selector app=nodejs-app

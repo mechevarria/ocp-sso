@@ -1,11 +1,11 @@
 #!/bin/bash
 
-project="$(oc projects | grep sso-nodejs-eap)"
+project="$(oc projects | grep ntier)"
 
 if [[ -z ${project} ]]; then
-  oc new-project sso-nodejs-eap --display-name="SSO N-Tier" --description="SSO secured node.js frontend, JBoss EAP backend and Postgresql datastore with encrypted traffic"
+  oc new-project ntier --display-name="SSO N-Tier" --description="SSO secured node.js frontend, JBoss EAP backend and Postgresql datastore with encrypted traffic"
 else
-  oc project sso-nodejs-eap
+  oc project ntier
 fi
 
 echo "Creating postgresql database"
@@ -28,13 +28,17 @@ sleep 11
 
 oc create -f credentials.yaml
 
-oc secrets new secret eap7-app-secret keystore.jks jgroups.jceks
+oc secrets new eap7-app-secret keystore.jks jgroups.jceks
 
 oc new-app \
 --name=eap-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/ocp-sso \
 -p SOURCE_REPOSITORY_REF=master \
 -p CONTEXT_DIR=/eap \
-eap71-https-s2i
+eap71-basic-s2i
 
 oc set env --from=secret/credentials dc/eap-app
+
+echo "deleting default http route"
+oc delete route eap-app
+oc create route edge --service=eap-app --cert=server.cert --key=server.key

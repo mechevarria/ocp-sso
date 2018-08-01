@@ -2,6 +2,25 @@
 
 This repo is working in progress! Instructions are just merged from other repos
 
+After deployment go to the SSO console and configure the realm. The default user/password is admin/Redhat1!
+
+Under clients, select create
+
+* id is eap, then select save
+
+* change access type to bearer-only, then select save
+
+* create another client, id of js
+
+* set valid redirect uris to the route name of the nodejs-app plus a /*, example: https://nodejs-app-ntier.192.168.42.130.nip.io/*
+
+* set Web Origins to *
+
+* under users add a new user. Give values for username, email, first name and last name. Select save
+
+* on the credentials tab of the user set the password, uncheck temporary and select Reset Password
+
+
 # JBoss Client
 
 Angular client built on [Angular](https://angular.io/) and [Patternfly](https://www.patternfly.org/). 

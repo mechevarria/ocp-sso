@@ -1,11 +1,11 @@
 #!/bin/bash
 
-project="$(oc projects | grep sso-nodejs-eap)"
+project="$(oc projects | grep ntier)"
 
 if [[ -z ${project} ]]; then
-  oc new-project sso-nodejs-eap --display-name="SSO N-Tier" --description="SSO secured node.js frontend, JBoss EAP backend and Postgresql datastore with encrypted traffic"
+  oc new-project ntier --display-name="SSO N-Tier" --description="SSO secured node.js frontend, JBoss EAP backend and Postgresql datastore with encrypted traffic"
 else
-  oc project sso-nodejs-eap
+  oc project ntier
 fi
 
 oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default
