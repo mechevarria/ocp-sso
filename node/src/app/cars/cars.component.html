@@ -1,0 +1,96 @@
+<div class="card-pf card-pf-accented">
+  <div class="card-pf-heading">
+    <h4 class="card-pf-title">Cars</h4>
+  </div>
+  <div class="card-pf-body">
+
+    <div class="form-group">
+      <button type="button" class="btn btn-primary" (click)="openModal(editTemplate)">
+        <i class="fa fa-plus-circle"></i>&nbsp;Add
+      </button>
+      <button type="button" class="btn btn-default" [disabled]="carTable.selectedRows.length < 1"
+              (click)="openModal(deleteTemplate)">
+        <i class="fa fa-trash"></i>&nbsp;Delete
+      </button>
+      <button type="button" class="btn btn-default" (click)="load()">
+        <i class="fa fa-refresh"></i>&nbsp;Reload
+      </button>
+    </div>
+
+    <pfng-table
+      [columns]="columns"
+      [config]="tableConfig"
+      [rows]="rows"
+      (onPageNumberChange)="handlePage($event)"
+      (onPageSizeChange)="handlePage($event)"
+      (onActivate)="handleOnActivate($event)"
+      #carTable>
+    </pfng-table>
+
+  </div>
+
+  <ng-template #editTemplate>
+    <form class="form-horizontal" (ngSubmit)="saveOrUpdate()">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Add</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group" *ngIf="selectedCar.id != null">
+          <label class="col-sm-3 control-label">ID</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="id" [(ngModel)]="selectedCar.id" readonly>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Year:</label>
+          <div class="col-sm-9">
+            <select class="form-control" name="year" [(ngModel)]="selectedCar.year">
+              <option *ngFor="let y of years" [ngValue]="y">{{y}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Make:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="make" [(ngModel)]="selectedCar.make"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Model:</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="model" [(ngModel)]="selectedCar.model"/>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="clear()"><i class="fa fa-ban"></i> Cancel</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #deleteTemplate>
+    <form class="form-horizontal" (ngSubmit)="delete()">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Delete</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="clear()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want the selected Cars?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="clear()"><i class="fa fa-ban"></i> Cancel</button>
+        <button type="submit" class="btn btn-warning"><i class="fa fa-trash"></i> Delete</button>
+      </div>
+    </form>
+  </ng-template>
+</div>

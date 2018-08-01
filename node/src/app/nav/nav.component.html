@@ -1,0 +1,54 @@
+<pfng-toast-notification-list
+        [notifications]="notifications"
+        (onCloseSelect)="messageService.close($event);"
+        [showClose]="true">
+</pfng-toast-notification-list>
+
+<pfng-vertical-navigation
+        [brandAlt]="'JBOSS CLIENT'"
+        [contentContainer]="contentContainer"
+        [items]="navigationItems">
+    <div>
+        <ul class="nav navbar-nav navbar-right navbar-iconic">
+            <li class="dropdown">
+            </li>
+
+            <!-- notifications menu -->
+            <li class="dropdown" dropdown>
+                <a class="dropdown-toggle nav-item-iconic" dropdownToggle>
+                    <span title="Notifications" class="fa pficon-flag"></span>
+                    <span class="badge" *ngIf="messageHistory.length > 0">{{messageHistory.length}}</span>
+                </a>
+                <div class="dropdown-menu infotip bottom-right" *dropdownMenu>
+                    <div class="arrow"></div>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let item of messageHistory">
+                            <span class="i pficon {{item.class}}"></span> {{item.msg}}
+                        </li>
+                    </ul>
+                    <div class="list-group-item">
+                        <a class="app-button" (click)="messageService.clear();">Clear Messages</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- user menu -->
+            <li class="dropdown" dropdown>
+                <button class="btn btn-link dropdown-toggle nav-item-iconic" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+                    <span title="username" class="fa pficon-user"></span>
+                    <span class="dropdown-title">
+            {{username}} <span class="caret"></span>
+          </span>
+                </button>
+                <ul class="dropdown-menu" *dropdownMenu>
+                    <li><a href="{{logoutUrl}}" class="app-nav-menu">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</pfng-vertical-navigation>
+<div #contentContainer
+     class="container-fluid container-cards-pf container-pf-nav-pf-vertical nav-pf-vertical-with-badges">
+    <lib-breadcrumbs></lib-breadcrumbs>
+    <router-outlet></router-outlet>
+</div>
