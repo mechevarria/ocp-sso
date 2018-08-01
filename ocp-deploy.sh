@@ -29,6 +29,8 @@ sleep 10
 
 oc create -f credentials.yaml
 
+oc secret new eap7-app-secret keystore.jks jgroups.jceks
+
 oc new-app \
 --name=eap-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/jboss-api \
