@@ -1,7 +1,5 @@
 #!/bin/bash
 
-oc login -u developer
-
 project="$(oc projects | grep nodejs-eap)"
 
 if [[ -z ${project} ]]; then
