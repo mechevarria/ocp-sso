@@ -1,6 +1,6 @@
 {
   "realm": "eap-js-realm",
-  "auth-server-url": "https://secure-sso-rhsso.192.168.42.130.nip.io/auth",
+  "auth-server-url": "http://sso/auth",
   "ssl-required": "external",
   "resource": "js",
   "public-client": true,
