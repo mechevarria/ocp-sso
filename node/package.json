@@ -1,12 +1,12 @@
 {
   "name": "jboss-client",
-  "description": "patternfly-ng client for REST based backend",
+  "description": "node.js Angular client for remote REST backend",
   "author": "Mike Echevarria <mechevar@redhat.com>",
-  "version": "2.2.0",
+  "version": "2.4.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mechevarria/jboss-client"
+    "url": "https://github.com/mechevarria/ocp-sso"
   },
   "ng": "node_modules/@angular/cli/bin/ng",
   "scripts": {
