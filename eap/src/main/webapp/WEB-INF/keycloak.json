@@ -4,5 +4,5 @@
   "auth-server-url": "${env.AUTH_URL}",
   "ssl-required": "external",
   "resource": "eap",
-  "realm-public-key": "${env.PUBLIC_KEY}
+  "realm-public-key": "${env.PUBLIC_KEY}"
 }
