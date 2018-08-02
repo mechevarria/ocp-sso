@@ -14,6 +14,6 @@ oc new-app https://github.com/mechevarria/ocp-sso \
  
 oc create route edge --service=nodejs-app --cert=server.cert --key=server.key
 
-oc secrets new keycloak-secret src/assets/data/keycloak.json
+oc secrets new keycloak-secret keycloak.json
 
 oc volume dc/nodejs-app --add --name=keycloak-volume --type=secret --secret-name=keycloak-secret --mount-path=/opt/app-root/src/dist/assets/data --overwrite
