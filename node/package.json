@@ -1,5 +1,5 @@
 {
-  "name": "jboss-client",
+  "name": "node-client",
   "description": "node.js Angular client for remote REST backend",
   "author": "Mike Echevarria <mechevar@redhat.com>",
   "version": "2.4.0",
@@ -11,15 +11,12 @@
   "ng": "node_modules/@angular/cli/bin/ng",
   "scripts": {
     "ng": "$npm_package_ng",
-    "local": "$npm_package_ng serve --host 0.0.0.0 --proxy-config proxy.local.json",
-    "localKeycloak": "$npm_package_ng serve --host 0.0.0.0 --proxy-config proxy.local.json -c keycloak",
-    "build": "$npm_package_ng build -c keycloak",
-    "buildKeycloak": "$npm_package_ng build -c keycloakProduction",
+    "local": "npm run setConfig && $npm_package_ng serve --host 0.0.0.0 --proxy-config proxy.local.json",
+    "build": "$npm_package_ng build -c production",
     "buildDev": "$npm_package_ng build --watch",
-    "buildDevKeycloak": "$npm_package_ng build --watch -c keycloak",
-    "lint": "$npm_package_ng lint",
-    "start": "node server.js proxy.ocp.json",
-    "startDev": "node server.js proxy.local.json 4200"
+    "start": "npm run setConfig && node server.js proxy.ocp.json",
+    "startDev": "npm run setConfig && node server.js proxy.local.json 4200",
+    "setConfig": "node set-config.js"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "^0.7.0",
@@ -41,6 +38,7 @@
     "codelyzer": "^4.4.2",
     "compression": "^1.7.3",
     "core-js": "^2.5.7",
+    "edit-json-file": "^1.1.0",
     "express": "~4.16.0",
     "http-proxy-middleware": "^0.18.0",
     "morgan": "~1.9.0",

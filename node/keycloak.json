@@ -1,8 +1,0 @@
-{
-  "realm": "eap-js-realm",
-  "auth-server-url": "https://secure-sso-ntier.apps.redhatpsmwsa.com/auth",
-  "ssl-required": "external",
-  "resource": "js",
-  "public-client": true,
-  "confidential-port": 0
-}

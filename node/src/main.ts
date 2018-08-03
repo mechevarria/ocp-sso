@@ -10,17 +10,21 @@ if (environment.production) {
   enableProdMode();
 }
 
-console.log(`keycloak is enabled: ${environment.keycloak}`);
+KeycloakService.getConfig().subscribe(res => {
+  const enabled: boolean = res.enabled;
 
-if (environment.keycloak) {
-  KeycloakService.init()
-    .pipe(
-      mergeMap(KeycloakService.loadProfile)
-    )
-    .subscribe(loadAngular, handleError);
-} else {
-  loadAngular();
-}
+  console.log(`keycloak is enabled: ${enabled}`);
+
+  if (enabled === true) {
+    KeycloakService.init()
+        .pipe(
+            mergeMap(KeycloakService.loadProfile)
+        )
+        .subscribe(loadAngular, handleError);
+  } else {
+    loadAngular();
+  }
+});
 
 function loadAngular() {
     platformBrowserDynamic()

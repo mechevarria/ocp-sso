@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {HttpClient, HttpXhrBackend} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {fromPromise} from 'rxjs/internal/observable/fromPromise';
 
@@ -14,13 +15,14 @@ declare var Keycloak: any;
 })
 export class KeycloakService {
   static auth: any = {};
+  static configPath = 'assets/data/keycloak.json';
 
   static init(): Observable<any> {
     return fromPromise(KeycloakService.initPromise());
   }
 
   static initPromise(): Promise<any> {
-    const keycloakAuth: any = new Keycloak('assets/data/keycloak.json');
+    const keycloakAuth: any = new Keycloak(this.configPath);
     KeycloakService.auth.loggedIn = false;
     KeycloakService.auth.logoutUrl = '';
 
@@ -36,6 +38,11 @@ export class KeycloakService {
           reject();
         });
     });
+  }
+
+  static getConfig(): Observable<any> {
+    const http = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }));
+    return http.get(this.configPath);
   }
 
   static loadProfile(): Observable<any> {

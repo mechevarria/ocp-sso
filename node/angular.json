@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jboss-client": {
+    "node-client": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -50,52 +50,24 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
-            },
-            "keycloakProduction": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/env.keycloak.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
-            },
-            "keycloak": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/env.keycloak.ts"
-                }
-              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "jboss-client:build"
+            "browserTarget": "node-client:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "jboss-client:build:production"
-            },
-            "keycloak": {
-              "browserTarget": "jboss-client:build:keycloak"
+              "browserTarget": "node-client:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "jboss-client:build"
+            "browserTarget": "node-client:build"
           }
         },
         "test": {
@@ -129,7 +101,7 @@
         }
       }
     },
-    "jboss-client-e2e": {
+    "node-client-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -137,7 +109,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "jboss-client:serve"
+            "devServerTarget": "node-client:serve"
           }
         },
         "lint": {
@@ -152,5 +124,5 @@
       }
     }
   },
-  "defaultProject": "jboss-client"
+  "defaultProject": "node-client"
 }
