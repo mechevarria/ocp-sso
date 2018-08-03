@@ -12,7 +12,7 @@
   "scripts": {
     "ng": "$npm_package_ng",
     "local": "npm run setConfig && $npm_package_ng serve --host 0.0.0.0 --proxy-config proxy.local.json",
-    "build": "$npm_package_ng build -c production",
+    "build": "$npm_package_ng build ",
     "buildDev": "$npm_package_ng build --watch",
     "start": "npm run setConfig && node server.js proxy.ocp.json",
     "startDev": "npm run setConfig && node server.js proxy.local.json 4200",
