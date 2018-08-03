@@ -12,7 +12,6 @@ if (environment.production) {
 
 KeycloakService.getConfig().subscribe(res => {
   const enabled = !!res.enabled;
-  console.log(typeof(enabled));
 
   console.log(`keycloak is enabled: ${enabled}`);
 
