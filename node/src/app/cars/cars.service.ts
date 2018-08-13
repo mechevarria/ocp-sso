@@ -19,7 +19,7 @@ export class CarsService {
     return this.http.get<Car[]>(this.carsUrl)
       .pipe(
         catchError(res => {
-          return this.handleError(res);
+          return this.handleError('getCars()', res);
         })
       );
   }
@@ -28,7 +28,7 @@ export class CarsService {
     return this.http.post<Car>(this.carsUrl, newCar)
       .pipe(
         catchError(res => {
-          return this.handleError(res);
+          return this.handleError('newCar()', res);
         })
       );
   }
@@ -37,7 +37,7 @@ export class CarsService {
     return this.http.put<Car>(this.carsUrl, newCar)
       .pipe(
         catchError(res => {
-          return this.handleError(res);
+          return this.handleError('updateCar()', res);
         })
       );
   }
@@ -46,13 +46,13 @@ export class CarsService {
     return this.http.delete<any>(`${this.carsUrl}/${id}`)
       .pipe(
         catchError(res => {
-          return this.handleError(res);
+          return this.handleError('deleteCar()', res);
         })
       );
   }
 
-  private handleError(res: HttpErrorResponse): Observable<any> {
-    this.messageService.error(`updateCar() ${res.message}`);
+  private handleError(method: string, res: HttpErrorResponse): Observable<any> {
+    this.messageService.error(`${method} ${res.message}`);
     console.error(res.error);
     return of(null);
   }
