@@ -13,7 +13,7 @@ for resource in sso72-image-stream.json \
   sso72-x509-postgresql-persistent.json
 do
   oc replace -n openshift --force -f \
-  https://raw.githubusercontent.com/jboss-openshift/application-templates/ose-v1.4.11/sso/${resource}
+  https://raw.githubusercontent.com/jboss-openshift/application-templates/master/sso/${resource}
 done
 
 oc -n openshift import-image redhat-sso72-openshift:1.1
