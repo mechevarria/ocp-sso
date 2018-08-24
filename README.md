@@ -1,6 +1,51 @@
-# RH-SSO
+# Red Hat Openshift Single Sign-On Secured N-tier application
 
-This repo is working in progress! Instructions are just merged from other repos
+This project contains scripts and source to deploy a 3 tier application along with [Red Hat Single Sign-On](https://access.redhat.com/products/red-hat-single-sign-on) and secures the application with SSL.
+
+The application has a [node.js](https://nodejs.org/en/) run [Angular](https://angular.io/) frontend (tier 1) that calls a 
+[JBoss EAP](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/) REST backend (tier 2) that persists data
+to a [Postgresql](https://www.postgresql.org/) database (tier 3).
+The Red Hat Single Sign-On deployment secures this deployed via a configured realm called **eap-js-realm**.  The realm contains
+configured clients for the public facing frontend (js) and the bearer only backend (eap).
+
+All of the scripts to help deploy require that you are logged in via the [oc](https://docs.openshift.com/container-platform/3.10/cli_reference/get_started_cli.html) command line tool to 
+a [Openshift](https://www.openshift.com/) cluster or [minishift](https://www.okd.io/minishift/) instance
+
+Example: `oc login -u developer`
+
+## Deploy Red Hat Single Sign-On
+
+In the `sso` folder install the required templates with the `ocp-install-templates.sh` script.
+
+Next run the `ocp-deploy-sso.sh` script.  Once finished you will see the deployed pods in the **SSO N-tier** project.
+The login to the RH-SSO admin console is **admin/Redhat1!**
+
+![screenshot](./screenshots/sso.png)
+
+### Configure the secrets for the clients
+
+Once the Red Hat Single Sign-on instance is up you will need to modify the [secrets](https://docs.openshift.com/container-platform/3.10/dev_guide/secrets.html) used
+by the node.js frontend and JBoss EAP backend to communicate with Red Hat Single Sign-On.
+
+* Edit the `eap/credentials.yaml` file
+* Change the **AUTH_URL** to the url of the deployed RH-SSO instance you logged into plus **/auth** at the end.  Example: `https://secure-sso-ntier.192.168.42.24.nip.io/auth
+`
+* In RH-SSO admin, go to the **eap-js-realm**, the **keys** tab and select **Public Key**.  Copy this value and set the **PUBLIC_KEY**
+value to it.
+
+![screenshot](./screenshots/key.png)
+
+## Deploy JBoss EAP and Postgresql
+
+## Deploy node.js
+
+## Configure Clients
+
+## Create User
+
+## Test!
+
+**Below this are notes in progress! Instructions are just merged from other repos**
 
 After deployment go to the SSO console and configure the realm. The default user/password is admin/Redhat1!
 
