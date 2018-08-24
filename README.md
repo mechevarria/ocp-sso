@@ -13,6 +13,8 @@ a [Openshift](https://www.openshift.com/) cluster or [minishift](https://www.okd
 
 Example: `oc login -u developer`
 
+![screenshot](./screenshots/summary.png)
+
 ## Deploy Red Hat Single Sign-On
 
 In the `sso` folder install the required templates with the `ocp-install-templates.sh` script.
