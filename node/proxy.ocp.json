@@ -1,7 +1,6 @@
 {
   "/jboss-api/*": {
-    "target": "https://secure-eap-app:8443",
-    "logLevel": "debug",
-    "secure": false
+    "target": "http://eap-app:8080",
+    "logLevel": "debug"
   }
 }
