@@ -24,26 +24,28 @@ The login to the RH-SSO admin console is **admin/Redhat1!**
 
 ![screenshot](./screenshots/sso.png)
 
-### Configure the secrets for the clients
+### Set the Public Key in the config map
 
-Make sure the RH-SSO instance is up. Once the Red Hat Single Sign-on instance is up you will need to modify the [secrets](https://docs.openshift.com/container-platform/3.10/dev_guide/secrets.html) used
-by the node.js frontend and JBoss EAP backend to communicate with Red Hat Single Sign-On.
-
-* Edit the `eap/credentials.yaml` file
-* Change the **AUTH_URL** to the url of the deployed RH-SSO instance you logged into plus **/auth** at the end.  Example: `https://secure-sso-ntier.192.168.42.24.nip.io/auth
+Make sure the RH-SSO instance is up. Once the Red Hat Single Sign-on instance is up you will need to modify the [config map](https://docs.openshift.com/container-platform/3.10/dev_guide/configmaps.html) used
+by the JBoss EAP backend to communicate with Red Hat Single Sign-On.
 `
-* In RH-SSO admin, go to the **eap-js-realm**, the **keys** tab and select **Public Key**.  Copy this value and set the **PUBLIC_KEY**
-value to it.
+* In the **RH-SSO admin console**, go to the **eap-js-realm**, the **keys** tab and select **Public Key** and copy the value.
 
 ![screenshot](./screenshots/key.png)
 
+* In the **SSO N-Tier project**, go to **Resources** then **Config Maps**
+
+* Edit the **ntier-config** and paste the value into the **PUBLIC_KEY** entry
+
+![screenshot](./screenshots/config.png)
+
 ## Deploy JBoss EAP and Postgresql
 
-In the `eap` folder run the `ocp-deploy-eap.sh` script.  This script relies on `credentials.yaml` being updated.
+In the `eap` folder run the `ocp-deploy-eap.sh` script.
 
 ## Deploy node.js
 
-In the `node` folder run the `ocp-deploy-node.sh` script.  This script relies on `credentials.yaml` being updated.
+In the `node` folder run the `ocp-deploy-node.sh` script.
 
 ## Configure Clients
 

@@ -26,8 +26,6 @@ oc set env dc/${db_service} POSTGRESQL_MAX_PREPARED_TRANSACTIONS=10
 echo "Waiting for Postgresql to finish deploying before deploying EAP"
 sleep 11
 
-oc create -f credentials.yaml
-
 oc new-app \
 --name=eap-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/ocp-sso \
@@ -35,7 +33,7 @@ oc new-app \
 -p CONTEXT_DIR=/eap \
 eap71-basic-s2i
 
-oc set env --from=secret/credentials dc/eap-app
+oc set env --from=configmap/ntier-config dc/eap-app
 
 echo "deleting default http route"
 oc delete route eap-app

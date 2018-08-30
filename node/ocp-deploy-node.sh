@@ -14,4 +14,4 @@ oc new-app https://github.com/mechevarria/ocp-sso \
  
 oc create route edge --service=nodejs-app --cert=server.cert --key=server.key
 
-oc set env dc/nodejs-app --from=secret/credentials
+oc set env --from=configmap/ntier-config dc/nodejs-app
