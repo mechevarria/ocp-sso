@@ -7,4 +7,3 @@ oc delete all --selector name=postgresql
 oc delete service postgresql
 oc delete secret credentials
 oc delete secret postgresql
-oc delete secret eap7-app-secret

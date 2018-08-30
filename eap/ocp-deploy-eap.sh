@@ -28,8 +28,6 @@ sleep 11
 
 oc create -f credentials.yaml
 
-oc secrets new eap7-app-secret keystore.jks jgroups.jceks
-
 oc new-app \
 --name=eap-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/ocp-sso \
