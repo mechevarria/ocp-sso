@@ -2,5 +2,9 @@
   "/jboss-api/*": {
     "target": "http://eap-app:8080",
     "logLevel": "debug"
+  },
+  "/springboot-api/*": {
+    "target": "http://springboot-app:8080",
+    "logLevel": "debug"
   }
 }

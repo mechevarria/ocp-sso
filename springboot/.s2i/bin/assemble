@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo "****** MAVEN_OPTS=${MAVEN_OPTS} ******"
+
+echo "****** Calling assemble script ******"
+
+/usr/local/s2i/assemble

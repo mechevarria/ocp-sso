@@ -3,5 +3,10 @@
     "target": "https://localhost:8443",
     "logLevel": "debug",
     "secure": false
+  },
+  "/springboot-api/*": {
+    "target": "http://springboot-app:8080",
+    "logLevel": "debug",
+    "secure": false
   }
 }

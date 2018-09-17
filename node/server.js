@@ -22,7 +22,14 @@ app.use(logger('combined'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// 0 is the jboss-api backend in the json file
 let proxyContext = Object.keys(config)[0];
+let proxyOptions = config[proxyContext];
+let backendProxy = proxy(proxyOptions);
+app.use(proxyContext, backendProxy);
+
+// 1 is the jboss-api backend in the json file
+let proxyContext = Object.keys(config)[1];
 let proxyOptions = config[proxyContext];
 let backendProxy = proxy(proxyOptions);
 app.use(proxyContext, backendProxy);
