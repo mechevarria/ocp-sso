@@ -28,10 +28,10 @@ let proxyOptions = config[proxyContext];
 let backendProxy = proxy(proxyOptions);
 app.use(proxyContext, backendProxy);
 
-// 1 is the jboss-api backend in the json file
-let proxyContext = Object.keys(config)[1];
-let proxyOptions = config[proxyContext];
-let backendProxy = proxy(proxyOptions);
+// 1 is the spring-api backend in the json file
+proxyContext = Object.keys(config)[1];
+proxyOptions = config[proxyContext];
+backendProxy = proxy(proxyOptions);
 app.use(proxyContext, backendProxy);
 
 app.use((req, res) => {
