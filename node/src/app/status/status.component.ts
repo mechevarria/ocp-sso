@@ -13,14 +13,27 @@ export class StatusComponent implements OnInit {
 
   status: any = {};
 
-  getStatus(): void {
-    this.statusService.getStatus()
+  getJBoss(): void {
+    this.statusService.getJBoss()
       .subscribe(res => {
 
         this.status = res;
 
         if (this.status.body != null) {
-          this.messageService.success('Successfully checked status');
+          this.messageService.success('Successfully checked jboss-api status');
+        }
+
+      });
+  }
+
+  getSpring(): void {
+    this.statusService.getSpring()
+      .subscribe(res => {
+
+        this.status = res;
+
+        if (this.status.body != null) {
+          this.messageService.success('Successfully checked springboot-api status');
         }
 
       });

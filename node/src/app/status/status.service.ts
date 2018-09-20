@@ -9,16 +9,25 @@ import {Config} from 'codelyzer';
   providedIn: 'root'
 })
 export class StatusService {
-  private statusUrl = '/jboss-api/status';
 
   constructor(private messageService: MessageService, private http: HttpClient) {
   }
 
-  getStatus(): Observable<HttpResponse<Config>> {
-    return this.http.get<Config>(this.statusUrl, {observe: 'response'})
+  getJBoss(): Observable<HttpResponse<Config>> {
+    return this.http.get<Config>('/jboss-api/status', {observe: 'response'})
       .pipe(
         catchError(error => {
-          this.messageService.error(`getStatus() ${error.message}`);
+          this.messageService.error(`getJBoss() ${error.message}`);
+          return of(error);
+        })
+      );
+  }
+
+  getSpring(): Observable<HttpResponse<Config>> {
+    return this.http.get<Config>('/springboot-api/', {observe: 'response'})
+      .pipe(
+        catchError(error => {
+          this.messageService.error(`getSpring() ${error.message}`);
           return of(error);
         })
       );
