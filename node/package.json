@@ -11,8 +11,7 @@
   "ng": "node_modules/@angular/cli/bin/ng",
   "scripts": {
     "ng": "$npm_package_ng",
-    "build": "npm run ng build ",
-    "watch": "npm run ng build --watch",
+    "build": "npm run ng build",
     "start": "npm run setConfig && node server.js proxy.ocp.json",
     "local": "npm run setConfig && node server.js proxy.local.json 4200",
     "setConfig": "node set-config.js"
