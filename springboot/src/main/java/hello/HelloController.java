@@ -1,5 +1,8 @@
 package hello;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,9 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @RequestMapping("/springboot-api")
-    public String index() {
+    public HashMap<String, String> index() {
 
-        return "Greetings from Spring Boot!";
+        HashMap<String, String> model = new HashMap<>();
+
+        model.put("status", "Greetings from Spring Boot!");
+        model.put("time", LocalDateTime.now().toString());
+
+        return model;
     }
 
 }
