@@ -1,5 +1,5 @@
 {
-  "realm": "eap-js-realm",
+  "realm": "java-js-realm",
   "auth-server-url": "replaced at runtime",
   "ssl-required": "external",
   "resource": "js",

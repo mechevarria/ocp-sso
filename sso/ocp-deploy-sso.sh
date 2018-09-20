@@ -15,7 +15,7 @@ template=sso72-x509-postgresql-persistent
 oc new-app ${template} \
  -p SSO_ADMIN_USERNAME="admin" \
  -p SSO_ADMIN_PASSWORD="Redhat1!" \
- -p SSO_REALM="eap-js-realm"
+ -p SSO_REALM="java-js-realm"
  
  sleep 1
  route_name=$(oc get routes -l app=${template} | { read line1 ; read line2 ; echo "$line2" ; } | awk '{print $2;}')
