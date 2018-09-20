@@ -9,7 +9,7 @@ import {Config} from 'codelyzer';
   providedIn: 'root'
 })
 export class StatusService {
-  private statusUrl = '/springboot-api';
+  private statusUrl = '/jboss-api/status';
 
   constructor(private messageService: MessageService, private http: HttpClient) {
   }
