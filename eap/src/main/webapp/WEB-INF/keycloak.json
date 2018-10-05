@@ -4,5 +4,5 @@
   "auth-server-url": "https://sso/auth",
   "ssl-required": "external",
   "resource": "java",
-  "confidential-port": 0
+  "realm-public-key": "${env.PUBLIC_KEY}"
 }
