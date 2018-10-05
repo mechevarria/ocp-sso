@@ -1,8 +1,7 @@
 {
   "realm": "java-js-realm",
   "bearer-only": true,
-  "auth-server-url": "${env.AUTH_URL}",
+  "auth-server-url": "https://sso/auth",
   "ssl-required": "external",
-  "resource": "java",
-  "realm-public-key": "${env.PUBLIC_KEY}"
+  "resource": "java"
 }
