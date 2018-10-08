@@ -3,6 +3,6 @@
   "bearer-only": true,
   "auth-server-url": "${env.AUTH_URL}",
   "ssl-required": "external",
-  "resource": "java",
-  "realm-public-key": "${env.PUBLIC_KEY}"
+  "resource": "java"
+
 }
