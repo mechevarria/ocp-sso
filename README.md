@@ -18,7 +18,7 @@ Example: `oc login -u developer`
 
 ## Deploy Red Hat Single Sign-On
 
-Run the `ocp-deploy-sso.sh` script.  Once finished you will see the deployed pods in the **SSO N-tier** project.
+Go to the `sso` folder and run the `ocp-deploy-sso.sh` script.  Once finished you will see the deployed pods in the **SSO N-tier** project.
 The login to the RH-SSO admin console is **admin/Redhat1!**
 
 Run only if you get an **image not found error**: In the `sso` folder install the required templates with the `ocp-install-templates.sh` script.
