@@ -18,17 +18,17 @@ Example: `oc login -u developer`
 
 ## Deploy Red Hat Single Sign-On
 
-Run the `ocp-deploy-sso.sh` script.  Once finished you will see the deployed pods in the **SSO N-tier** project.
+In the `sso` folder, run the `ocp-deploy-sso.sh` script.  Once finished you will see the deployed pods in the **SSO N-tier** project.
 The login to the RH-SSO admin console is **admin/Redhat1!**
 
-Run only if you get an **image not found error**: In the `sso` folder install the required templates with the `ocp-install-templates.sh` script.
+If you get an **image not found error**: In the `sso` folder install the required templates with the `ocp-install-templates.sh` script. Otherwise it is not necessary to run this script.
 
 ![screenshot](./screenshots/sso.png)
 
 ### Set the Public Key in the config map
 
-Make sure the RH-SSO instance is up. Once the Red Hat Single Sign-on instance is up you will need to modify the [config map](https://docs.openshift.com/container-platform/3.10/dev_guide/configmaps.html) used
-by the JBoss EAP backend to communicate with Red Hat Single Sign-On.
+Make sure the RH-SSO instance is up and running. Once the Red Hat Single Sign-on instance is up you will need to modify the [config map](https://docs.openshift.com/container-platform/3.10/dev_guide/configmaps.html) used
+by the Springboot backend, JBoss EAP backend and nodejs frontend to communicate with Red Hat Single Sign-On.
 `
 * In the **RH-SSO admin console**, go to the **java-js-realm**, the **keys** tab and select **Public Key** and copy the value.
 
@@ -60,6 +60,7 @@ While the builds are running you can configure the clients in RH-SSO.
 * In the **java-js-realm**, select **clients**, then **create**
 * Set **Client ID** to **js**, then select **save**
 * Set **Valid Redirect URIs** to the route of your node.js instance plus **/***.  Example: `https://nodejs-app-ntier.192.168.42.24.nip.io/*`
+  * In other words, in the Openshift Console overview for your project, copy the exposed route to the **nodejs-app**
 * Set **Web Origins** to `*` 
 * Select **save**
 
@@ -87,7 +88,7 @@ Now that everything is configured, go to the **node-js** application route and y
 
 You will be able to see your user attributes under the **Profile** tab.
 
-Using the **Status** and **Cars** tabs will make REST calls to the JBoss EAP REST backend
+Using the **Status** and **Cars** tabs will make REST calls to the JBoss EAP REST backend.  The **Status** tab also has an option to call the **springboot** backend.
 
 ![screenshot](./screenshots/test.png)
 
