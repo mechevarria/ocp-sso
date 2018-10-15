@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-project="$(oc projects | grep ntier)"
-
-if [[ -z ${project} ]]; then
-  oc new-project ntier --display-name="SSO N-Tier" --description="SSO secured node.js frontend, JBoss EAP backend and Postgresql datastore with encrypted traffic"
-else
-  oc project ntier
-fi
+# prefixing project with user to allow multiple people building the same project on the same cluster
+proj_name="$(oc whoami)-ntier"
+oc project ${proj_name}
 
 oc new-app \
 --name=springboot-app \

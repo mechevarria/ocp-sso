@@ -1,11 +1,14 @@
 #!/bin/bash
 
-project="$(oc projects | grep ntier)"
+# prefixing project with user to allow multiple people building the same project on the same cluster
+proj_name="$(oc whoami)-ntier"
+proj_exists="$(oc projects | grep ${proj_name})"
 
-if [[ -z ${project} ]]; then
-  oc new-project ntier --display-name="SSO N-Tier" --description="SSO secured node.js frontend, JBoss EAP backend and Postgresql datastore with encrypted traffic"
+# if project doesn't exist, make a new one.  Otherwise switch to that project
+if [[ -z ${proj_exists} ]]; then
+  oc new-project ${proj_name} --display-name="SSO N-Tier" --description="SSO secured node.js frontend, JBoss EAP backend and Postgresql datastore with encrypted traffic"
 else
-  oc project ntier
+  oc project ${proj_name}
 fi
 
 oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default
@@ -20,6 +23,7 @@ oc new-app ${template} \
  sleep 1
  route_name=$(oc get routes -l app=${template} | { read line1 ; read line2 ; echo "$line2" ; } | awk '{print $2;}')
  
+ # config map is used by clients to connect to rh-sso and database
  oc create configmap ntier-config \
     --from-literal=AUTH_URL=https:\/\/${route_name}/auth \
     --from-literal=KEYCLOAK=true \
