@@ -28,6 +28,6 @@ oc new-app ${template} \
     --from-literal=AUTH_URL=https:\/\/${route_name}/auth \
     --from-literal=KEYCLOAK=true \
     --from-literal=PUBLIC_KEY=changeme \
-    --from-literal=PG_CONNECTION_URL=jdbc:postgresql:\/\/postgresql\/jboss \
-    --from-literal=PG_USERNAME=pguser \
-    --from-literal=PG_PASSWORD=pgpass
+    --from-literal=DB_CONNECTION_URL=jdbc:mysql:\/\/mysql\/jboss \
+    --from-literal=DB_USERNAME=myuser \
+    --from-literal=DB_PASSWORD=mypass
