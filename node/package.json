@@ -11,7 +11,8 @@
   "ng": "node_modules/@angular/cli/bin/ng",
   "scripts": {
     "ng": "$npm_package_ng",
-    "build": "npm run ng build",
+    "build": "$npm_package_ng build --delete-output-path --prod",
+    "buildDev": "$npm_package_ng build --watch",
     "start": "npm run setConfig && node server.js proxy.ocp.json",
     "local": "npm run setConfig && node server.js proxy.local.json 4200",
     "setConfig": "node set-config.js"
@@ -39,6 +40,7 @@
     "edit-json-file": "^1.1.0",
     "express": "~4.16.0",
     "http-proxy-middleware": "^0.18.0",
+    "keycloak-js": "^3.4.3",
     "morgan": "~1.9.0",
     "ngx-bootstrap": "~3.0.1",
     "npm-sort": "0.0.4",

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {KeycloakService} from '../common/keycloak.service';
 import {CardConfig} from 'patternfly-ng';
-import {Profile} from './Profile';
+import { KeycloakProfile } from 'keycloak-js';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
   constructor(private keycloakService: KeycloakService) {
   }
 
-  profile: Profile;
+  profile: KeycloakProfile;
 
   basicConfig: CardConfig = {
     title: 'Profile',
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     if (auth.loggedIn) {
       this.profile = auth.profile;
     } else {
-      this.profile = new Profile();
+      this.profile = {};
     }
   }
 }

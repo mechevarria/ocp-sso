@@ -30,7 +30,7 @@
             ],
             "scripts": [
               "node_modules/patternfly/dist/js/patternfly-settings.js",
-              "src/assets/js/keycloak.min.js"
+              "node_modules/keycloak-js/dist/keycloak.min.js"
             ]
           },
           "configurations": {

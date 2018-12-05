@@ -3,16 +3,14 @@ import {EmptyStateConfig} from 'patternfly-ng';
 import {ActivatedRoute} from '@angular/router';
 import {KeycloakService} from '../common/keycloak.service';
 import {MessageService} from '../common/message.service';
+import { Auth } from '../common/Auth';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
-
   name = '';
-  profile: any;
   emptyStateConfig: EmptyStateConfig;
 
 
@@ -20,7 +18,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    const auth = this.keycloakService.getAuth();
+    const auth: Auth = this.keycloakService.getAuth();
 
     if (auth.loggedIn) {
       this.name = `${auth.profile.firstName} ${auth.profile.lastName}, `;
