@@ -134,7 +134,7 @@
             <datasources>
                 <datasource jta="true" jndi-name="java:/MySqlDS" pool-name="MySqlDS" enabled="true" use-ccm="false">
                     <connection-url>${env.DB_CONNECTION_URL}</connection-url>
-                    <driver-class>com.mysql.cj.jdbc.Driver</driver-class>
+                    <driver-class>com.mysql.jdbc.Driver</driver-class>
                     <driver>mysql</driver>
                     <security>
                         <user-name>${env.DB_USERNAME}</user-name>
