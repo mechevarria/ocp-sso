@@ -132,13 +132,13 @@
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
-                <datasource jta="true" jndi-name="java:/PostgresDS" pool-name="PostgresDS" enabled="true" use-ccm="false">
-                    <connection-url>${env.PG_CONNECTION_URL}</connection-url>
-                    <driver-class>org.postgresql.Driver</driver-class>
-                    <driver>postgresql</driver>
+                <datasource jta="true" jndi-name="java:/MySqlDS" pool-name="MySqlDS" enabled="true" use-ccm="false">
+                    <connection-url>${env.DB_CONNECTION_URL}</connection-url>
+                    <driver-class>com.mysql.cj.jdbc.Driver</driver-class>
+                    <driver>mysql</driver>
                     <security>
-                        <user-name>${env.PG_USERNAME}</user-name>
-                        <password>${env.PG_PASSWORD}</password>
+                        <user-name>${env.DB_USERNAME}</user-name>
+                        <password>${env.DB_PASSWORD}</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker"/>
