@@ -1,6 +1,7 @@
 #/bin/bash
 
-oc project ntier
+proj_name="$(oc whoami)-ntier"
+oc project ${proj_name}
 
 oc scale --replicas=0 dc nodejs-app
 oc scale --replicas=0 dc springboot-app

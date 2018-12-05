@@ -21,8 +21,6 @@ Example: `oc login -u developer`
 In the `sso` folder, run the `ocp-deploy-sso.sh` script.  Once finished you will see the deployed pods in the **SSO N-tier** project.
 The login to the RH-SSO admin console is **admin/Redhat1!**
 
-If you get an **image not found error**: In the `sso` folder install the required templates with the `ocp-install-templates.sh` script. Otherwise it is not necessary to run this script.
-
 ![screenshot](./screenshots/sso.png)
 
 ### Set the Public Key in the config map
