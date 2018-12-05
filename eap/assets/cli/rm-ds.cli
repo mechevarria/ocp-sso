@@ -1,5 +1,0 @@
-connect
-data-source disable --name=PostgresDS
-data-source remove --name=PostgresDS
-/:reload
-\q
