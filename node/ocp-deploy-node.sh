@@ -4,7 +4,7 @@
 proj_name="$(oc whoami)-ntier"
 oc project ${proj_name}
 
-oc new-app https://github.com/mechevarria/ocp-sso \
+oc new-app https://github.com/mechevarria/ocp-sso#eap \
 --context-dir=node \
 --name=nodejs-app
  
