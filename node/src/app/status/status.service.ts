@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
-import {MessageService} from '../common/message.service';
+import {MessageService} from '../message/message.service';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {Config} from 'codelyzer';

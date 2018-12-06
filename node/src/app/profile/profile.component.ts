@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {KeycloakService} from '../common/keycloak.service';
-import {CardConfig} from 'patternfly-ng';
+import {KeycloakService} from '../keycloak.service';
 import { KeycloakProfile } from 'keycloak-js';
 
 @Component({
@@ -13,11 +12,6 @@ export class ProfileComponent implements OnInit {
   }
 
   profile: KeycloakProfile;
-
-  basicConfig: CardConfig = {
-    title: 'Profile',
-    noPadding: false
-  };
 
   ngOnInit() {
     const auth = this.keycloakService.getAuth();

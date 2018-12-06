@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { fromPromise } from 'rxjs/internal/observable/fromPromise';
 import { KeycloakInstance, KeycloakInitOptions, KeycloakProfile } from 'keycloak-js';
 import * as Keycloak from 'keycloak-js';
-import { Auth } from './Auth';
+import { Auth } from './auth';
 
 /*
  *  Example:

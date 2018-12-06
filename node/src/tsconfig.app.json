@@ -2,11 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "paths": {
-      "dragula": [
-        "node_modules/dragula/dist/dragula.min.js"
-      ]
-    },
+    "paths": {},
     "module": "es2015",
     "types": []
   },

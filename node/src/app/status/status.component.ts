@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {StatusService} from './status.service';
-import {MessageService} from '../common/message.service';
+import {MessageService} from '../message/message.service';
 
 @Component({
   selector: 'app-status',

@@ -1,5 +1,5 @@
 export class Car {
-  id: number = null;
+  id: number;
   year: string;
   make: string;
   model: string;

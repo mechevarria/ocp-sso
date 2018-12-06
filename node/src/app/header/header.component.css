@@ -1,0 +1,7 @@
+.app-no-caret::after {
+  display: none;
+}
+
+.app-pointer {
+  cursor: pointer !important;
+}
