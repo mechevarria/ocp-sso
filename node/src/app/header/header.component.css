@@ -5,3 +5,9 @@
 .app-pointer {
   cursor: pointer !important;
 }
+
+.app-scrollable-menu {
+  height: auto;
+  max-height: 500px;
+  overflow-x: hidden;
+}

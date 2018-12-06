@@ -1,34 +1,23 @@
-<div class="row row-cards-pf">
+<div class="row">
   <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-12">
-          <form>
-            <div class="form-group row">
-              <label class="col-md-2 control-label">User Name</label>
-              <div class="col-md-10">
-                <p class="form-control-static">{{profile.username}}</p>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-2 control-label">First Name</label>
-              <div class="col-md-10">
-                <p class="form-control-static">{{profile.firstName}}</p>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-2 control-label">Last Name</label>
-              <div class="col-md-10">
-                <p class="form-control-static">{{profile.lastName}}</p>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-2 control-label">Email</label>
-              <div class="col-md-10">
-                <p class="form-control-static">{{profile.email}}</p>
-              </div>
-            </div>
-          </form>
-        </div>
+    <div class="card mb-3">
+      <div class="card-header">User Details</div>
+      <div class="card-body">
+        <form class="card-text">
+          <div class="form-group">
+            <label>User Name</label> <input type="text" readonly class="form-control" name="username" [ngModel]="profile.username" />
+          </div>
+          <div class="form-group">
+            <label>First Name</label> <input type="text" readonly class="form-control" name="firstname" [ngModel]="profile.firstName" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label> <input type="text" readonly class="form-control" name="lastname" [ngModel]="profile.lastName" />
+          </div>
+          <div class="form-group">
+            <label>E-mail</label> <input type="text" readonly class="form-control" name="email" [ngModel]="profile.email" />
+          </div>
+        </form>
       </div>
+    </div>
   </div>
 </div>

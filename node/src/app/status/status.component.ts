@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StatusService} from './status.service';
 import {MessageService} from '../message/message.service';
+import { IconDefinition, faSync } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-status',
@@ -12,6 +13,7 @@ export class StatusComponent implements OnInit {
   }
 
   status: any = {};
+  refreshIcon: IconDefinition;
 
   getJBoss(): void {
     this.statusService.getJBoss()
@@ -40,6 +42,7 @@ export class StatusComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refreshIcon = faSync;
   }
 
 }

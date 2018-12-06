@@ -49,7 +49,7 @@
           messages.length
         }}</span>
       </a>
-      <div *dropdownMenu class="dropdown-menu dropdown-menu-right">
+      <div *dropdownMenu class="dropdown-menu dropdown-menu-right app-scrollable-menu">
         <a class="dropdown-item" *ngFor="let item of messages">
           <fa-icon [icon]="item.className"></fa-icon> {{ item.text }}
         </a>
