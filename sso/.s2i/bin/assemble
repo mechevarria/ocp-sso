@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+/usr/local/s2i/assemble
+
+echo "****** Copying custom login theme ******"
+
+cp -Rvf /tmp/src/themes/coreui ${JBOSS_HOME}/themes/
