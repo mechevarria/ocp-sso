@@ -31,3 +31,6 @@ oc new-app ${template} \
     --from-literal=DB_CONNECTION_URL=jdbc:mysql:\/\/mysql\/jboss \
     --from-literal=DB_USERNAME=myuser \
     --from-literal=DB_PASSWORD=mypass
+
+# add volume to hold custom theme. Use rsync-theme.sh after the pod is up and running
+oc set volume dc/sso --add --mount-path=/opt/eap/themes/coreui
