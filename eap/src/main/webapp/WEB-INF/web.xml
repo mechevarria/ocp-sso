@@ -1,7 +1,7 @@
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    <!-- <login-config>
+    <login-config>
         <auth-method>KEYCLOAK</auth-method>
     </login-config>
     <security-constraint>
@@ -15,5 +15,5 @@
     </security-constraint>
     <security-role>
         <role-name>*</role-name>
-    </security-role> -->
+    </security-role>
 </web-app>
