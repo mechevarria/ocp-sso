@@ -19,20 +19,18 @@
                   <th>Model</th>
                   <th>Created</th>
                   <th>Updated</th>
-                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let car of cars">
-                  <td class="app-pointer" (click)="edit(car)">{{ car.id }}</td>
+                  <td class="app-pointer">
+                    <button class="btn btn-warning btn-sm" (click)="warning(car)"><fa-icon [icon]="deleteIcon"></fa-icon></button>&nbsp;{{ car.id }}
+                  </td>
                   <td class="app-pointer" (click)="edit(car)">{{ car.year }}</td>
                   <td class="app-pointer" (click)="edit(car)">{{ car.make }}</td>
                   <td class="app-pointer" (click)="edit(car)">{{ car.model }}</td>
                   <td class="app-pointer" (click)="edit(car)">{{ car.createDate }}</td>
                   <td class="app-pointer" (click)="edit(car)">{{ car.lastUpdateDate }}</td>
-                  <td>
-                    <button class="btn btn-warning btn-sm" (click)="warning(car)"><fa-icon [icon]="deleteIcon"></fa-icon></button>
-                  </td>
                 </tr>
               </tbody>
             </table>
