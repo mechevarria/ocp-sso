@@ -33,4 +33,5 @@ oc new-app ${template} \
     --from-literal=DB_PASSWORD=mypass
 
 # add volume to hold custom theme. Use rsync-theme.sh after the pod is up and running
-oc set volume dc/sso --add --mount-path=/opt/eap/themes/coreui
+oc create -f sso-theme-claim.yaml
+oc set volume dc/sso --add --mount-path=/opt/eap/themes/coreui --name=sso-theme-volume --type=persistentVolumeClaim --claim-name=sso-theme-claim
