@@ -85,19 +85,17 @@
                         <div class="card-body text-center">
                             <div>
                                 <h1><img src="${url.resourcesPath}/img/redhat.svg" alt="Red Hat" width="150"/></h1>
-                                <p>By logging into this site you accept the usage and privacy terms for regular usage. More details are in the link below.</p>
-                                <a class="btn btn-primary active mt-3" target="_blank" href="https://www.redhat.com/en/about/privacy-policy" role="button">Privacy Policy</a>
+                                 <#if !displayInfo>
+                                    <p>By logging into this site you accept the usage and privacy terms as a user. More details are in the link below.</p>
+                                    <a class="btn btn-primary active mt-3" target="_blank" href="https://www.redhat.com/en/about/privacy-policy" role="button">Privacy Policy</a>
+                                 </#if>
+                                 <#if displayInfo>
+                                    <p><#nested "info"></p>
+                                 </#if>
                             </div>
                         </div>
                     </div>
-
-                    <#if displayInfo>
-                        <div id="kc-info" class="${properties.kcInfoAreaClass!}">
-                            <div id="kc-info-wrapper" class="${properties.kcInfoAreaWrapperClass!}">
-                                <#nested "info">
-                            </div>
-                        </div>
-                    </#if>
+                    
                 </div>
             </div>
         </div>
