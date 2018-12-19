@@ -11,14 +11,28 @@ else
   oc project ${proj_name}
 fi
 
+# build custom sso instance with custom theme
+tag=1.2
+image_name=redhat-sso72-openshift-theme
+
+oc new-build redhat-sso72-openshift:${tag}~https://github.com/mechevarria/ocp-sso#eap \
+  --context-dir=sso \
+  --name=${image_name} \
+  --to=${image_name}:${tag}
+
+echo "Wait until the SSO build is done before continuing"
+read -n 1 -s -r -p "Press enter to continue"
+
 oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default
 
 template=sso72-x509-postgresql-persistent
 
-oc new-app ${template} \
+# using custom template to reference custom image stream and force using openshift namespace postgresql
+oc new-app -f ${template}.json \
  -p SSO_ADMIN_USERNAME="admin" \
  -p SSO_ADMIN_PASSWORD="Redhat1!" \
- -p SSO_REALM="java-js-realm"
+ -p SSO_REALM="java-js-realm" \
+ -p IMAGE_STREAM_NAMESPACE=${proj_name}
  
  sleep 1
  route_name=$(oc get routes -l app=${template} | { read line1 ; read line2 ; echo "$line2" ; } | awk '{print $2;}')
@@ -31,7 +45,3 @@ oc new-app ${template} \
     --from-literal=DB_CONNECTION_URL=jdbc:mysql:\/\/mysql\/jboss \
     --from-literal=DB_USERNAME=myuser \
     --from-literal=DB_PASSWORD=mypass
-
-# add volume to hold custom theme. Use rsync-theme.sh after the pod is up and running
-oc create -f sso-theme-claim.yaml
-oc set volume dc/sso --add --mount-path=/opt/eap/themes/coreui --name=sso-theme-volume --type=persistentVolumeClaim --claim-name=sso-theme-claim
