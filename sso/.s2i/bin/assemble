@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+   
+/usr/local/s2i/assemble
+  
+echo "****** Copying themes ******"
+   
+cp -Rv /tmp/src/themes/* /opt/eap/themes/                                     
