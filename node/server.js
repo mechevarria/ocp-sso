@@ -9,12 +9,11 @@ let fs = require('fs');
 let path = require('path');
 let proxy = require('http-proxy-middleware');
 
-// either proxy.local.json or proxy.ocp.json
-const config = require(`./${process.argv[2]}`);
-
 let app = express();
 
-app.set('port', process.argv[3] || 8080);
+app.set('port', process.env.PORT || 8080);
+app.set('eap-service', process.env.EAP || 'http://eap-app:8080');
+app.set('springboot-service', process.env.SPRINGBOOT || 'http://springboot-app:8080');
 
 app.use(compression());
 
@@ -22,17 +21,33 @@ app.use(logger('combined'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// 0 is the jboss-api backend in the json file
-let proxyContext = Object.keys(config)[0];
-let proxyOptions = config[proxyContext];
-let backendProxy = proxy(proxyOptions);
-app.use(proxyContext, backendProxy);
+// proxy for jboss backend
+app.use(
+  '/jboss-api/*',
+  proxy({
+    target: app.get('eap-service'),
+    secure: false,
+    changeOrigin: true,
+    logLevel: 'debug',
+    pathRewrite: {
+      '^/eap-service': ''
+    }
+  })
+);
 
-// 1 is the spring-api backend in the json file
-proxyContext = Object.keys(config)[1];
-proxyOptions = config[proxyContext];
-backendProxy = proxy(proxyOptions);
-app.use(proxyContext, backendProxy);
+// proxy for springboot backend
+app.use(
+  '/springboot-api/*',
+  proxy({
+    target: app.get('springboot-service'),
+    secure: false,
+    changeOrigin: true,
+    logLevel: 'debug',
+    pathRewrite: {
+      '^/springboot-service': ''
+    }
+  })
+);
 
 app.use((req, res) => {
 

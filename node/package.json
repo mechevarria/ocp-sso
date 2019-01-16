@@ -2,7 +2,7 @@
   "name": "node-client",
   "description": "node.js Angular client for remote REST backend",
   "author": "Mike Echevarria <mechevar@redhat.com>",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,9 +13,7 @@
     "ng": "$npm_package_ng",
     "build": "$npm_package_ng build --delete-output-path --prod",
     "buildDev": "$npm_package_ng build --watch",
-    "start": "npm run setConfig && node server.js proxy.ocp.json",
-    "local": "npm run setConfig && node server.js proxy.local.json 4200",
-    "setConfig": "node set-config.js"
+    "start": "node set-config.js && node server.js"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "~0.11.1",
