@@ -17,7 +17,7 @@ Example: `oc login -u developer`
 
 ## Deploy Red Hat Single Sign-On
 
-In the `sso` folder, run the `ocp-deploy-sso.sh` script.  Once finished you will see the deployed pods in the **SSO N-tier** project.
+In the `sso` folder, run the `ocp-deploy-sso.sh` script.  This script creates a custom build that includes a sample [theme](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.2/html/server_developer_guide/themes) for the login page, named `coreui`. Once finished you will see the deployed pods in the **SSO N-tier** project.
 The login to the RH-SSO admin console is **admin/Redhat1!**
 
 ![screenshot](./screenshots/sso.png)
@@ -71,17 +71,25 @@ While the builds are running you can configure the clients in RH-SSO.
 * Fill out the **Username**, **Email**, **First Name** and **Last Name** fields
 * Select **save**
 * On the **Credentials** tab, set a **new password**
-* Set **temporary** to **off**
 * Select **Reset Password**
 * Confirm that you want to **Change the password**
 
+## Change Theme (optional)
+
+* In the **java-js-realm**, select **Themes**
+* Set the **Login Theme** value to **coreui**
+
+![screenshot](./screenshots/theme-config.png)
+
 ## Test!
 
-Now that everything is configured, go to the **node-js** application route and you should be prompted to login as the user you just created.
+Now that everything is configured, go to the **node-js** application route and you should be prompted to login as the user you just created. You will also be prompted to create a new password. The screenshot below shows the themed login page.
 
-You will be able to see your user attributes under the **Profile** tab.
+![screenshot](./screenshots/theme.png)
 
-Using the **Status** and **Cars** tabs will make REST calls to the JBoss EAP REST backend. 
+You will be able to see your user attributes in the web application under the **Profile** tab.
+
+Using the **Status** and **Cars** tabs will make REST calls to the JBoss EAP REST backend or Springboot backend. 
 
 ![screenshot](./screenshots/test.png)
 
