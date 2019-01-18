@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
 import { MessageItem } from '../message/message-item';
-import { faEraser, faSignOutAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { MessageHistoryService } from '../message/message-history.service';
 import { KeycloakService } from '../keycloak.service';
 
@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(private messageHistoryService: MessageHistoryService, private renderer: Renderer2, private keycloakService: KeycloakService) {
-    this.eraseIcon = faEraser;
     this.logoutIcon = faSignOutAlt;
     this.sidebarVisible = true;
     this.messages = new Array();

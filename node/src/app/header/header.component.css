@@ -6,6 +6,10 @@
   cursor: pointer !important;
 }
 
+.app-underline:hover {
+  text-decoration: underline;
+}
+
 .app-scrollable-menu {
   height: auto;
   max-height: 500px;

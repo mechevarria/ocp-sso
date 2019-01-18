@@ -17,8 +17,8 @@
         <i class="icon-bell"></i> <span class="badge badge-pill badge-info" *ngIf="messages.length > 0">{{ messages.length }}</span>
       </a>
       <div *dropdownMenu class="dropdown-menu dropdown-menu-right app-scrollable-menu">
+          <div class="dropdown-header text-center app-pointer" (click)="clear()"><strong class="app-underline">Clear Messages</strong></div>
         <a class="dropdown-item" *ngFor="let item of messages"> <fa-icon [icon]="item.className"></fa-icon> {{ item.text }} </a>
-        <a class="dropdown-item app-pointer" (click)="clear()"> <fa-icon [icon]="eraseIcon"></fa-icon> Clear Messages </a>
       </div>
     </li>
     <li class="nav-item dropdown" dropdown placement="bottom right">
