@@ -5,8 +5,8 @@
       <div class="card-body">
         <div class="form-group card-text">
           <button type="button" class="btn btn-primary" (click)="load()"><fa-icon [icon]="refreshIcon"></fa-icon>&nbsp;Load</button> &nbsp;
-          <button type="button" class="btn btn-default" (click)="clear()"><fa-icon [icon]="clearIcon"></fa-icon>&nbsp;Clear</button> &nbsp;
-          <button type="button" class="btn btn-default" (click)="add()"><fa-icon [icon]="addIcon"></fa-icon>&nbsp;New</button>
+          <button type="button" class="btn btn-secondary" (click)="clear()"><fa-icon [icon]="clearIcon"></fa-icon>&nbsp;Clear</button> &nbsp;
+          <button type="button" class="btn btn-secondary" (click)="add()"><fa-icon [icon]="addIcon"></fa-icon>&nbsp;New</button>
         </div>
         <div class="card-text">
           <div class="table-responsive">
@@ -67,7 +67,7 @@
       <div class="form-group"><label>Model:</label> <input type="text" class="form-control" name="model" [(ngModel)]="selectedCar.model" /></div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="dismiss()">Cancel</button> <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-secondary" (click)="dismiss()">Cancel</button> <button type="submit" class="btn btn-primary">Save</button>
     </div>
   </form>
 </ng-template>
@@ -80,7 +80,7 @@
     </div>
     <div class="modal-body">Are you sure you want to delete this Car?</div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" (click)="dismiss()">Cancel</button> <button type="submit" class="btn btn-warning">Delete</button>
+      <button type="button" class="btn btn-secondary" (click)="dismiss()">Cancel</button> <button type="submit" class="btn btn-warning">Delete</button>
     </div>
   </form>
 </ng-template>
