@@ -22,7 +22,7 @@ sleep 11
 oc new-app \
 --name=eap-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/ocp-sso \
--p SOURCE_REPOSITORY_REF=eap \
+-p SOURCE_REPOSITORY_REF=master \
 -p CONTEXT_DIR=/eap \
 eap71-basic-s2i
 

@@ -15,7 +15,7 @@ fi
 tag=1.2
 image_name=redhat-sso72-openshift-theme
 
-oc new-build redhat-sso72-openshift:${tag}~https://github.com/mechevarria/ocp-sso#eap \
+oc new-build redhat-sso72-openshift:${tag}~https://github.com/mechevarria/ocp-sso \
   --context-dir=sso \
   --name=${image_name} \
   --to=${image_name}:${tag}

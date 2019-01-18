@@ -8,7 +8,7 @@ oc new-app \
 --name=springboot-app \
 -p APPLICATION_NAME=springboot-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/ocp-sso \
--p SOURCE_REPOSITORY_REF=eap \
+-p SOURCE_REPOSITORY_REF=master \
 -p CONTEXT_DIR=/springboot \
 openjdk18-web-basic-s2i
 
