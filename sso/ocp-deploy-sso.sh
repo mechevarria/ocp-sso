@@ -20,8 +20,8 @@ oc new-build redhat-sso72-openshift:${tag}~https://github.com/mechevarria/ocp-ss
   --name=${image_name} \
   --to=${image_name}:${tag}
 
-echo "Wait until the SSO build is done before continuing"
-read -n 1 -s -r -p "Press enter to continue"
+echo "Waiting for 15 seconds until the SSO build is done"
+sleep 15
 
 oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default
 
