@@ -81,21 +81,16 @@
                         </div>
                     </div>
 
-                    <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-                        <div class="card-body text-center">
-                            <div>
+                    <#if displayInfo>
+                        <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                            <div class="card-body text-center">
                                 <h1><img src="${url.resourcesPath}/img/redhat.svg" alt="Red Hat" width="150"/></h1>
-                                 <#if !displayInfo>
-                                    <p>By logging into this site you accept the usage and privacy terms as a user. More details are in the link below.</p>
-                                    <a class="btn btn-primary active mt-3" target="_blank" href="https://www.redhat.com/en/about/privacy-policy" role="button">Privacy Policy</a>
-                                 </#if>
-                                 <#if displayInfo>
-                                    <p><#nested "info"></p>
-                                 </#if>
+                                <p><#nested "info"></p>
+                                <div class="dropdown-divider"></div>
+                                <p>By logging into this site you accept the usage and privacy terms as a user. More details are in the <a class="font-weight-bold text-white" target="_blank" href="https://www.redhat.com/en/about/privacy-policy" role="button">privacy policy</a></p>
                             </div>
                         </div>
-                    </div>
-                    
+                    </#if>
                 </div>
             </div>
         </div>

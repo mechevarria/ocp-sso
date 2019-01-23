@@ -1,5 +1,5 @@
 <#import "template.ftl" as layout>
-<@layout.registrationLayout displayInfo=false; section>
+<@layout.registrationLayout displayInfo=social.displayInfo; section>
     <#if section = "title">
         ${msg("loginTitle",(realm.displayName!''))}
     <#elseif section = "header">
@@ -28,11 +28,11 @@
 
                 <div class="row">
                     <div class="col-6">
-                        <input tabindex="4" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="${msg("doLogIn")}"/>
+                        <input tabindex="3" class="${properties.kcButtonClass!} ${properties.kcButtonPrimaryClass!} ${properties.kcButtonLargeClass!}" name="login" id="kc-login" type="submit" value="Login"/>
                     </div>
                     <div class="col-6 text-right">
                         <#if realm.resetPasswordAllowed>
-                            <span class="align-middle"><a tabindex="5" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></span>
+                            <span class="align-middle"><a tabindex="4" href="${url.loginResetCredentialsUrl}">${msg("doForgotPassword")}</a></span>
                         </#if>
                     </div>
                 </div>
@@ -43,9 +43,9 @@
                             <div class="checkbox">
                                 <label>
                                     <#if login.rememberMe??>
-                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" tabindex="3" checked> ${msg("rememberMe")}
+                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" tabindex="5" checked> ${msg("rememberMe")}
                                     <#else>
-                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" tabindex="3"> ${msg("rememberMe")}
+                                        <input tabindex="3" id="rememberMe" name="rememberMe" type="checkbox" tabindex="5"> ${msg("rememberMe")}
                                     </#if>
                                 </label>
                             </div>
@@ -60,7 +60,8 @@
     <#elseif section = "info" >
         <#if realm.password && realm.registrationAllowed && !usernameEditDisabled??>
             <div id="kc-registration">
-                <span>${msg("noAccount")} <a tabindex="6" href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                No account?<br>
+                <a tabindex="6" class="btn btn-primary active mt-2 mb-2" href="${url.registrationUrl}" role="button">Register Now!</a>
             </div>
         </#if>
 
