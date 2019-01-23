@@ -86,8 +86,6 @@
                             <div class="card-body text-center">
                                 <h1><img src="${url.resourcesPath}/img/redhat.svg" alt="Red Hat" width="150"/></h1>
                                 <p><#nested "info"></p>
-                                <div class="dropdown-divider"></div>
-                                <p>By logging into this site you accept the usage and privacy terms as a user. More details are in the <a class="font-weight-bold text-white" target="_blank" href="https://www.redhat.com/en/about/privacy-policy" role="button">privacy policy</a></p>
                             </div>
                         </div>
                     </#if>

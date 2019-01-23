@@ -1,5 +1,5 @@
 <#import "template.ftl" as layout>
-<@layout.registrationLayout displayInfo=social.displayInfo; section>
+<@layout.registrationLayout displayInfo=true; section>
     <#if section = "title">
         ${msg("loginTitle",(realm.displayName!''))}
     <#elseif section = "header">
@@ -63,6 +63,7 @@
                 No account?<br>
                 <a tabindex="6" class="btn btn-primary active mt-2 mb-2" href="${url.registrationUrl}" role="button">Register Now!</a>
             </div>
+            <div class="dropdown-divider"></div>
         </#if>
 
         <#if realm.password && social.providers??>
@@ -74,5 +75,8 @@
                 </ul>
             </div>
         </#if>
+        <p>By logging into this site you accept the usage and privacy terms as a user. More details are in the 
+            <a class="font-weight-bold text-white" target="_blank" href="https://www.redhat.com/en/about/privacy-policy" role="button">privacy policy</a>
+        </p>
     </#if>
 </@layout.registrationLayout>
