@@ -23,7 +23,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { KeycloakService } from './keycloak.service';
 import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { StatusComponent } from './status/status.component';
-import { ProfileComponent } from './profile/profile.component';
 
 export function jwtOptionsFactory(keycloakService: KeycloakService) {
   return {
@@ -43,8 +42,7 @@ export function jwtOptionsFactory(keycloakService: KeycloakService) {
     ChartsComponent,
     FormComponent,
     SidebarComponent,
-    StatusComponent,
-    ProfileComponent
+    StatusComponent
   ],
   imports: [
     BrowserModule,
