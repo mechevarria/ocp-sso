@@ -67,6 +67,13 @@ While the builds are running you can configure the clients in RH-SSO.
  
 ## Create User
 
+You can either turn on account registration, or create a user in the admin console
+
+### Turn on Registration
+* In the **java-js-realm**, select **Login**, then enable **User registrtion**
+
+### Create a user in the console
+
 * In the **java-js-realm**, select **Users**, then **Add User**
 * Fill out the **Username**, **Email**, **First Name** and **Last Name** fields
 * Select **save**
@@ -77,7 +84,7 @@ While the builds are running you can configure the clients in RH-SSO.
 ## Change Theme (optional)
 
 * In the **java-js-realm**, select **Themes**
-* Set the **Login Theme** value to **coreui**
+* Set the **Login Theme** value to **coreui**. This will also the theme the registration page if enabled
 
 ![screenshot](./screenshots/theme-config.png)
 
@@ -87,7 +94,7 @@ Now that everything is configured, go to the **node-js** application route and y
 
 ![screenshot](./screenshots/theme.png)
 
-You will be able to see your user attributes in the web application under the **Profile** tab.
+You will be able to see and edit your user account in the top right menu by selecting the **Account** link.
 
 Using the **Status** and **Cars** tabs will make REST calls to the JBoss EAP REST backend or Springboot backend. 
 
