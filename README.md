@@ -71,12 +71,14 @@ While the builds are running you can configure the clients in RH-SSO.
  
 ## Create User
 
-You can either turn on account registration, or create a user in the admin console
+You can either turn on account registration, **or** create a user in the admin console
 
 ### Turn on Registration
 * In the **java-js-realm**, select **Login**, then enable **User registrtion**
 
 ### Create a user in the console
+
+This step is optional if you enabled **User registration**
 
 * In the **java-js-realm**, select **Users**, then **Add User**
 * Fill out the **Username**, **Email**, **First Name** and **Last Name** fields
