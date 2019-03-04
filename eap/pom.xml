@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jboss</groupId>
     <artifactId>jboss-api</artifactId>
-    <version>0.3</version>
+    <version>0.4-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>jboss-api</name>
     <description>JBoss Rest API for crud and simple jackson mapping</description>
@@ -73,17 +73,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- JBoss dependency versions -->
-        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
-
         <!-- Define the version of the JBoss BOMs we want to import to specify
             tested stacks. -->
-        <version.jboss.bom.eap>7.1.3.GA</version.jboss.bom.eap>
+        <version.jboss.bom.eap>7.1.5.GA</version.jboss.bom.eap>
 
         <!--<version.surefire.plugin>2.10</version.surefire.plugin>-->
-        <version.war.plugin>2.1.1</version.war.plugin>
-        <version.resteasy>3.0.25.Final-redhat-1</version.resteasy>
+        <version.war.plugin>3.2.2</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -188,7 +183,6 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jackson2-provider</artifactId>
-            <version>${version.resteasy}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -206,13 +200,6 @@
                     <!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
-            </plugin>
-            <!-- The WildFly plug-in deploys the WAR to a local JBoss EAP container -->
-            <!-- To use, run: mvn package wildfly:deploy -->
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${version.wildfly.maven.plugin}</version>
             </plugin>
         </plugins>
     </build>
