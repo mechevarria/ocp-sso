@@ -87,7 +87,9 @@ This step is optional if you enabled **User registration**
 * Select **Reset Password**
 * Confirm that you want to **Change the password**
 
-## Change Theme (optional)
+## Change Theme
+
+This step is optional
 
 * In the **java-js-realm**, select **Themes**
 * Set the **Login Theme** value to **coreui**. This will also the theme the registration page if enabled
