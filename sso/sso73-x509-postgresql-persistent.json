@@ -5,19 +5,19 @@
         "annotations": {
             "iconClass" : "icon-sso",
             "tags" : "sso,keycloak,jboss",
-            "version": "rh-sso-7.2-v1.3.0",
-            "openshift.io/display-name": "Red Hat Single Sign-On 7.2 + PostgreSQL (Persistent)",
+            "version": "7.3.0.GA",
+            "openshift.io/display-name": "Red Hat Single Sign-On 7.3 + PostgreSQL (Persistent)",
             "openshift.io/provider-display-name": "Red Hat, Inc.",
-            "description": "An example RH-SSO 7 application with a PostgreSQL database. For more information about using this template, see https://github.com/jboss-openshift/application-templates.",
-            "template.openshift.io/long-description": "This template defines resources needed to develop Red Hat Single Sign-On 7.2 server based deployment, deployment configuration for PostgreSQL using persistence, and securing RH-SSO communication using re-encrypt TLS.",
+            "description": "An example application based on RH-SSO 7.3 image. For more information about using this template, see https://github.com/jboss-container-images/redhat-sso-7-openshift-image/docs.",
+            "template.openshift.io/long-description": "This template defines resources needed to develop Red Hat Single Sign-On 7.3 server based deployment, deployment configuration for PostgreSQL using persistence, and securing RH-SSO communication using re-encrypt TLS.",
             "template.openshift.io/documentation-url": "https://access.redhat.com/documentation/en/red-hat-single-sign-on/",
             "template.openshift.io/support-url": "https://access.redhat.com"
         },
-        "name": "sso72-x509-postgresql-persistent"
+        "name": "sso73-x509-postgresql-persistent"
     },
     "labels": {
-        "template": "sso72-x509-postgresql-persistent",
-        "rh-sso": "7.2-v1.3.0"
+        "template": "sso73-x509-postgresql-persistent",
+        "rhsso": "7.3.0.GA"
     },
     "message": "A new persistent RH-SSO service (using PostgreSQL) has been created in your project. The admin username/password for accessing the master realm via the RH-SSO console is ${SSO_ADMIN_USERNAME}/${SSO_ADMIN_PASSWORD}. The username/password for accessing the PostgreSQL database \"${DB_DATABASE}\" is ${DB_USERNAME}/${DB_PASSWORD}. The HTTPS keystore used for serving secure content, the JGroups keystore used for securing JGroups communications, and server truststore used for securing RH-SSO requests were automatically created via OpenShift's service serving x509 certificate secrets.",
     "parameters": [
@@ -27,6 +27,13 @@
             "name": "APPLICATION_NAME",
             "value": "sso",
             "required": true
+        },
+        {
+            "displayName": "Custom RH-SSO Server Hostname",
+            "description": "Custom hostname for the RH-SSO server.",
+            "name": "SSO_HOSTNAME",
+            "value": "",
+            "required": false
         },
         {
             "displayName": "JGroups Cluster Password",
@@ -235,6 +242,7 @@
                 },
                 "annotations": {
                     "service.alpha.kubernetes.io/tolerate-unready-endpoints": "true",
+                    "service.alpha.openshift.io/serving-cert-secret-name": "sso-x509-jgroups-secret",
                     "description": "The JGroups ping port for clustering."
                 }
             }
@@ -285,7 +293,7 @@
                             "from": {
                                 "kind": "ImageStreamTag",
                                 "namespace": "${IMAGE_STREAM_NAMESPACE}",
-                                "name": "redhat-sso72-openshift-theme:1.2"
+                                "name": "redhat-sso73-openshift-theme:1.0"
                             }
                         }
                     },
@@ -321,6 +329,11 @@
                                     {
                                         "name": "sso-x509-https-volume",
                                         "mountPath": "/etc/x509/https",
+                                        "readOnly": true
+                                    },
+                                    {
+                                        "name": "sso-x509-jgroups-volume",
+                                        "mountPath": "/etc/x509/jgroups",
                                         "readOnly": true
                                     }
                                 ],
@@ -366,6 +379,10 @@
                                     }
                                 ],
                                 "env": [
+                                    {
+                                        "name": "SSO_HOSTNAME",
+                                        "value": "${SSO_HOSTNAME}"
+                                    },
                                     {
                                         "name": "DB_SERVICE_PREFIX_MAPPING",
                                         "value": "${APPLICATION_NAME}-postgresql=DB"
@@ -423,10 +440,6 @@
                                         "value": "${JGROUPS_CLUSTER_PASSWORD}"
                                     },
                                     {
-                                        "name": "JGROUPS_ENCRYPT_PROTOCOL",
-                                        "value": "ASYM_ENCRYPT"
-                                    },
-                                    {
                                         "name": "SSO_ADMIN_USERNAME",
                                         "value": "${SSO_ADMIN_USERNAME}"
                                     },
@@ -454,6 +467,12 @@
                                 "name": "sso-x509-https-volume",
                                 "secret": {
                                     "secretName": "sso-x509-https-secret"
+                                }
+                            },
+                            {
+                                "name": "sso-x509-jgroups-volume",
+                                "secret": {
+                                    "secretName": "sso-x509-jgroups-secret"
                                 }
                             }
                         ]

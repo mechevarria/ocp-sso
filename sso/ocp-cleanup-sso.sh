@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 proj_name="$(oc whoami)-ntier"
 oc project ${proj_name}

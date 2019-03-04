@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # prefixing project with user to allow multiple people building the same project on the same cluster
 proj_name="$(oc whoami)-ntier"
@@ -12,10 +12,10 @@ else
 fi
 
 # build custom sso instance with custom theme
-tag=1.2
-image_name=redhat-sso72-openshift-theme
+tag=1.0
+image_name=redhat-sso73-openshift-theme
 
-oc new-build redhat-sso72-openshift:${tag}~https://github.com/mechevarria/ocp-sso \
+oc new-build redhat-sso73-openshift:${tag}~https://github.com/mechevarria/ocp-sso \
   --context-dir=sso \
   --name=${image_name} \
   --to=${image_name}:${tag}
@@ -25,9 +25,9 @@ sleep 15
 
 oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default
 
-template=sso72-x509-postgresql-persistent
+template=sso73-x509-postgresql-persistent
 
-# using custom template to reference custom image stream and force using openshift namespace postgresql
+# using custom template to reference theme image stream and force using openshift namespace for postgresql
 oc new-app -f ${template}.json \
  -p SSO_ADMIN_USERNAME="admin" \
  -p SSO_ADMIN_PASSWORD="Redhat1!" \
