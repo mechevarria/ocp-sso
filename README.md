@@ -8,7 +8,7 @@ to a [MySQL](https://www.mysql.com/) database (tier 3).
 The Red Hat Single Sign-On deployment secures this deployed via a configured realm called **java-js-realm**.  The realm contains
 configured clients for the public facing frontend (js) and the bearer only backend (eap). The security is simple and only checks that a **valid user is logged in**
 
-All of the scripts to help deploy require that you are logged in via the [oc](https://docs.openshift.com/container-platform/3.10/cli_reference/get_started_cli.html) command line tool to 
+All of the scripts to help deploy require that you are logged in via the [oc](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) command line tool to 
 a [Openshift](https://www.openshift.com/) cluster or [container development kit](https://developers.redhat.com/products/cdk/download/) instance
 
 Example: `oc login -u developer`
@@ -17,8 +17,12 @@ Example: `oc login -u developer`
 
 ## Deploy Red Hat Single Sign-On
 
-In the `sso` folder, run the `ocp-deploy-sso.sh` script.  This script creates a custom build that includes a sample [theme](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.2/html/server_developer_guide/themes) for the login page, named `coreui`. Once finished you will see the deployed pods in the **SSO N-tier** project.
+In the `sso` folder, run the `ocp-deploy-sso.sh` script.  This script creates a custom build that includes a sample [theme](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.3/html/server_developer_guide/themes) for the login page, named `coreui`. Once finished you will see the deployed pods in the **SSO N-tier** project.
 The login to the RH-SSO admin console is **admin/Redhat1!**
+
+### Troubleshooting
+
+If you get an error related to the imagestream not being found, run the `ocp-install-templates.sh`
 
 ![screenshot](./screenshots/sso.png)
 
