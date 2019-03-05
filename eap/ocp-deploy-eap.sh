@@ -9,11 +9,12 @@ echo "Creating mysql database"
 db_service=mysql
 
 oc new-app \
---name=mysql \
+--name=${db_service} \
 -p MYSQL_USER=myuser \
 -p MYSQL_PASSWORD=mypass \
 -p MYSQL_DATABASE=jboss \
 -p DATABASE_SERVICE_NAME=${db_service} \
+-p MYSQL_VERSION=latest \
 mysql-persistent
 
 echo "Waiting for mysql to finish deploying before deploying EAP"
@@ -26,7 +27,8 @@ oc new-app \
 -p CONTEXT_DIR=/eap \
 eap71-basic-s2i
 
-oc set env --from=configmap/ntier-config dc/eap-app
+oc set env dc/eap-app --from=configmap/ntier-config
+oc set env dc/eap-app --from=secret/mysql
 
 echo "deleting default http route"
 oc delete route eap-app
