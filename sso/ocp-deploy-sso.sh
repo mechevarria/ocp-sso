@@ -20,7 +20,7 @@ oc new-build redhat-sso73-openshift:${tag}~https://github.com/mechevarria/ocp-ss
   --name=${image_name} \
   --to=${image_name}:${tag}
 
-echo "Waiting for 15 seconds until the SSO build is done"
+# echo "Waiting for until the SSO build is done"
 sleep 15
 
 oc policy add-role-to-user view system:serviceaccount:$(oc project -q):default
@@ -41,7 +41,4 @@ oc new-app -f ${template}.json \
  oc create configmap ntier-config \
     --from-literal=AUTH_URL=https:\/\/${route_name}/auth \
     --from-literal=KEYCLOAK=true \
-    --from-literal=PUBLIC_KEY=changeme \
-    --from-literal=DB_CONNECTION_URL=jdbc:mysql:\/\/mysql\/jboss \
-    --from-literal=DB_USERNAME=myuser \
-    --from-literal=DB_PASSWORD=mypass
+    --from-literal=PUBLIC_KEY=changeme
