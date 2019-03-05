@@ -133,12 +133,12 @@
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
                 <datasource jta="true" jndi-name="java:/MySqlDS" pool-name="MySqlDS" enabled="true" use-ccm="false">
-                    <connection-url>${env.DB_CONNECTION_URL}</connection-url>
+                    <connection-url>jdbc:mysql://mysql/${env.database-name}</connection-url>
                     <driver-class>com.mysql.jdbc.Driver</driver-class>
                     <driver>mysql</driver>
                     <security>
-                        <user-name>${env.DB_USERNAME}</user-name>
-                        <password>${env.DB_PASSWORD}</password>
+                        <user-name>${env.database-user}</user-name>
+                        <password>${env.database-password}</password>
                     </security>
                     <validation>
                         <valid-connection-checker class-name="com.mysql.jdbc.integration.jboss.MysqlValidConnectionChecker"/>
