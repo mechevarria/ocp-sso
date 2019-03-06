@@ -4,7 +4,7 @@ const editJsonFile = require('edit-json-file');
 const keycloakPath = `${__dirname}/dist/assets/data/keycloak.json`;
 const authUrl = process.env.AUTH_URL;
 const enabled = process.env.KEYCLOAK || true;
-const urlKey = 'auth-server-url';
+const urlKey = 'url';
 const enabledKey = 'enabled';
 
 console.log(`Setting \"${urlKey}\" to ${authUrl} in ${keycloakPath}\n`);
