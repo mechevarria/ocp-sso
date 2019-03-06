@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -20,16 +20,12 @@ import { DataTablesModule } from 'angular-datatables';
 import { FormComponent } from './form/form.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { KeycloakService } from './keycloak.service';
-import { JWT_OPTIONS, JwtModule } from '@auth0/angular-jwt';
 import { StatusComponent } from './status/status.component';
+import { KeycloakAngularModule } from 'keycloak-angular';
+import { AppInitService } from './app-init.service';
 
-export function jwtOptionsFactory(keycloakService: KeycloakService) {
-  return {
-    tokenGetter: () => {
-      return keycloakService.getToken();
-    }
-  };
+export function init(appInitService: AppInitService) {
+  return () => appInitService.init();
 }
 
 @NgModule({
@@ -60,15 +56,16 @@ export function jwtOptionsFactory(keycloakService: KeycloakService) {
       closeButton: true,
       progressBar: true
     }),
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
-        deps: [KeycloakService]
-      }
-    })
+    KeycloakAngularModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: init,
+      multi: true,
+      deps: [AppInitService]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
