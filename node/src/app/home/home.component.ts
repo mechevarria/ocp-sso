@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import { KeycloakService } from '../keycloak.service';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-home',
@@ -9,15 +9,18 @@ import { KeycloakService } from '../keycloak.service';
 export class HomeComponent implements OnInit {
   fullName: string;
 
-  constructor(public route: ActivatedRoute, private keycloakService: KeycloakService) {
+  constructor(public route: ActivatedRoute, private keycloak: KeycloakService) {
     this.fullName = '';
   }
 
   ngOnInit() {
-    const auth = this.keycloakService.getAuth();
-    if (auth.isLoggedIn) {
-      this.fullName = `${auth.profile.firstName} ${auth.profile.lastName}`;
-    }
+    this.keycloak.isLoggedIn().then(isLoggedIn => {
+      if (isLoggedIn) {
+        this.keycloak.loadUserProfile().then(profile => {
+          this.fullName = `${profile.firstName} ${profile.lastName}`;
+        });
+      }
+    });
   }
 
 }

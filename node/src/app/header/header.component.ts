@@ -2,8 +2,8 @@ import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
 import { MessageItem } from '../message/message-item';
 import { IconDefinition, faLock, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import { MessageHistoryService } from '../message/message-history.service';
-import { KeycloakService } from '../keycloak.service';
 import { interval } from 'rxjs/internal/observable/interval';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   styleUrls: ['./header.component.css'],
@@ -18,26 +18,31 @@ export class HeaderComponent implements OnInit {
   sidebarVisible: boolean;
   username: string;
   messages: MessageItem[];
-  logoutUrl: string;
   accountUrl: string;
+  isLoggedIn: boolean;
 
-  constructor(private messageHistoryService: MessageHistoryService, private renderer: Renderer2, private keycloakService: KeycloakService) {
+  constructor(private messageHistoryService: MessageHistoryService, private renderer: Renderer2, private keycloak: KeycloakService) {
     this.logoutIcon = faLock;
     this.accountIcon = faShieldAlt;
     this.sidebarVisible = true;
     this.messages = new Array();
     this.username = '';
+    this.isLoggedIn = false;
 
     // hide sidebar by default on mobile
     this.checkForMobile();
   }
 
   doLogout(): void {
-    window.location.href = this.logoutUrl;
+    if (this.isLoggedIn) {
+      this.keycloak.logout();
+    }
   }
 
   doAccount(): void {
-    window.open(this.accountUrl, '_blank');
+    if (this.isLoggedIn) {
+      window.open(this.accountUrl, '_blank');
+    }
   }
 
   clear() {
@@ -71,12 +76,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.messages = this.messageHistoryService.getHistory();
 
-    const auth = this.keycloakService.getAuth();
+    this.keycloak.isLoggedIn().then(isLoggedIn => {
+      if (isLoggedIn) {
+        this.isLoggedIn = true;
+        this.username = this.keycloak.getUsername();
 
-    if (auth.isLoggedIn) {
-      this.username = auth.profile.username;
-      this.logoutUrl = auth.logoutUrl;
-      this.accountUrl = auth.accountUrl;
-    }
+        const instance = this.keycloak.getKeycloakInstance();
+        this.accountUrl = `${instance.authServerUrl}/realms/${instance.realm}/account`;
+      }
+    });
   }
 }
