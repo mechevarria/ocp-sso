@@ -3,7 +3,7 @@
   window._env = window._env || {};
 
   window._env.url = '';
-  window._env.realm = 'emergency-realm';
+  window._env.realm = 'java-js-realm';
   window._env.clientId = 'js';
   window._env.enabled = '';
 })(this);
