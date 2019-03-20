@@ -1,20 +1,19 @@
 'use strict';
 
-const editJsonFile = require('edit-json-file');
-const keycloakPath = `${__dirname}/dist/assets/data/keycloak.json`;
-const authUrl = process.env.AUTH_URL;
-const enabled = process.env.KEYCLOAK || true;
-const urlKey = 'url';
-const enabledKey = 'enabled';
+/* This script updates env.js with deployment environment variables. Allows keycloak off/on and changing mapbox tokens */
 
-console.log(`Setting \"${urlKey}\" to ${authUrl} in ${keycloakPath}\n`);
-console.log(`Setting \"${enabledKey}\" to ${enabled} in ${keycloakPath}\n`);
+const replace = require('replace');
 
-let file = editJsonFile(keycloakPath);
+doReplace('url', process.env.AUTH_URL);
+doReplace('enabled', process.env.KEYCLOAK);
 
-file.set(urlKey, authUrl);
-file.set(enabledKey, enabled);
+function doReplace(key, value) {
+  const regex = key + ' = \'.*\'';
+  const replacement = key + ' = \''+ value +'\'';
 
-file.save();
-
-console.log(file.get());
+  replace({
+    regex: regex,
+    replacement: replacement,
+    paths: [`${__dirname}/dist/assets/js/env.js`]
+  });
+}
