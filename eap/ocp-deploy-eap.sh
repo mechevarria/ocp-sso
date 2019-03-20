@@ -14,7 +14,7 @@ oc new-app \
 -p MYSQL_PASSWORD=mypass \
 -p MYSQL_DATABASE=jboss \
 -p DATABASE_SERVICE_NAME=${db_service} \
--p MYSQL_VERSION=latest \
+-p MYSQL_VERSION=5.7 \
 mysql-persistent
 
 echo "Waiting for mysql to finish deploying before deploying EAP"
