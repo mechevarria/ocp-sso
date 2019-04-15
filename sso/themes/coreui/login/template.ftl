@@ -82,7 +82,7 @@
                     </div>
 
                     <#if displayInfo>
-                        <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
+                        <div class="card text-white bg-primary p-4">
                             <div class="card-body text-center">
                                 <h1><img src="${url.resourcesPath}/img/redhat.svg" alt="Red Hat" width="150"/></h1>
                                 <p><#nested "info"></p>
