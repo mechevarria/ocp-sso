@@ -49,6 +49,10 @@ In the `eap` folder run the `ocp-deploy-eap.sh` script.
 
 In the `node` folder run the `ocp-deploy-node.sh` script.
 
+## Deploy Springboot app
+
+In the `springboot` folder run the `ocp-deploy-springboot.sh` script.
+
 ## Configure Clients
 
 While the builds are running you can configure the clients in RH-SSO. 
