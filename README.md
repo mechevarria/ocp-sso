@@ -28,9 +28,9 @@ If you get an error related to the imagestream not being found, run the `ocp-ins
 
 ### Set the Public Key in the config map
 
-Make sure the RH-SSO instance is up and running. Once the Red Hat Single Sign-on instance is up you will need to modify the [config map](https://docs.openshift.com/container-platform/3.10/dev_guide/configmaps.html) used
+Make sure the RH-SSO instance is **up and running**. Once the Red Hat Single Sign-on instance is up you will need to modify the [config map](https://docs.openshift.com/container-platform/3.10/dev_guide/configmaps.html) used
 by the Springboot backend, JBoss EAP backend and nodejs frontend to communicate with Red Hat Single Sign-On.
-`
+
 * In the **RH-SSO admin console**, go to the **java-js-realm**, the **keys** tab and select **Public Key** and copy the value.
 
 ![screenshot](./screenshots/key.png)
