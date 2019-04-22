@@ -78,7 +78,7 @@ While the builds are running you can configure the clients in RH-SSO.
 You can either turn on account registration, **or** create a user in the admin console
 
 ### Turn on Registration
-* In the **java-js-realm**, select **Login**, then enable **User registrtion**
+* In the **java-js-realm**, select **Login**, then enable **User registration**
 
 ### Create a user in the console
 
