@@ -1,10 +1,10 @@
-# Red Hat Openshift Single Sign-On Secured N-tier application
+# Red Hat Openshift Single Sign-On Secured Systems
 
-This project contains scripts and source to deploy a 3 tier application along with [Red Hat Single Sign-On](https://access.redhat.com/products/red-hat-single-sign-on) and secures the application with SSL.
+This project contains scripts and source to deploy a sample system that is secured by [Red Hat Single Sign-On](https://access.redhat.com/products/red-hat-single-sign-on) and secures the application with SSL.
 
-The application has a [node.js](https://nodejs.org/en/) run [Angular](https://angular.io/) frontend (tier 1) that calls a 
-[JBoss EAP](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/) REST backend (tier 2) that persists data
-to a [MySQL](https://www.mysql.com/) database (tier 3).
+The application has a [node.js](https://nodejs.org/en/) run [Angular](https://angular.io/) frontend that calls a 
+[JBoss EAP](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/) REST backend that persists data
+to a [MySQL](https://www.mysql.com/) database. The frontend also calls a [Springboot](https://spring.io/projects/spring-boot) REST api and returns a sample message.
 The Red Hat Single Sign-On deployment secures this deployed via a configured realm called **java-js-realm**.  The realm contains
 configured clients for the public facing frontend (js) and the bearer only backend (eap). The security is simple and only checks that a **valid user is logged in**
 
