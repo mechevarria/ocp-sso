@@ -59,19 +59,21 @@ While the builds are running you can configure the clients in RH-SSO.
 
 ### JS Client
 * In the **java-js-realm**, select **clients**, then **create**
-* Set **Client ID** to **js**, then select **save**
-* Set **Valid Redirect URIs** to the route of your node.js instance plus **/***.  Example: `https://nodejs-app-ntier.192.168.42.24.nip.io/*`
+* Set **Client ID** to **js**
+* Set **Root URL** to the route of your node.js instance.  Example: `https://nodejs-app-ntier.192.168.42.24.nip.io/`
   * In other words, in the Openshift Console overview for your project, copy the exposed route to the **nodejs-app**
-* Set **Web Origins** to `*` 
 * Select **save**
 
 ![screenshot](./screenshots/js.png)
 
 ## Java Client
 * In the **java-js-realm**, select **clients**, then **create**
-* Set **Client ID** to **java**, then select **save**
+* Set **Client ID** to **java**
+* Leave **Root URL** blank this time, then select **save**
 * Set **Access Type** to **bearer-only**
 * Select **save**
+
+![screenshot](./screenshots/java.png)
  
 ## Create User
 
