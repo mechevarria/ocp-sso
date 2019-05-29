@@ -84,7 +84,7 @@
                     <#if displayInfo>
                         <div class="card text-white bg-primary p-4">
                             <div class="card-body text-center">
-                                <h1><img src="${url.resourcesPath}/img/redhat.svg" alt="Red Hat" width="150"/></h1>
+                                <h1><img src="${url.resourcesPath}/img/Logo-RedHat-A-Reverse-RGB.svg" alt="Red Hat" width="150"/></h1>
                                 <p><#nested "info"></p>
                             </div>
                         </div>
