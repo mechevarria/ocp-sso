@@ -13,7 +13,7 @@
     "ng": "$npm_package_ng",
     "build": "$npm_package_ng build --delete-output-path --prod",
     "buildDev": "$npm_package_ng build --watch",
-    "start": "node set-config.js && node server.js"
+    "start": "node envsub.js && node server.js"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "~0.13.4",
@@ -47,6 +47,7 @@
     "datatables.net-bs4": "^1.10.19",
     "datatables.net-responsive": "^2.2.3",
     "datatables.net-responsive-bs4": "^2.2.3",
+    "envsub": "^3.0.9",
     "express": "^4.16.4",
     "http-proxy-middleware": "^0.19.1",
     "jquery": "^3.3.1",
@@ -56,7 +57,6 @@
     "ngx-bootstrap": "~3.2.0",
     "ngx-toastr": "^9.1.2",
     "npm-sort": "0.0.4",
-    "replace": "^1.1.0",
     "rxjs": "~6.3.3",
     "simple-line-icons": "^2.4.1",
     "ts-node": "^7.0.1",
