@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../message/message.service';
-import { Color } from 'ng2-charts/charts/charts';
+import { Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-charts',
