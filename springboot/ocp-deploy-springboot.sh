@@ -10,6 +10,6 @@ oc new-app \
 -p SOURCE_REPOSITORY_URL=https://github.com/mechevarria/ocp-sso \
 -p SOURCE_REPOSITORY_REF=master \
 -p CONTEXT_DIR=/springboot \
-redhat-openjdk18-openshift
+openjdk18-web-basic-s2i
 
 oc set env --from=configmap/ntier-config dc/springboot-app
