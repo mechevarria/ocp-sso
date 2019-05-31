@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from './app.routes';
-import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TableComponent } from './table/table.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -53,8 +54,9 @@ export function init(appInitService: AppInitService) {
     ChartsModule,
     DataTablesModule,
     ToastrModule.forRoot({
-      closeButton: true,
-      progressBar: true
+      maxOpened: 2,
+      positionClass: 'toast-bottom-center',
+      autoDismiss: true
     }),
     KeycloakAngularModule
   ],

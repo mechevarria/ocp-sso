@@ -24,9 +24,7 @@
               <tbody>
                 <tr *ngFor="let car of cars">
                   <td class="app-pointer">
-                    <button class="btn btn-warning btn-sm" (click)="warning(car)"><fa-icon [icon]="deleteIcon"></fa-icon></button>
-                    &nbsp;
-                    &nbsp;
+                    <button class="btn btn-warning btn-sm mr-2" (click)="warning(car)"><fa-icon [icon]="deleteIcon"></fa-icon></button>
                     {{ car.id }}
                   </td>
                   <td class="app-pointer" (click)="edit(car)">{{ car.year }}</td>

@@ -1,27 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  faChartPie,
-  faTable,
-  IconDefinition
-} from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faWpforms } from '@fortawesome/free-brands-svg-icons';
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { SidebarService } from './sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
-  chartIcon: IconDefinition;
-  tableIcon: IconDefinition;
-  githubIcon: IconDefinition;
-  formIcon: IconDefinition;
+  githubIcon: IconDefinition = faGithub;
 
-  constructor() {
-    this.chartIcon = faChartPie;
-    this.tableIcon = faTable;
-    this.githubIcon = faGithub;
-    this.formIcon = faWpforms;
+  constructor(private sidebarService: SidebarService) { }
+
+  closeOnMobile(): void {
+    if (window.innerWidth < 640) {
+      this.sidebarService.toggleSidebar();
+    }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

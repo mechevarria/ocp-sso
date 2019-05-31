@@ -58,7 +58,7 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
       this.rerender();
 
       if (this.cars != null) {
-        this.messageService.success(`Successfully loaded ${this.cars.length} car from service`);
+        this.messageService.success(`Successfully loaded ${this.cars.length} cars from service`);
       }
     });
   }
@@ -138,16 +138,7 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
     this.dtOptions = {
       pagingType: 'simple',
       responsive: true,
-      pageLength: 10,
-      language: {
-        lengthMenu:
-          'Display \
-        <select class="custom-select"> \
-          <option value="10">10</option> \
-          <option value="30">30</option> \
-          <option value="-1">All</option> \
-        </select>'
-      }
+      pageLength: 10
     };
   }
 

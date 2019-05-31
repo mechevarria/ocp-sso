@@ -14,19 +14,13 @@ import { Subject } from 'rxjs/internal/Subject';
   providedIn: 'root'
 })
 export class MessageService {
-  private successIcon: IconDefinition;
-  private errorIcon: IconDefinition;
-  private infoIcon: IconDefinition;
-  private warningIcon: IconDefinition;
-  public newMessage$: Subject<MessageItem>;
+  private successIcon: IconDefinition = faCheckCircle;
+  private errorIcon: IconDefinition = faTimesCircle;
+  private infoIcon: IconDefinition = faInfoCircle;
+  private warningIcon: IconDefinition = faExclamationCircle;
+  public newMessage$: Subject<MessageItem> = new Subject();
 
-  constructor(private toastr: ToastrService) {
-    this.successIcon = faCheckCircle;
-    this.errorIcon = faTimesCircle;
-    this.infoIcon = faInfoCircle;
-    this.warningIcon = faExclamationCircle;
-    this.newMessage$ = new Subject();
-  }
+  constructor(private toastr: ToastrService) { }
 
   success(msg: string): void {
     this.toastr.success(msg);

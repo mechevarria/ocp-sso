@@ -1,6 +1,6 @@
 <header class="app-header navbar">
   <!-- shown in mobile view -->
-  <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" (click)="toggleSidebar()"><span class="navbar-toggler-icon"></span></button>
+  <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" (click)="sidebarService.toggleSidebar()"><span class="navbar-toggler-icon"></span></button>
 
   <a class="navbar-brand" routerLink="home">
     <img class="navbar-brand-full" src="assets/img/Logo-RedHat-A-Color-RGB.svg" width="120" alt="Red Hat logo" />
@@ -8,7 +8,7 @@
   </a>
 
   <!-- toggle sidebar -->
-  <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" (click)="toggleSidebar()"><span class="navbar-toggler-icon"></span></button>
+  <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" (click)="sidebarService.toggleSidebar()"><span class="navbar-toggler-icon"></span></button>
 
   <!-- top right menu -->
   <ul class="navbar-nav ml-auto">

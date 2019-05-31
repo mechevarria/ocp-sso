@@ -2,8 +2,8 @@ import { Component, OnInit, Renderer2, HostListener } from '@angular/core';
 import { MessageItem } from '../message/message-item';
 import { IconDefinition, faLock, faShieldAlt } from '@fortawesome/free-solid-svg-icons';
 import { MessageHistoryService } from '../message/message-history.service';
-import { interval } from 'rxjs/internal/observable/interval';
 import { KeycloakService } from 'keycloak-angular';
+import { SidebarService } from '../sidebar/sidebar.service';
 
 @Component({
   styleUrls: ['./header.component.css'],
@@ -11,26 +11,24 @@ import { KeycloakService } from 'keycloak-angular';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-  eraseIcon: IconDefinition;
-  logoutIcon: IconDefinition;
-  accountIcon: IconDefinition;
-  formIcon: IconDefinition;
-  sidebarVisible: boolean;
-  username: string;
-  messages: MessageItem[];
   accountUrl: string;
-  isLoggedIn: boolean;
+  isLoggedIn: boolean = false;
+  logoutIcon: IconDefinition = faLock;
+  accountIcon: IconDefinition = faShieldAlt;
+  sidebarVisible: boolean = true;
+  username: string = 'Guest';
+  messages: MessageItem[];
 
-  constructor(private messageHistoryService: MessageHistoryService, private renderer: Renderer2, private keycloak: KeycloakService) {
-    this.logoutIcon = faLock;
-    this.accountIcon = faShieldAlt;
-    this.sidebarVisible = true;
-    this.messages = new Array();
-    this.username = '';
-    this.isLoggedIn = false;
-
+  constructor(private messageHistoryService: MessageHistoryService, public sidebarService: SidebarService, private keycloak: KeycloakService) {
     // hide sidebar by default on mobile
     this.checkForMobile();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  checkForMobile() {
+    if (window.innerWidth < 640) {
+      this.sidebarService.toggleSidebar();
+    }
   }
 
   doLogout(): void {
@@ -47,29 +45,6 @@ export class HeaderComponent implements OnInit {
 
   clear() {
     this.messageHistoryService.clear();
-  }
-
-  toggleSidebar() {
-    this.sidebarVisible = !this.sidebarVisible;
-    if (this.sidebarVisible === false) {
-      this.renderer.removeClass(document.body, 'sidebar-show');
-    } else {
-      this.renderer.addClass(document.body, 'sidebar-show');
-    }
-
-    // triggering this event so that the mapbox api will auto resize the map
-    if (window.innerWidth > 640) {
-      setTimeout(() => {
-        window.dispatchEvent(new Event('resize'));
-      }, 500);
-    }
-  }
-
-  @HostListener('window:resize', ['$event'])
-  checkForMobile(event?) {
-    if (window.innerWidth < 640) {
-      this.toggleSidebar();
-    }
   }
 
   ngOnInit(): void {
