@@ -4,9 +4,9 @@
       <div class="card-header">Cars</div>
       <div class="card-body">
         <div class="form-group card-text">
-          <button type="button" class="btn btn-primary" (click)="load()"><fa-icon [icon]="refreshIcon"></fa-icon>&nbsp;Load</button> &nbsp;
-          <button type="button" class="btn btn-secondary" (click)="clear()"><fa-icon [icon]="clearIcon"></fa-icon>&nbsp;Clear</button> &nbsp;
-          <button type="button" class="btn btn-secondary" (click)="add()"><fa-icon [icon]="addIcon"></fa-icon>&nbsp;New</button>
+          <button type="button" class="btn btn-primary mr-2" (click)="load()">Load</button>
+          <button type="button" class="btn btn-secondary mr-2" (click)="clear()">Clear</button>
+          <button type="button" class="btn btn-secondary" (click)="add()">New</button>
         </div>
         <div class="card-text">
           <div class="table-responsive">
@@ -24,7 +24,9 @@
               <tbody>
                 <tr *ngFor="let car of cars">
                   <td class="app-pointer">
-                    <button class="btn btn-warning btn-sm mr-2" (click)="warning(car)"><fa-icon [icon]="deleteIcon"></fa-icon></button>
+                    <button class="btn btn-warning btn-sm mr-2" (click)="warning(car)">
+                      <fa-icon [icon]="deleteIcon"></fa-icon>
+                    </button>
                     {{ car.id }}
                   </td>
                   <td class="app-pointer" (click)="edit(car)">{{ car.year }}</td>

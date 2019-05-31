@@ -22,35 +22,16 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
   @ViewChild('deleteTemplate')
   deleteTemplate: TemplateRef<any>;
 
-  dtOptions: any;
-  cars: Car[];
+  dtOptions: any = {};
+  cars: Car[] = new Array();
   selectedCar: Car;
-  dtTrigger: Subject<any>;
+  dtTrigger: Subject<any> = new Subject();
   modalRef: BsModalRef;
-  refreshIcon: IconDefinition;
-  clearIcon: IconDefinition;
-  deleteIcon: IconDefinition;
+  deleteIcon: IconDefinition = faTrash;
   addIcon: IconDefinition;
   years: string[];
 
-  constructor(private messageService: MessageService, private carService: CarService, private modalService: BsModalService) {
-    this.dtOptions = {};
-    this.cars = new Array();
-    this.dtTrigger = new Subject();
-    this.refreshIcon = faSync;
-    this.clearIcon = faEraser;
-    this.addIcon = faPlusCircle;
-    this.deleteIcon = faTrash;
-
-    const year: number = new Date().getFullYear();
-    const range = [];
-    range.push(year.toString());
-
-    for (let i = 1; i < 30; i++) {
-      range.push((year - i).toString());
-    }
-    this.years = range;
-  }
+  constructor(private messageService: MessageService, private carService: CarService, private modalService: BsModalService) { }
 
   load(): void {
     this.carService.getCars().subscribe(res => {
@@ -140,6 +121,15 @@ export class TableComponent implements OnDestroy, OnInit, AfterViewInit {
       responsive: true,
       pageLength: 10
     };
+
+    const year: number = new Date().getFullYear();
+    const range = [];
+    range.push(year.toString());
+
+    for (let i = 1; i < 30; i++) {
+      range.push((year - i).toString());
+    }
+    this.years = range;
   }
 
   ngAfterViewInit() {
