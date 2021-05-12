@@ -39,7 +39,7 @@
     "@types/jquery": "^3.3.29",
     "@types/node": "^10.12.18",
     "angular-datatables": "^7.0.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "codelyzer": "^4.5.0",
     "compression": "^1.7.3",
     "core-js": "^2.5.7",
