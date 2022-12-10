@@ -48,7 +48,7 @@
     "datatables.net-responsive": "^2.2.3",
     "datatables.net-responsive-bs4": "^2.2.3",
     "envsub": "^3.0.9",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "http-proxy-middleware": "^0.19.1",
     "jquery": "^3.4.1",
     "keycloak-angular": "~6.1.0",
